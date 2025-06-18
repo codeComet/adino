@@ -39,8 +39,6 @@ const HomeCareer = () => {
     );
   }
 
-  console.log('career', data)
-
   const title = data?.sections[3]?.title;
   const heading = data?.sections[3]?.heading;
   const description = data?.sections[3]?.description;
@@ -48,8 +46,6 @@ const HomeCareer = () => {
   const btn_url = data?.sections[3]?.button?.cta_btn_url;
   const external_url = data?.sections[3]?.button?.isExternal;
   const image = data?.sections[3]?.image?.url;
-
-  console.log('career img', image);
 
   return (
     <section className="w-wrapper mx-auto my-6 md:my-12">

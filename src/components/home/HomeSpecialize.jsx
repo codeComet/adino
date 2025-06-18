@@ -59,7 +59,6 @@ const HomeSpecialize = () => {
   let specializeHeading = data?.sections[2]?.specializeHeading;
   let specializeItems = data?.sections[2]?.specializeItems;
 
-  console.log('specializeItems', specializeItems);
 
   return (
     <section
@@ -102,7 +101,6 @@ const HomeSpecialize = () => {
                 hoveredIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             >
-              {console.log(item, item?.feature_image?.url)}
               <Image
                 src={item?.feature_image?.url}
                 alt={item.name}
