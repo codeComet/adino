@@ -39,6 +39,8 @@ const HomeCareer = () => {
     );
   }
 
+  console.log('career', data)
+
   const title = data?.sections[3]?.title;
   const heading = data?.sections[3]?.heading;
   const description = data?.sections[3]?.description;

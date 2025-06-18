@@ -59,6 +59,8 @@ const HomeSpecialize = () => {
   let specializeHeading = data?.sections[2]?.specializeHeading;
   let specializeItems = data?.sections[2]?.specializeItems;
 
+  console.log('specializeItems', specializeItems);
+
   return (
     <section
       className="w-wrapper mx-auto text-white rounded-3xl p-4 sm:p-6 md:py-[90px] md:px-[80px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
