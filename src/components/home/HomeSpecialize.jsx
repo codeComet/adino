@@ -102,7 +102,7 @@ const HomeSpecialize = () => {
               }`}
             >
               <Image
-                src={`${item?.feature_image?.url}`}
+                src={item?.feature_image?.url}
                 alt={item.name}
                 fill
                 className="object-cover"
