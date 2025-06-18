@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "supportive-creativity-cd56af8fec.media.strapiapp.com"],
   },
 };
 
