@@ -61,7 +61,6 @@ const HomeAbout = () => {
   let aboutCta = data?.sections[1]?.about_cta?.cta_btn_text;
   let statCards = data?.sections[1]?.about_stat_cards;
   
-  console.log('about', data);
 
   return (
     <div className="py-10 md:py-20">

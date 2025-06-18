@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Linkedin, Twitter, Facebook } from "lucide-react";
 import qs from 'qs';
 import Image from "next/image";
 
@@ -83,7 +82,7 @@ export default function Footer() {
                   className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
                 >
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${link.icon_image.url}`}
+                    src={`${link.icon_image.url}`}
                     width={40}
                     height={40}
                     alt="icons"

@@ -44,12 +44,10 @@ const HomeHero = () => {
   }
 
   let heroHeading = data?.sections[0]?.heading_text;
-  let heroBg = `${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.sections[0]?.hero_bg?.url}`;
+  let heroBg = data?.sections[0]?.hero_bg?.url;
   let heroCta = data?.sections[0]?.hero_cta?.cta_btn_text;
   let heroBottomText = data?.sections[0]?.hero_bottom_text[0]?.children[0]?.text;
   let heroFeatures = data?.sections[0]?.hero_features;
-
-  console.log('hero', data);
 
   return (
     <div

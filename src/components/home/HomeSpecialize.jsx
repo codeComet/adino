@@ -56,8 +56,6 @@ const HomeSpecialize = () => {
     );
   }
 
-  console.log('specialize', data);
-
   let specializeHeading = data?.sections[2]?.specializeHeading;
   let specializeItems = data?.sections[2]?.specializeItems;
 
@@ -65,7 +63,7 @@ const HomeSpecialize = () => {
     <section
       className="w-wrapper mx-auto text-white rounded-3xl p-4 sm:p-6 md:py-[90px] md:px-[80px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
       style={{
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/1094_C460_0_C6_B_43_EF_AE_11_AE_7_B19912112_b1b41f4ce2.png)`,
+        backgroundImage: 'url("https://supportive-creativity-cd56af8fec.media.strapiapp.com/1094_C460_0_C6_B_43_EF_AE_11_AE_7_B19912112_6297106bbf.png")',
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -102,7 +100,7 @@ const HomeSpecialize = () => {
               }`}
             >
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${item?.feature_image?.url}`}
+                src={`${item?.feature_image?.url}`}
                 alt={item.name}
                 fill
                 className="object-cover"

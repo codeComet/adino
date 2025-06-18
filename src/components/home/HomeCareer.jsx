@@ -39,15 +39,13 @@ const HomeCareer = () => {
     );
   }
 
-  console.log('career', data);
-
   const title = data?.sections[3]?.title;
   const heading = data?.sections[3]?.heading;
   const description = data?.sections[3]?.description;
   const btn_text = data?.sections[3]?.button?.cta_btn_text;
   const btn_url = data?.sections[3]?.button?.cta_btn_url;
   const external_url = data?.sections[3]?.button?.isExternal;
-  const image = data?.sections[3]?.image?.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.sections[3]?.image?.url}` : "";
+  const image = data?.sections[3]?.image?.url ? `${data?.sections[3]?.image?.url}` : "";
 
   return (
     <section className="w-wrapper mx-auto my-6 md:my-12">

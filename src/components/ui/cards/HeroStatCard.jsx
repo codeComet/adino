@@ -5,7 +5,7 @@ const HeroStatCard = ({num, desc, img}) => {
     <div
       className="h-[300px] md:h-[390px] flex flex-1 flex-col justify-baseline rounded-[8px]"
       style={{
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}${img})`,
+        backgroundImage: `url(${img})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
       }}
