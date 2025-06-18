@@ -49,6 +49,8 @@ const HomeCareer = () => {
   const external_url = data?.sections[3]?.button?.isExternal;
   const image = data?.sections[3]?.image?.url;
 
+  console.log('career img', image);
+
   return (
     <section className="w-wrapper mx-auto my-6 md:my-12">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-0">

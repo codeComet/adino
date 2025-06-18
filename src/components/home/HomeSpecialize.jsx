@@ -65,7 +65,8 @@ const HomeSpecialize = () => {
     <section
       className="w-wrapper mx-auto text-white rounded-3xl p-4 sm:p-6 md:py-[90px] md:px-[80px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
       style={{
-        backgroundImage: 'url("https://supportive-creativity-cd56af8fec.media.strapiapp.com/1094_C460_0_C6_B_43_EF_AE_11_AE_7_B19912112_6297106bbf.png")',
+        backgroundImage:
+          'url("https://supportive-creativity-cd56af8fec.media.strapiapp.com/1094_C460_0_C6_B_43_EF_AE_11_AE_7_B19912112_6297106bbf.png")',
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -101,6 +102,7 @@ const HomeSpecialize = () => {
                 hoveredIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             >
+              {console.log(item, item?.feature_image?.url)}
               <Image
                 src={item?.feature_image?.url}
                 alt={item.name}
