@@ -50,6 +50,8 @@ const HomeNews = () => {
     );
   }
 
+  console.log('news', data);
+
   return (
     <div className="w-wrapper mx-auto py-8 md:py-30 px-4 md:px-0">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-[37px] gap-6 md:gap-0">

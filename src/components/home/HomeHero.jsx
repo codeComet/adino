@@ -49,6 +49,8 @@ const HomeHero = () => {
   let heroBottomText = data?.sections[0]?.hero_bottom_text[0]?.children[0]?.text;
   let heroFeatures = data?.sections[0]?.hero_features;
 
+  console.log('hero', data);
+
   return (
     <div
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 bg relative"

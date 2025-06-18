@@ -56,6 +56,8 @@ const HomeSpecialize = () => {
     );
   }
 
+  console.log('specialize', data);
+
   let specializeHeading = data?.sections[2]?.specializeHeading;
   let specializeItems = data?.sections[2]?.specializeItems;
 
