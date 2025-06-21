@@ -1,11 +1,11 @@
 'use client';
 
-import {useState, useEffect} from "react";
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import qs from "qs";
 import HeroStatCard from "../ui/cards/HeroStatCard";
+import { useQuery } from '@tanstack/react-query';
 
 const query = qs.stringify(
   {
@@ -31,35 +31,24 @@ const getAboutData = async () => {
 };
 
 const HomeAbout = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { data: aboutData, isLoading } = useQuery({
+    queryKey: ['about'],
+    queryFn: getAboutData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getAboutData();
-        setData(result.data);
-      } catch (error) {
-        console.error("Error fetching hero data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Don't render content until data is loaded
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg relative">
         <p>Loading...</p>
       </div>
     );
   }
-  let aboutHeading = data?.sections[1]?.about_heading;
-  let aboutDesc = data?.sections[1]?.about_description[0]?.children[0]?.text;
-  let aboutCta = data?.sections[1]?.about_cta?.cta_btn_text;
-  let statCards = data?.sections[1]?.about_stat_cards;
+  let aboutHeading = aboutData?.data?.sections[1]?.about_heading;
+  let aboutDesc = aboutData?.data?.sections[1]?.about_description[0]?.children[0]?.text;
+  let aboutCta = aboutData?.data?.sections[1]?.about_cta?.cta_btn_text;
+  let statCards = aboutData?.data?.sections[1]?.about_stat_cards;
   
 
   return (

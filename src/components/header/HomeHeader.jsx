@@ -1,7 +1,3 @@
-
-"use client";
-
-import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
@@ -11,13 +7,13 @@ import ig from "../../../public/assets/img/ig.svg";
 import ln from "../../../public/assets/img/linkedin.svg";
 import Link from "next/link";
 
-const Header = () => {
+const HomeHeader = () => {
   return (
     <>
       <nav className="h-20 flex items-center absolute w-full z-50 px-6">
         <div className="h-full flex items-center justify-between w-full max-w-screen-xl mx-auto">
           <Link href="/">
-            <Logo />
+            <Logo type="home"/>
           </Link>
 
           {/* Desktop Menu */}
@@ -51,7 +47,7 @@ const Header = () => {
 
             {/* Mobile Menu */}
             <div className="md:hidden">
-              <NavigationSheet />
+              <NavigationSheet type="home"/>
             </div>
           </div>
         </div>
@@ -60,4 +56,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HomeHeader;

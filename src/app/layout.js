@@ -1,7 +1,8 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import Providers from "@/lib/providers";
+import HeaderWrapper from "@/components/header/HeaderWrapper";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -21,9 +22,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${lato.variable} antialiased`}
       >
-        <Header/>
-        {children}
-        <Footer/>
+        <Providers>
+          <HeaderWrapper />
+          {children}
+          <Footer/>
+        </Providers>
       </body>
     </html>
   );

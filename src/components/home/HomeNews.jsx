@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import qs from "qs";
 import BlogCard from "../ui/cards/BlogCard";
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useQuery } from '@tanstack/react-query';
 
 const query = qs.stringify(
   {
@@ -23,26 +23,14 @@ const getNewsData = async () => {
 };
 
 const HomeNews = () => {
-  const [data, setData] = useState(null);
+  const { data: newsData, isLoading } = useQuery({
+    queryKey: ['news'],
+    queryFn: getNewsData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+  });
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getNewsData();
-        setData(result.data);
-      } catch (error) {
-        console.error("Error fetching hero data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Don't render content until data is loaded
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg relative">
         <p>Loading...</p>
@@ -76,12 +64,12 @@ const HomeNews = () => {
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
-        {data?.map((item) => (
+        {newsData?.data?.map((item) => (
           <BlogCard
             key={item.id}
             title={item?.title}
             summary={item?.summary}
-            image={`${item?.banner_image?.url}`}
+            image={item?.banner_image?.url}
             category={item?.category}
             url={item?.slug}
           />

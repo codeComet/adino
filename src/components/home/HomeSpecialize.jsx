@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import qs from "qs";
+import { useQuery } from '@tanstack/react-query';
 
 const query = qs.stringify(
   {
@@ -25,25 +26,15 @@ const getSpecializeData = async () => {
 
 const HomeSpecialize = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getSpecializeData();
-        setData(result.data);
-      } catch (error) {
-        console.error("Error fetching specialize data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { data: specializeData, isLoading } = useQuery({
+    queryKey: ['specialize'],
+    queryFn: getSpecializeData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+  });
 
-  // Don't render content until data is loaded
-  if (loading) {
+  if (isLoading) {
     return (
       <section className="w-wrapper mx-auto bg-green-900 text-white rounded-3xl p-6 md:py-[90px] md:px-[80px] grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -56,8 +47,8 @@ const HomeSpecialize = () => {
     );
   }
 
-  let specializeHeading = data?.sections[2]?.specializeHeading;
-  let specializeItems = data?.sections[2]?.specializeItems;
+  let specializeHeading = specializeData?.data?.sections[2]?.specializeHeading;
+  let specializeItems = specializeData?.data?.sections[2]?.specializeItems;
 
 
   return (

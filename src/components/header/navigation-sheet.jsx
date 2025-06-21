@@ -8,11 +8,11 @@ import ln from "../../../public/assets/img/linkedin.svg";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; // make sure this package is installed
 
-export const NavigationSheet = () => {
+export const NavigationSheet = ({type="main"}) => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="w-6 h-6 text-white" />
+        <Menu className={`w-6 h-6 ${type === "main" ? "text-black" : "text-white"}`} />
       </SheetTrigger>
       <SheetContent side="right" className="w-3/4 sm:w-1/2 p-6">
         {/* Required for accessibility */}

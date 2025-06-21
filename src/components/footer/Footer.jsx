@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import qs from 'qs';
 import Image from "next/image";
+import { useQuery } from '@tanstack/react-query';
 
 const query = qs.stringify(
   {
@@ -30,25 +30,14 @@ const getFooterData = async () => {
 };
 
 export default function Footer() {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { data: footerData, isLoading } = useQuery({
+      queryKey: ['footer'],
+      queryFn: getFooterData,
+      staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+      cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+    });
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const result = await getFooterData();
-          setData(result.data);
-        } catch (error) {
-          console.error("Error fetching hero data:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchData();
-    }, []);
-
-    // Don't render content until data is loaded
-    if (loading) {
+    if (isLoading) {
       return (
         <div className="min-h-screen flex items-center justify-center px-6 bg relative">
           <p>Loading...</p>
@@ -56,15 +45,14 @@ export default function Footer() {
       );
     }
 
-    const {footer} = data;
+    const {footer} = footerData.data;
     const {social, social_links, explore_adino_text, explore_adino_pages, governance_text, governance_pages, more_info_pages, more_info_text, address_text, address_content } = footer
 
   return (
     <footer className="bg-green-800 text-white py-12 px-6 relative overflow-hidden">
       {/* Decorative background pattern */}
-      <div className="absolute right-0 top-0 w-64 h-full opacity-10">
-        <div className="absolute right-8 top-16 w-32 h-32 border-2 border-white/20 rotate-45"></div>
-        <div className="absolute right-16 top-32 w-24 h-24 border-2 border-white/20 rotate-45"></div>
+      <div className="absolute right-0 top-0 w-64 h-full flex items-center">
+        <Image src={`${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/Frame_1000003963_1_1629b39c3d.png`} width={200} height={100} alt="footer image" className="absolute right-0"/>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -82,7 +70,7 @@ export default function Footer() {
                   className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
                 >
                   <Image
-                    src={`${link.icon_image.url}`}
+                    src={link.icon_image.url}
                     width={40}
                     height={40}
                     alt="icons"

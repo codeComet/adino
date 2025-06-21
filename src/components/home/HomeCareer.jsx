@@ -1,8 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
+import { useQuery } from '@tanstack/react-query';
 
 const getCareerData = async () => {
   const res = await fetch(
@@ -13,25 +13,14 @@ const getCareerData = async () => {
 };
 
 const HomeCareer = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { data: careerData, isLoading } = useQuery({
+    queryKey: ['career'],
+    queryFn: getCareerData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getCareerData();
-        setData(result.data);
-      } catch (error) {
-        console.error("Error fetching hero data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Don't render content until data is loaded
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg relative">
         <p>Loading...</p>
@@ -39,13 +28,13 @@ const HomeCareer = () => {
     );
   }
 
-  const title = data?.sections[3]?.title;
-  const heading = data?.sections[3]?.heading;
-  const description = data?.sections[3]?.description;
-  const btn_text = data?.sections[3]?.button?.cta_btn_text;
-  const btn_url = data?.sections[3]?.button?.cta_btn_url;
-  const external_url = data?.sections[3]?.button?.isExternal;
-  const image = data?.sections[3]?.image?.url;
+  const title = careerData?.data?.sections[3]?.title;
+  const heading = careerData?.data?.sections[3]?.heading;
+  const description = careerData?.data?.sections[3]?.description;
+  const btn_text = careerData?.data?.sections[3]?.button?.cta_btn_text;
+  const btn_url = careerData?.data?.sections[3]?.button?.cta_btn_url;
+  const external_url = careerData?.data?.sections[3]?.button?.isExternal;
+  const image = careerData?.data?.sections[3]?.image?.url;
 
   return (
     <section className="w-wrapper mx-auto my-6 md:my-12">

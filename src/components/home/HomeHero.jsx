@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import DownArrow from "../../../public/assets/img/arrow-down.svg"
 import Image from "next/image";
 import React from "react";
+import { useQuery } from '@tanstack/react-query';
 
 // get data from strapi
 const getHeroData = async () => {
@@ -16,26 +16,14 @@ const getHeroData = async () => {
 };
 
 const HomeHero = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { data: heroData, isLoading } = useQuery({
+    queryKey: ['hero'],
+    queryFn: getHeroData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getHeroData();
-        setData(result.data);
-      } catch (error) {
-        console.error("Error fetching hero data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-  console.log('data', data)
-
-  // Don't render content until data is loaded
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg relative">
         <p>Loading...</p>
@@ -43,11 +31,11 @@ const HomeHero = () => {
     );
   }
 
-  let heroHeading = data?.sections[0]?.heading_text;
-  let heroBg = data?.sections[0]?.hero_bg?.url;
-  let heroCta = data?.sections[0]?.hero_cta?.cta_btn_text;
-  let heroBottomText = data?.sections[0]?.hero_bottom_text[0]?.children[0]?.text;
-  let heroFeatures = data?.sections[0]?.hero_features;
+  let heroHeading = heroData?.data?.sections[0]?.heading_text;
+  let heroBg = heroData?.data?.sections[0]?.hero_bg?.url;
+  let heroCta = heroData?.data?.sections[0]?.hero_cta?.cta_btn_text;
+  let heroBottomText = heroData?.data?.sections[0]?.hero_bottom_text[0]?.children[0]?.text;
+  let heroFeatures = heroData?.data?.sections[0]?.hero_features;
 
   return (
     <div
