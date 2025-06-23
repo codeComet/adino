@@ -11,7 +11,7 @@ const CareerJobs = (data) => {
         );
       }
 
-      const { title, description } = careerJobsData?.data?.career[3] || {};
+      const { title, description } = careerJobsData?.data?.career?.[3] || {};
   return (
     <div className="w-wrapper mx-auto ">
       <div className="flex flex-col items-start justify-start gap-6">

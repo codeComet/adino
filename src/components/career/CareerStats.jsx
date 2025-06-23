@@ -10,7 +10,7 @@ const CareerStats = (data) => {
     );
   }
 
-  const { stats } = careerStatsData?.data?.career[1] || {};
+  const { stats } = careerStatsData?.data?.career?.[1] || {};
 
   return (
     <div className="w-full py-10 md:py-20 bg-[#F4F4F5]">

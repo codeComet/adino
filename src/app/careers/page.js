@@ -60,7 +60,7 @@ const Career = () => {
     const { data: careerData, isLoading } = useQuery({
       queryKey: ["career"],
       queryFn: getCareerData,
-      staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+      staleTime: 60 * 60 * 1000, // Data stays fresh for 5 minutes
       cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
     });
   
