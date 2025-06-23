@@ -9,7 +9,7 @@ import Image from "next/image";
 import BulletList from "./BulletList";
 import Newsletter from "@/components/generic/Newsletter";
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const [slug, setSlug] = useState(null);
 
   useEffect(() => {
@@ -207,4 +207,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
