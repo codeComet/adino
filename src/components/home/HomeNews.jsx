@@ -23,17 +23,25 @@ const getNewsData = async () => {
 };
 
 const HomeNews = () => {
-  const { data: newsData, isLoading } = useQuery({
-    queryKey: ['news'],
+  const { data: newsData, isLoading, isError } = useQuery({
+    queryKey: ["news"],
     queryFn: getNewsData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
+    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
   });
 
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg relative">
         <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Something went wrong. Please try again later.</p>
       </div>
     );
   }

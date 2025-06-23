@@ -27,11 +27,11 @@ const getSpecializeData = async () => {
 const HomeSpecialize = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   
-  const { data: specializeData, isLoading } = useQuery({
-    queryKey: ['specialize'],
+  const { data: specializeData, isLoading, isError } = useQuery({
+    queryKey: ["specialize"],
     queryFn: getSpecializeData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
+    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
   });
 
   if (isLoading) {
@@ -47,8 +47,16 @@ const HomeSpecialize = () => {
     );
   }
 
-  let specializeHeading = specializeData?.data?.sections[2]?.specializeHeading;
-  let specializeItems = specializeData?.data?.sections[2]?.specializeItems;
+  if (isError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Something went wrong. Please try again later.</p>
+      </div>
+    );
+  }
+
+  let specializeHeading = specializeData?.data?.sections[2]?.specializeHeading ?? 'Specialize';
+  let specializeItems = specializeData?.data?.sections[2]?.specializeItems ?? [];
 
 
   return (

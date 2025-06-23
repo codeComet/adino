@@ -14,7 +14,7 @@ const CareerHero = (data) => {
     );
   }
 
-  const {cta, description, heading, title, hero_img} = careerHeroData?.data?.career[0] || {};
+  const {cta, description, heading, title, hero_img} = careerHeroData?.data?.career?.[0] || {};
 
   return (
     <div className="w-wrapper mx-auto py-[120px] flex gap-10 md:gap-[115px] flex-wrap">

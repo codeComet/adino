@@ -31,11 +31,11 @@ const getAboutData = async () => {
 };
 
 const HomeAbout = () => {
-  const { data: aboutData, isLoading } = useQuery({
+  const { data: aboutData, isLoading, isError } = useQuery({
     queryKey: ['about'],
     queryFn: getAboutData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
+    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
   });
 
   if (isLoading) {
@@ -45,10 +45,20 @@ const HomeAbout = () => {
       </div>
     );
   }
-  let aboutHeading = aboutData?.data?.sections[1]?.about_heading;
-  let aboutDesc = aboutData?.data?.sections[1]?.about_description[0]?.children[0]?.text;
-  let aboutCta = aboutData?.data?.sections[1]?.about_cta?.cta_btn_text;
-  let statCards = aboutData?.data?.sections[1]?.about_stat_cards;
+
+  if (isError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Something went wrong. Please try again later.</p>
+      </div>
+    );
+  }
+
+  // Safely access nested data with fallback values
+  const aboutHeading = aboutData?.data?.sections?.[1]?.about_heading ?? 'About Us';
+  const aboutDesc = aboutData?.data?.sections?.[1]?.about_description?.[0]?.children?.[0]?.text ?? 'Description coming soon';
+  const aboutCta = aboutData?.data?.sections?.[1]?.about_cta?.cta_btn_text ?? 'Learn More';
+  const statCards = aboutData?.data?.sections?.[1]?.about_stat_cards ?? [];
   
 
   return (

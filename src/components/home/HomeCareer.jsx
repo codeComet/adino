@@ -13,11 +13,11 @@ const getCareerData = async () => {
 };
 
 const HomeCareer = () => {
-  const { data: careerData, isLoading } = useQuery({
-    queryKey: ['career'],
+  const { data: careerData, isLoading, isError } = useQuery({
+    queryKey: ["career"],
     queryFn: getCareerData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
+    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
   });
 
   if (isLoading) {
@@ -28,13 +28,22 @@ const HomeCareer = () => {
     );
   }
 
-  const title = careerData?.data?.sections[3]?.title;
-  const heading = careerData?.data?.sections[3]?.heading;
-  const description = careerData?.data?.sections[3]?.description;
-  const btn_text = careerData?.data?.sections[3]?.button?.cta_btn_text;
-  const btn_url = careerData?.data?.sections[3]?.button?.cta_btn_url;
-  const external_url = careerData?.data?.sections[3]?.button?.isExternal;
-  const image = careerData?.data?.sections[3]?.image?.url;
+  if (isError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Something went wrong. Please try again later.</p>
+      </div>
+    );
+  }
+
+  const title = careerData?.data?.sections?.[3]?.title ?? 'Career';
+  const heading = careerData?.data?.sections?.[3]?.heading ?? 'Join Us';
+  const description = careerData?.data?.sections?.[3]?.description ?? 'Description coming soon';
+  const btn_text = careerData?.data?.sections?.[3]?.button?.cta_btn_text ?? 'Apply Now';
+  const btn_url = careerData?.data?.sections?.[3]?.button?.cta_btn_url ?? '#';
+  const external_url = careerData?.data?.sections?.[3]?.button?.isExternal ?? false;
+  const image =
+    careerData?.data?.sections?.[3]?.image?.url ?? "https://placehold.co/800x400";
 
   return (
     <section className="w-wrapper mx-auto my-6 md:my-12">
