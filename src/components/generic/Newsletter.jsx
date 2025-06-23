@@ -29,8 +29,6 @@ const Newsletter = () => {
       );
     }
 
-    console.log(newsletterData)
-
     const {heading, description} = newsletterData?.data;
   return (
     <section className="bg-gray-100 py-16 px-4 sm:py-20 lg:py-24">

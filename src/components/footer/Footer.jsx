@@ -52,7 +52,13 @@ export default function Footer() {
     <footer className="bg-green-800 text-white py-12 px-6 relative overflow-hidden">
       {/* Decorative background pattern */}
       <div className="absolute right-0 top-0 w-64 h-full flex items-center">
-        <Image src={`${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/Frame_1000003963_1_1629b39c3d.png`} width={200} height={100} alt="footer image" className="absolute right-0"/>
+        <Image
+          src={`https://supportive-creativity-cd56af8fec.media.strapiapp.com/Frame_1000003963_1_1629b39c3d.png`}
+          width={200}
+          height={100}
+          alt="footer image"
+          className="absolute right-0"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">

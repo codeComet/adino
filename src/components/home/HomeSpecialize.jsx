@@ -56,7 +56,7 @@ const HomeSpecialize = () => {
       className="w-wrapper mx-auto text-white rounded-3xl p-4 sm:p-6 md:py-[90px] md:px-[80px] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
       style={{
         backgroundImage:
-          'url("https://supportive-creativity-cd56af8fec.media.strapiapp.com/1094_C460_0_C6_B_43_EF_AE_11_AE_7_B19912112_b1b41f4ce2.png")',
+          'url("https://supportive-creativity-cd56af8fec.media.strapiapp.com/1094_C460_0_C6_B_43_EF_AE_11_AE_7_B19912112_b1b41f4ce2.png ")',
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
