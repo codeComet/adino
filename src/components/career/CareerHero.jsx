@@ -33,7 +33,7 @@ const CareerHero = (data) => {
             size="lg"
             className="rounded-full bg-primary text-[16px] md:text-[18px] backdrop-blur-[70px] py-3 md:py-[15px] px-4 md:pl-6 md:pr-2.5 font-lato font-medium text-white cursor-pointer"
           >
-            {cta.cta_btn_text}{" "}
+            {cta?.cta_btn_text}{" "}
             <span className="ml-2">
               <Image src={RightArrow} alt="down arrow" width={24} height={24} />
             </span>
