@@ -164,3 +164,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+
+/* Custom css */
+
+.insight-posts-container .read-more-btn {
+  display: none;
+}

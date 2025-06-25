@@ -72,7 +72,7 @@ const HomeNews = () => {
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
-        {newsData?.data?.map((item) => (
+        {newsData?.data?.slice(0, 4).map((item) => (
           <BlogCard
             key={item.id}
             title={item?.title}

@@ -22,7 +22,7 @@ const BlogCard = ({ title, summary, image, category, url }) => {
           {summary}
         </p>
       </div>
-      <div className="mt-3 sm:mt-4 w-fit">
+      <div className="mt-3 sm:mt-4 w-fit read-more-btn">
         <a
           href={`/blog/${url}`}
           target="_blank"
