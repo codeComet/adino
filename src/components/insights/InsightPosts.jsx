@@ -197,7 +197,7 @@ const InsightPosts = () => {
               summary={post?.summary}
               image={
                 post?.banner_image?.url
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${post.banner_image.url}`
+                  ? `${post.banner_image.url}`
                   : null
               }
               category={post?.category}

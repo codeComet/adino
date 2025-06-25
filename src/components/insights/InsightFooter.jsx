@@ -49,14 +49,14 @@ const InsightFooter = () => {
       </div>
     );
   }
-  console.log(insightFooterData);
+
 
   const { footer_text, footer_bg, cta } = insightFooterData?.data;
   return (
     <div
       className="w-wrapper mx-auto flex flex-col justify-center items-center gap-9 py-30 mt-10 mb-30 rounded-[30px]"
         style={{
-          backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}${footer_bg?.url})`,
+          backgroundImage: `url(${footer_bg?.url})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
