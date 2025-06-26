@@ -8,7 +8,7 @@ import sub1 from "../../../public/assets/img/sub-1.svg";
 import sub2 from "../../../public/assets/img/sub-2.svg";
 import sub3 from "../../../public/assets/img/sub-3.svg";
 import sub4 from "../../../public/assets/img/sub-4.svg";
-import rightArrow from "../../../public/assets/img/rightArrow.svg";
+import rightArrow from "../../../public/assets/img/rightarrow.svg";
 
 export const NavMenu = ({
   className = "",
