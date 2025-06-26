@@ -39,6 +39,8 @@ const HomeHero = () => {
     );
   }
 
+  console.log(heroData)
+
   let heroHeading = heroData?.data?.sections[0]?.heading_text ?? 'Adino';
   let heroBg =
     heroData?.data?.sections[0]?.hero_bg?.url ?? "https://placehold.co/1920x1080";
@@ -47,28 +49,52 @@ const HomeHero = () => {
   let heroFeatures = heroData?.data?.sections[0]?.hero_features ?? [];
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 bg relative"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 bg relative">
+      {heroBg.endsWith(".mp4") ||
+      heroBg.endsWith(".webm") ||
+      heroBg.endsWith(".mov") ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source 
+            src={heroBg} 
+            type={`video/${heroBg.split(".").pop()}`}
+          />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      )}
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      <div className="text-center max-w-2xl relative z-10">
-        <h1 className="font-sequel-normal mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl md:leading-[1.2] text-white font-medium">
+      <div className="text-center max-w-4xl relative z-10">
+        <h1 className="font-sequel-normal mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[74px] lg:leading-[80px] md:leading-[1.2] text-white font-medium">
           {heroHeading}
         </h1>
         <div className="mt-8 sm:mt-12 flex items-center justify-center gap-4">
-          <Button
-            className="rounded-full h-[40px] sm:h-[50px] bg-[#FFFFFF1A] text-[16px] sm:text-[18px] backdrop-blur-[70px] py-[12px] sm:py-[15px] px-4 sm:pl-6 sm:pr-2.5 font-lato font-medium text-white cursor-pointer"
-          >
-            {heroCta} <span className="ml-2">
-              <Image src={DownArrow} alt="down arrow" width={24} height={24} className="sm:w-[30px] sm:h-[30px]" />
+          <Button className="rounded-full h-[40px] sm:h-[50px] bg-[#FFFFFF1A] text-[16px] sm:text-[18px] backdrop-blur-[70px] py-[12px] sm:py-[15px] px-4 sm:pl-6 sm:pr-2.5 font-lato font-medium text-white cursor-pointer">
+            {heroCta}{" "}
+            <span className="ml-2">
+              <Image
+                src={DownArrow}
+                alt="down arrow"
+                width={24}
+                height={24}
+                className="sm:w-[30px] sm:h-[30px]"
+              />
             </span>
           </Button>
         </div>
@@ -76,7 +102,9 @@ const HomeHero = () => {
 
       <div className="flex flex-col sm:flex-row justify-between gap-6 sm:gap-10 container mx-auto absolute bottom-8 sm:bottom-20 left-0 right-0 px-4 sm:px-0">
         <div className="w-full sm:flex-1/3">
-          <p className="text-white text-[16px] sm:text-[20px] font-lato leading-[26px] sm:leading-[33px] text-center sm:text-left">{heroBottomText}</p>
+          <p className="text-white text-[16px] sm:text-[20px] font-lato leading-[26px] sm:leading-[33px] text-center sm:text-left">
+            {heroBottomText}
+          </p>
         </div>
         <div className="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-10 w-full sm:flex-2/3 justify-center items-end sm:justify-end">
           {heroFeatures?.map((feature, index) => (

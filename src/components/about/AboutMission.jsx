@@ -61,7 +61,7 @@ const AboutMission = () => {
               {item.description}
             </p>
           </div>
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-3/6">
             <Image
               src={item?.image?.url}
               width={600}

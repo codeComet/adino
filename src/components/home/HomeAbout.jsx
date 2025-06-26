@@ -76,7 +76,7 @@ const HomeAbout = () => {
         <div className="mt-8 md:mt-12 flex items-center justify-center gap-4">
           <Button
             size="lg"
-            className="rounded-full bg-primary text-[16px] md:text-[18px] backdrop-blur-[70px] py-3 md:py-[15px] px-4 md:pl-6 md:pr-2.5 font-lato font-medium text-white cursor-pointer"
+            className="rounded-full bg-primary text-base leading-7 backdrop-blur-[70px] py-3 md:py-[22px] px-4 md:px-[17px] font-lato font-medium text-white cursor-pointer"
           >
             {aboutCta}{" "}
             <span className="ml-2">
@@ -86,7 +86,7 @@ const HomeAbout = () => {
         </div>
 
         {/* Cards */}
-        <div className="flex gap-3 flex-wrap w-full justify-center mt-16 md:mt-28">
+        <div className="flex flex-col md:flex-row gap-3 flex-wrap w-full justify-center mt-16 md:mt-28">
           {statCards.map((card, index) => (
             <HeroStatCard
               key={index}

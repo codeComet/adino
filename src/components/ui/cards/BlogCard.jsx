@@ -8,7 +8,8 @@ const BlogCard = ({ title, summary, image, category, url }) => {
         <img
           src={image}
           alt={title}
-          className="w-full h-full rounded-[10px] object-cover"
+          //  on hover the image should shrink 
+          className="w-full h-full rounded-[10px] object-cover transition duration-300 hover:scale-90"
         />
         <div className="absolute top-0 left-0 bg-black/50 w-full h-full rounded-[10px] flex items-end justify-start">
           <p className="text-white text-center px-2 py-1 rounded-full bg-[#4F4F4F] ml-3 mb-3 text-[10px] sm:text-[11px] uppercase font-lato font-medium flex items-center">
@@ -27,10 +28,16 @@ const BlogCard = ({ title, summary, image, category, url }) => {
           href={`/blog/${url}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 sm:gap-2 text-[#166636] font-lato font-medium py-3 sm:py-4 px-4 sm:px-5 text-sm sm:text-base rounded-full border border-[#166636] hover:bg-[#166636] hover:text-white transition-colors"
+          className="flex items-center gap-1 sm:gap-2 text-[#166636] font-lato font-medium py-2 px-5 text-sm rounded-full border border-[#166636] hover:bg-[#166636] hover:text-white transition-colors"
         >
           Read More
-          <Image src={arrowRight} width={30} height={80} className="w-[25px] sm:w-[35px]" alt="arrow-right" />
+          <Image
+            src={arrowRight}
+            width={30}
+            height={80}
+            className="w-[25px] sm:w-[35px]"
+            alt="arrow-right"
+          />
         </a>
       </div>
     </div>
