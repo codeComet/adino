@@ -18,7 +18,7 @@ const CareerJobs = (data) => {
         <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
           {title}
         </h5>
-        <h2 className="font-sequel-normal text-3xl text-[#181818] md:text-[40px] leading-[1.2] md:leading-[48px]">
+        <h2 className="font-sequel-normal text-3xl text-[#181818] md:text-[40px] leading-[1.2] md:leading-[48px] tracking-tighter">
           {description}
         </h2>
       </div>

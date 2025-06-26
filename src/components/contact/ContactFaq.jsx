@@ -13,7 +13,7 @@ const ContactFaq = ({faqTitle, faqHeading, faqItem}) => {
         <h4 className="text-xs sm:text-sm text-center font-lato font-medium uppercase text-[#181818]">
           {faqTitle}
         </h4>
-        <h2 className="w-full text-center text-3xl sm:text-4xl md:text-5xl md:leading-[57px] font-normal font-sequel-normal text-[#08090A] mt-2 sm:mt-3 leading-tight tracking-[-.96px]">
+        <h2 className="w-full text-center text-3xl sm:text-4xl md:text-5xl md:leading-[57px] font-normal font-sequel-normal text-[#08090A] mt-2 sm:mt-3 leading-tight tracking-tighter">
           {faqHeading}
         </h2>
       </div>

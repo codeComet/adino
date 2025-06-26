@@ -67,7 +67,7 @@ const HomeAbout = () => {
         <h4 className="text-base md:text-lg font-semibold text-center uppercase mb-0 font-lato">
           About Us
         </h4>
-        <h2 className="text-[32px] md:text-[64px] leading-[1.2] md:leading-[51px] text-center my-4 md:my-6 font-sequel-normal tracking-tight">
+        <h2 className="text-[32px] md:text-[64px] leading-[1.2] md:leading-[51px] text-center my-4 md:my-6 font-sequel-normal tracking-tighter">
           {aboutHeading}
         </h2>
         <p className="text-center text-[#666666] text-base md:text-lg leading-[26px] md:leading-[30px] max-w-[100%] md:max-w-[778px] font-lato px-4 md:px-0">

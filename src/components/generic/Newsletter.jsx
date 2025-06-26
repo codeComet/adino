@@ -33,7 +33,7 @@ const Newsletter = () => {
   return (
     <section className="bg-gray-100 py-16 px-4 sm:py-20 lg:py-24">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="font-sequel-normal text-3xl sm:text-4xl lg:text-5xl font-normal text-[#17171A] mb-6">
+        <h2 className="font-sequel-normal text-3xl sm:text-4xl lg:text-5xl font-normal text-[#17171A] mb-6 tracking-tighter">
           {heading}
         </h2>
 

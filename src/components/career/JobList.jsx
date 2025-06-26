@@ -45,7 +45,7 @@ const JobList = () => {
     <section className="w-wrapper py-10 md:py-25">
       {Object.entries(groupedJobs).map(([category, jobs]) => (
         <div key={category} className="mb-8 md:mb-16">
-          <h2 className="text-2xl mb-4 font-sequel-normal md:mb-12 md:text-4xl md:leading-[47px] text-[#666666]">
+          <h2 className="text-2xl mb-4 font-sequel-normal md:mb-12 md:text-4xl md:leading-[47px] text-[#666666] tracking-tighter">
             {category}
           </h2>
           <ul className="space-y-4">

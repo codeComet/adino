@@ -21,7 +21,7 @@ const CareerBenefits = (data) => {
           <h5 className="font-lato text-sm uppercase text-[#181818] font-medium">
             {title}
           </h5>
-          <h2 className="font-sequel-normal text-[#08090A] text-4xl leading-10 md:text-5xl md:leading-[60px]">
+          <h2 className="font-sequel-normal text-[#08090A] text-4xl leading-10 md:text-5xl md:leading-[60px] tracking-tighter">
             {heading}
           </h2>
         </div>

@@ -57,7 +57,7 @@ const InsightHero = () => {
         <h4 className="text-xs md:text-sm text-center font-lato font-medium uppercase text-[#181818]">
           {title}
         </h4>
-        <h1 className="w-full md:w-[1100px] text-center font-sequel-normal font-normal text-3xl md:text-[64px] leading-tight md:leading-[76px] text-black">
+        <h1 className="w-full md:w-[1100px] text-center font-sequel-normal font-normal text-3xl md:text-[64px] leading-tight md:leading-[76px] text-black tracking-tighter">
           {heading}
         </h1>
         <div className="mt-4 md:mt-6 w-full md:w-auto">

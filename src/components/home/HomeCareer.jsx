@@ -53,7 +53,7 @@ const HomeCareer = () => {
           <span className="text-gray-600 text-sm font-medium uppercase">
             {title}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mt-2 md:mt-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal font-sequel-normal text-gray-900 mt-2 md:mt-4 leading-tight tracking-tighter">
             {heading}
           </h2>
           <p className="text-gray-600 text-base max-w-md mt-4 md:mt-6 mb-6">

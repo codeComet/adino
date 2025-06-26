@@ -12,7 +12,7 @@ export default function ContactHeader({title, heading, mapHeading}) {
           <h4 className="text-sm text-center font-lato font-medium uppercase text-[#181818]">
             {title}
           </h4>
-          <h1 className="w-full md:max-w-[750px] mx-auto text-center text-4xl md:text-5xl lg:text-[64px] lg:leading-[76px] font-normal font-sequel-normal text-[#181818] mt-[23px] leading-tight tracking-[-.48px]">
+          <h1 className="w-full md:max-w-[750px] mx-auto text-center text-4xl md:text-5xl lg:text-[64px] lg:leading-[76px] font-normal font-sequel-normal text-[#181818] mt-[23px] leading-tight tracking-tighter">
             {heading}
           </h1>
         </div>

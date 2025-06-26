@@ -22,7 +22,7 @@ const CareerHero = (data) => {
         <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
           {title}
         </h5>
-        <h1 className="font-sequel-normal text-[32px] text-[#181818] md:text-[64px] leading-[1.2] md:leading-[76px]">
+        <h1 className="font-sequel-normal text-[32px] text-[#181818] md:text-[64px] leading-[1.2] md:leading-[76px] tracking-tighter">
           {heading}
         </h1>
         <p className="text-[#666666] text-base md:text-[20px] leading-[26px] md:leading-[30px] max-w-[100%] md:max-w-[778px] font-lato font-medium px-0 my-5 md:mt-6 md:mb-10">

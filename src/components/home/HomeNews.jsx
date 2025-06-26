@@ -53,7 +53,7 @@ const HomeNews = () => {
           <h4 className="text-base md:text-lg text-left font-lato font-medium uppercase text-[#181818]">
             News & Updates
           </h4>
-          <h2 className="text-3xl md:text-[64px] font-normal text-left font-sequel-normal leading-tight md:leading-[72px] text-[#181818]">
+          <h2 className="text-3xl md:text-[64px] font-normal text-left font-sequel-normal leading-tight md:leading-[72px] text-[#181818] tracking-tighter" >
             Discover Our <br className="hidden md:block" /> Latest Insights
           </h2>
         </div>
