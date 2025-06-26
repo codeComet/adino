@@ -81,7 +81,7 @@ const HomeHero = () => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="text-center max-w-4xl relative z-10">
-        <h1 className="font-sequel-normal mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[74px] lg:leading-[80px] md:leading-[1.2] text-white font-medium">
+        <h1 className="font-sequel-normal mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[74px] lg:leading-[80px] md:leading-[1.2] text-white font-medium tracking-tighter">
           {heroHeading}
         </h1>
         <div className="mt-8 sm:mt-12 flex items-center justify-center gap-4">
