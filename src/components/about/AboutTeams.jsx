@@ -54,7 +54,6 @@ const AboutTeams = () => {
 
 
   const {title, heading, team} = aboutTeamsData?.data?.aboutSections[0]
-  console.log(aboutTeamsData)
 
   return (
     <div className="w-full bg-[#1F2020] pt-[50px] md:pt-[100px] pb-[125px] md:pb-[250px]">
