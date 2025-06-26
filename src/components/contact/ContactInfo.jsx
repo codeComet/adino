@@ -9,7 +9,7 @@ const ContactInfo = ({ contactInfo }) => {
           <Link key={item.id} href={item?.url}>
             <div className="flex flex-col gap-4.5 items-center justify-center">
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${item?.image?.url}`}
+                src={`${item?.image?.url}`}
                 alt={item?.title}
                 width={50}
                 height={50}
