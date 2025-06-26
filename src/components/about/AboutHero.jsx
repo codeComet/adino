@@ -53,7 +53,7 @@ const AboutHero = () => {
     <div className="py-30 md:py-40 w-wrapper mx-auto">
       <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-0 px-4 md:px-0">
         <div className="flex flex-col flex-1/2">
-          <h1 className="font-sequel-normal text-3xl md:text-5xl leading-[45px] md:leading-[60px] text-[#181818] max-w-full md:max-w-[90%]">
+          <h1 className="font-sequel-normal text-3xl md:text-5xl leading-[45px] md:leading-[60px] text-[#181818] max-w-full md:max-w-[90%] tracking-tighter">
             {heading}
           </h1>
         </div>

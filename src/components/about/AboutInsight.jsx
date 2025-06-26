@@ -56,7 +56,7 @@ const AboutInsight = () => {
           <h4 className="text-[14px] md:text-lg text-left font-lato font-medium uppercase text-[#F0FDF4]">
             {title}
           </h4>
-          <h2 className="text-2xl md:text-5xl font-normal text-left font-sequel-normal leading-tight md:leading-[60px] text-white md:max-w-[45%]">
+          <h2 className="text-2xl md:text-5xl font-normal text-left font-sequel-normal leading-tight md:leading-[60px] text-white md:max-w-[45%] tracking-tighter">
             {heading}
           </h2>
         </div>

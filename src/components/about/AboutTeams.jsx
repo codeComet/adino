@@ -62,7 +62,7 @@ const AboutTeams = () => {
           <h4 className="text-white font-lato font-medium text-xs md:text-sm leading-[100%] uppercase">
             {title}
           </h4>
-          <h2 className="text-white font-sequel-normal text-[32px] md:text-[48px] leading-[40px] md:leading-[60px]">
+          <h2 className="text-white font-sequel-normal text-[32px] md:text-[48px] leading-[40px] md:leading-[60px] tracking-tighter">
             {heading}
           </h2>
         </div>

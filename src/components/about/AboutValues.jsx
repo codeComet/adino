@@ -80,7 +80,7 @@ const AboutValues = () => {
           <p className="font-lato text-sm font-medium text-gray-600 uppercase tracking-wider">
             {title}
           </p>
-          <h2 className="font-sequel-normal text-4xl lg:text-5xl text-[#17171A] leading-tight max-w-xl">
+          <h2 className="font-sequel-normal text-4xl lg:text-5xl text-[#17171A] leading-tight max-w-xl tracking-tighter">
             {heading}
           </h2>
         </div>
