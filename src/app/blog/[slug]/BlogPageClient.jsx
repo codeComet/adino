@@ -127,7 +127,7 @@ export default function BlogPageClient({ slugValue }) {
             {relatedPosts.map((post) => {
               const img = post?.banner_image?.url;
               const imageUrl = img
-                ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img}`
+                ? `${img}`
                 : "https://placehold.co/300x200";
 
               return (
@@ -138,7 +138,7 @@ export default function BlogPageClient({ slugValue }) {
                     summary={post?.summary}
                     image={
                       post?.banner_image?.url
-                        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${post.banner_image.url}`
+                        ? `${post.banner_image.url}`
                         : null
                     }
                     category={post?.category}
