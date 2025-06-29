@@ -151,10 +151,6 @@ const InsightPosts = () => {
     );
   }
 
-  console.log("InsightPosts Data:", insightPosts);
-  console.log("Filtered Posts:", filteredPosts);
-  console.log("Displayed Posts:", displayedPosts);
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
       {/* Category Tabs */}
@@ -201,7 +197,7 @@ const InsightPosts = () => {
                   : null
               }
               category={post?.category}
-              url={post?.slug ? `/blog/${post.slug}` : ""}
+              url={post?.slug ? `${post.slug}` : ""}
             />
           </div>
         ))}

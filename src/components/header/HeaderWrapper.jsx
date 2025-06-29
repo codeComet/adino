@@ -6,6 +6,11 @@ import CommonHeader from "@/components/header/CommonHeader";
 
 export default function HeaderWrapper() {
   const pathname = usePathname();
-
-  return pathname === "/" ? <HomeHeader /> : <CommonHeader />;
+  return pathname === "/" ||
+    pathname === "/subsidiaries/adino-partners" ||
+    pathname === "/subsidiaries/asset-management" ? (
+    <HomeHeader />
+  ) : (
+    <CommonHeader />
+  );
 }

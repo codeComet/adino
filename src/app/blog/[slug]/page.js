@@ -1,9 +1,11 @@
-import React from 'react'
+import BlogPageClient from "./BlogPageClient";
+import Newsletter from "@/components/generic/Newsletter";
 
-const page = ({params}) => {
+export default function Page({ params }) {
   return (
-    <div>{params.slug}</div>
-  )
+    <>
+      <BlogPageClient slugValue={params.slug} />
+      <Newsletter />
+    </>
+  );
 }
-
-export default page

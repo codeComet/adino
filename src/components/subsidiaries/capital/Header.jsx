@@ -6,8 +6,8 @@ const Header = ({ data }) => {
   const { title, heading, description, hero_bg, cta, stats } = data;
 
   return (
-    <div className="w-wrapper mx-auto min-h-screen py-25 flex flex-col md:flex-row gap-3 md:gap-20 justify-between px-4 md:px-6">
-      <div className="flex flex-col justify-center gap-4 md:gap-6 w-full md:w-1/2">
+    <div className="w-wrapper mx-auto min-h-screen pt-25 flex flex-col md:flex-row gap-3 md:gap-20 justify-between px-4 md:px-6">
+      <div className="flex flex-col justify-center gap-4 md:gap-6 w-full md:w-1/2 bg-[#F0FDF4] rounded-4xl py-5 md:py-10 px-6 h-full">
         <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
           {title}
         </h5>
@@ -18,23 +18,6 @@ const Header = ({ data }) => {
         <p className="text-[#666666] text-sm sm:text-base md:text-[20px] leading-[24px] sm:leading-[26px] md:leading-[30px] max-w-[100%] md:max-w-[778px] font-lato font-medium">
           {description?.[0]?.children?.[0]?.text}
         </p>
-        <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
-          <Button
-            size="lg"
-            className="rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer"
-          >
-            {cta?.cta_btn_text}{" "}
-            <span className="ml-2">
-              <Image
-                src={RightArrow}
-                alt="down arrow"
-                width={20}
-                height={20}
-                className="md:w-6 md:h-6"
-              />
-            </span>
-          </Button>
-        </div>
         <div className="flex gap-4 md:gap-[93px] flex-wrap">
           {stats.length !== 0
             ? stats.map((item, index) => (
@@ -49,9 +32,18 @@ const Header = ({ data }) => {
               ))
             : null}
         </div>
+
+        <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
+          <Button
+            size="lg"
+            className="w-full rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer"
+          >
+            {cta?.cta_btn_text}{" "}
+          </Button>
+        </div>
       </div>
 
-      <div className="flex items-center justify-center w-full md:w-1/2 mt-8 md:mt-0">
+      <div className="flex items-center justify-center w-full md:w-1/2 mt-8 md:mt-0 h-full">
         <>
           {hero_bg?.url.endsWith(".mp4") ||
           hero_bg?.url.endsWith(".webm") ||
@@ -61,7 +53,7 @@ const Header = ({ data }) => {
               loop
               muted
               playsInline
-              className="w-full h-[300px] md:h-full object-cover rounded-lg md:rounded-none"
+              className="w-full h-full object-cover md:rounded-none rounded-4xl"
             >
               <source
                 src={`${hero_bg?.url}`}
@@ -75,7 +67,7 @@ const Header = ({ data }) => {
               alt="Hero Image"
               width={650}
               height={650}
-              className="w-full h-[300px] md:h-auto object-cover rounded-lg md:rounded-none"
+              className="w-full h-full object-cover rounded-4xl"
             />
           )}
         </>

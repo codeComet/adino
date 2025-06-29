@@ -20,7 +20,7 @@ const ContactFaq = ({faqTitle, faqHeading, faqItem}) => {
 
       {/* Accordion item */}
       {faqItem?.map((item, index) => (
-        <Accordion key={item?.id} type="single" collapsible defaultValue={item?.id}>
+        <Accordion key={item?.id} type="single" collapsible>
           <AccordionItem value={item?.id}>
             <AccordionTrigger className="w-full text-left text-[#181818] font-sequel-normal text-lg sm:text-xl md:text-[24px] leading-[1.2] sm:leading-[30px] flex justify-start">
               <span className="text-[#08090A] font-sequel-light text-lg sm:text-xl md:text-[24px] leading-[1.2] sm:leading-[29px] mr-3 sm:mr-5">

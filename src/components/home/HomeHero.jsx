@@ -39,8 +39,6 @@ const HomeHero = () => {
     );
   }
 
-  console.log(heroData)
-
   let heroHeading = heroData?.data?.sections[0]?.heading_text ?? 'Adino';
   let heroBg =
     heroData?.data?.sections[0]?.hero_bg?.url ?? "https://placehold.co/1920x1080";

@@ -19,6 +19,11 @@ export const NavMenu = ({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const removeBg =
+    pathname === "/subsidiaries/adino-partners" ||
+    pathname === "/subsidiaries/asset-management";
+
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -43,7 +48,7 @@ export const NavMenu = ({
       className={`flex font-lato ${
         variant === "mobile"
           ? mobileStyles
-          : "bg-primary rounded-full px-10 py-2 text-white text-base space-x-9"
+          : `${removeBg ? "" : "bg-primary"} rounded-full px-10 py-2 text-white text-base space-x-9`
       } ${className}`}
     >
       <Link
@@ -63,160 +68,162 @@ export const NavMenu = ({
           Subsidiaries <span>{isOpen ? "-" : "+"}</span>
         </button>
         {(variant === "mobile" && isOpen) || variant !== "mobile" ? (
-  <ul
-    className={`bg-white text-black rounded-[40px] shadow-lg z-10 py-[27px] md:px-[15px]
-      ${variant === "mobile"
-        ? "mt-2 shadow-none w-full grid grid-cols-1"
-        : "absolute top-[40px] left-[145px] -translate-x-1/2 mt-2 w-[650px] grid grid-cols-2"
+          <ul
+            className={`bg-white text-black rounded-[40px] shadow-lg z-10 py-[27px] md:px-[15px]
+      ${
+        variant === "mobile"
+          ? "mt-2 shadow-none w-full grid grid-cols-1"
+          : "absolute top-[40px] left-[145px] -translate-x-1/2 mt-2 w-[650px] grid grid-cols-2"
       }
       gap-2 sm:gap-4
       transition-all duration-300 ease-in-out transform
-      ${isOpen
-        ? "opacity-100 translate-y-0 visible"
-        : "opacity-0 -translate-y-4 invisible"
+      ${
+        isOpen
+          ? "opacity-100 translate-y-0 visible"
+          : "opacity-0 -translate-y-4 invisible"
       }`}
-  >
-          <li className="md:py-[15px] md:px-[20px]">
-            <Link
-              href="/subsidiary/1"
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="flex-shrink-0">
-                {/* Replace with your SVG */}
-                <Image
-                  src={sub1}
-                  width={30}
-                  height={30}
-                  alt="menu"
-                  className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
-                />
-              </span>
-              <span className="flex flex-col flex-grow gap-1 sm:gap-2">
-                <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
-                  Adino <br /> Capital
+          >
+            <li className="md:py-[15px] md:px-[20px]">
+              <Link
+                href="/subsidiaries/adino-capital"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="flex-shrink-0">
+                  {/* Replace with your SVG */}
+                  <Image
+                    src={sub1}
+                    width={30}
+                    height={30}
+                    alt="menu"
+                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                  />
                 </span>
-                <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
-                  Grow with Adino Capital.
+                <span className="flex flex-col flex-grow gap-1 sm:gap-2">
+                  <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
+                    Adino <br /> Capital
+                  </span>
+                  <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
+                    Grow with Adino Capital.
+                  </span>
                 </span>
-              </span>
-              <span className="ml-auto">
-                <Image
-                  src={rightArrow}
-                  width={15}
-                  height={15}
-                  alt="arrow"
-                  className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
-                />
-              </span>
-            </Link>
-          </li>
-          <li className="md:py-[15px] md:px-[20px]">
-            <Link
-              href="/subsidiary/2"
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="flex-shrink-0">
-                {/* Replace with your SVG */}
-                <Image
-                  src={sub2}
-                  width={30}
-                  height={30}
-                  alt="menu"
-                  className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
-                />
-              </span>
-              <span className="flex flex-col flex-grow gap-1 sm:gap-2">
-                <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
-                  Adino <br /> Partners
+                <span className="ml-auto">
+                  <Image
+                    src={rightArrow}
+                    width={15}
+                    height={15}
+                    alt="arrow"
+                    className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
+                  />
                 </span>
-                <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
-                  Building Success Together.
+              </Link>
+            </li>
+            <li className="md:py-[15px] md:px-[20px]">
+              <Link
+                href="/subsidiaries/adino-partners"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="flex-shrink-0">
+                  {/* Replace with your SVG */}
+                  <Image
+                    src={sub2}
+                    width={30}
+                    height={30}
+                    alt="menu"
+                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                  />
                 </span>
-              </span>
-              <span className="ml-auto">
-                <Image
-                  src={rightArrow}
-                  width={15}
-                  height={15}
-                  alt="arrow"
-                  className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
-                />
-              </span>
-            </Link>
-          </li>
-          <li className="md:py-[15px] md:px-[20px]">
-            <Link
-              href="/subsidiary/3"
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="flex-shrink-0">
-                {/* Replace with your SVG */}
-                <Image
-                  src={sub3}
-                  width={30}
-                  height={30}
-                  alt="menu"
-                  className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
-                />
-              </span>
-              <span className="flex flex-col flex-grow gap-1 sm:gap-2">
-                <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
-                  Adino <br /> Global Markets
+                <span className="flex flex-col flex-grow gap-1 sm:gap-2">
+                  <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
+                    Adino <br /> Partners
+                  </span>
+                  <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
+                    Building Success Together.
+                  </span>
                 </span>
-                <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
-                  Your Market Edge.
+                <span className="ml-auto">
+                  <Image
+                    src={rightArrow}
+                    width={15}
+                    height={15}
+                    alt="arrow"
+                    className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
+                  />
                 </span>
-              </span>
-              <span className="ml-auto">
-                <Image
-                  src={rightArrow}
-                  width={15}
-                  height={15}
-                  alt="arrow"
-                  className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
-                />
-              </span>
-            </Link>
-          </li>
-          <li className="md:py-[15px] md:px-[20px]">
-            <Link
-              href="/subsidiary/4"
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="flex-shrink-0">
-                {/* Replace with your SVG */}
-                <Image
-                  src={sub4}
-                  width={30}
-                  height={30}
-                  alt="menu"
-                  className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
-                />
-              </span>
-              <span className="flex flex-col flex-grow gap-1 sm:gap-2">
-                <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
-                  Adino Asset <br /> Management
+              </Link>
+            </li>
+            <li className="md:py-[15px] md:px-[20px]">
+              <Link
+                href="/subsidiaries/adino-global-market"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="flex-shrink-0">
+                  {/* Replace with your SVG */}
+                  <Image
+                    src={sub3}
+                    width={30}
+                    height={30}
+                    alt="menu"
+                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                  />
                 </span>
-                <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
-                  Smart Asset Solutions.
+                <span className="flex flex-col flex-grow gap-1 sm:gap-2">
+                  <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
+                    Adino <br /> Global Markets
+                  </span>
+                  <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
+                    Your Market Edge.
+                  </span>
                 </span>
-              </span>
-              <span className="ml-auto">
-                <Image
-                  src={rightArrow}
-                  width={15}
-                  height={15}
-                  alt="arrow"
-                  className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
-                />
-              </span>
-            </Link>
-          </li>
-        </ul>
+                <span className="ml-auto">
+                  <Image
+                    src={rightArrow}
+                    width={15}
+                    height={15}
+                    alt="arrow"
+                    className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
+                  />
+                </span>
+              </Link>
+            </li>
+            <li className="md:py-[15px] md:px-[20px]">
+              <Link
+                href="/subsidiaries/asset-management"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="flex-shrink-0">
+                  {/* Replace with your SVG */}
+                  <Image
+                    src={sub4}
+                    width={30}
+                    height={30}
+                    alt="menu"
+                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                  />
+                </span>
+                <span className="flex flex-col flex-grow gap-1 sm:gap-2">
+                  <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
+                    Adino Asset <br /> Management
+                  </span>
+                  <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
+                    Smart Asset Solutions.
+                  </span>
+                </span>
+                <span className="ml-auto">
+                  <Image
+                    src={rightArrow}
+                    width={15}
+                    height={15}
+                    alt="arrow"
+                    className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
+                  />
+                </span>
+              </Link>
+            </li>
+          </ul>
         ) : null}
       </div>
 
@@ -244,7 +251,7 @@ export const NavMenu = ({
       className={`flex font-lato ${
         variant === "mobile"
           ? mobileStyles
-          : "bg-white w-full px-10 py-2 text-black text-base space-x-9 justify-center"
+          : "bg-none w-full px-10 py-2 text-black text-base space-x-9 justify-center"
       } ${className}`}
     >
       <Link
@@ -282,7 +289,7 @@ export const NavMenu = ({
         >
           <li className="md:py-[15px] md:px-[20px]">
             <Link
-              href="/subsidiary/1"
+              href="/subsidiaries/adino-capital"
               className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
               onClick={() => setIsOpen(false)}
             >
@@ -317,7 +324,7 @@ export const NavMenu = ({
           </li>
           <li className="md:py-[15px] md:px-[20px]">
             <Link
-              href="/subsidiary/2"
+              href="/subsidiaries/adino-partners"
               className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
               onClick={() => setIsOpen(false)}
             >
@@ -352,7 +359,7 @@ export const NavMenu = ({
           </li>
           <li className="md:py-[15px] md:px-[20px]">
             <Link
-              href="/subsidiary/3"
+              href="/subsidiaries/adino-global-market"
               className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
               onClick={() => setIsOpen(false)}
             >
@@ -387,7 +394,7 @@ export const NavMenu = ({
           </li>
           <li className="md:py-[15px] md:px-[20px]">
             <Link
-              href="/subsidiary/4"
+              href="/subsidiaries/asset-management"
               className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
               onClick={() => setIsOpen(false)}
             >

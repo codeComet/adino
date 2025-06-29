@@ -11,7 +11,6 @@ const CareerBenefits = (data) => {
     );
   }
 
-  console.log(CareerBenefitsData);
   const { title, heading, description, benefits } =
     CareerBenefitsData?.data?.career?.[2] || {};
   return (

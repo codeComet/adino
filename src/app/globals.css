@@ -169,6 +169,6 @@
 
 /* Custom css */
 
-.insight-posts-container .read-more-btn {
+.insight-posts-container .read-more-btn, .related-post-section .read-more-btn {
   display: none;
 }
