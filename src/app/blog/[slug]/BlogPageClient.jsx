@@ -54,7 +54,7 @@ export default function BlogPageClient({ slugValue }) {
   const { title, slug, banner_image, content, createdAt, read_time } = blog;
 
   const image = banner_image?.url
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${banner_image.url}`
+    ? `${banner_image.url}`
     : "https://placehold.co/100x100";
 
   // Filter out current post and limit to 3
