@@ -61,7 +61,7 @@ const Header = ({ data }) => {
               loop
               muted
               playsInline
-              className="w-full h-[300px] md:h-full object-cover rounded-lg md:rounded-none"
+              className="w-full h-[300px] md:h-[666px] object-cover rounded-xl md:rounded-none"
             >
               <source
                 src={`${hero_bg?.url}`}

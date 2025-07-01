@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import RightArrow from "../../../../public/assets/img/arrow-right.svg";
 
 const Header = ({ data }) => {
   const { title, heading, description, hero_bg, cta, stats } = data;
 
   return (
-    <div className="w-wrapper mx-auto min-h-screen pt-25 flex flex-col md:flex-row gap-3 md:gap-20 justify-between px-4 md:px-6">
+    <div className="w-wrapper mx-auto pt-30 flex flex-col md:flex-row gap-3 md:gap-20 justify-between px-4 md:px-6 items-center">
       <div className="flex flex-col justify-center gap-4 md:gap-6 w-full md:w-1/2 bg-[#F0FDF4] rounded-4xl py-5 md:py-10 px-6 h-full">
         <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
           {title}
@@ -53,7 +52,7 @@ const Header = ({ data }) => {
               loop
               muted
               playsInline
-              className="w-full h-full object-cover md:rounded-none rounded-4xl"
+              className="w-full h-full md:h-[666px] object-cover md:rounded-4xl rounded-4xl"
             >
               <source
                 src={`${hero_bg?.url}`}
