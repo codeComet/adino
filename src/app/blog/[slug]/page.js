@@ -1,10 +1,11 @@
 import BlogPageClient from "./BlogPageClient";
 import Newsletter from "@/components/generic/Newsletter";
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
+  const { slug } = await params;
   return (
     <>
-      <BlogPageClient slugValue={params.slug} />
+      <BlogPageClient slugValue={slug} />
       <Newsletter />
     </>
   );
