@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getStrapiMedia } from "@/lib/utils";
 
 const ContactInfo = ({ contactInfo }) => {
   return (
@@ -9,7 +10,7 @@ const ContactInfo = ({ contactInfo }) => {
           <Link key={item.id} href={item?.url}>
             <div className="flex flex-col gap-4.5 items-center justify-center">
               <Image
-                src={`${item?.image?.url}`}
+                src={getStrapiMedia(item?.image?.url)}
                 alt={item?.title}
                 width={50}
                 height={50}

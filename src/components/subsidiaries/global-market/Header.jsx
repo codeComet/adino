@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import RightArrow from "../../../../public/assets/img/arrow-right.svg";
+import { getStrapiMedia } from "@/lib/utils";
 
 const Header = ({ data }) => {
   const { title, heading, description, hero_bg, cta, stats } = data;
@@ -64,14 +65,14 @@ const Header = ({ data }) => {
               className="w-full h-[300px] md:h-[666px] object-cover rounded-xl md:rounded-none"
             >
               <source
-                src={`${hero_bg?.url}`}
-                type={`video/${hero_bg?.url.split(".").pop()}`}
+                src={getStrapiMedia(hero_bg?.url)}
+                type={`video/${getStrapiMedia(hero_bg?.url).split(".").pop()}`}
               />
               Your browser does not support the video tag.
             </video>
           ) : (
             <Image
-              src={`${hero_bg?.url}`}
+              src={getStrapiMedia(hero_bg?.url)}
               alt="Hero Image"
               width={650}
               height={650}

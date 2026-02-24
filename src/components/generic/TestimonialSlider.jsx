@@ -11,6 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { getStrapiMedia } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -111,7 +112,7 @@ const TestimonialSlider = ({ showHeading = true }) => {
                     <div className="flex items-center gap-3 mt-auto">
                       <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
                         <Image
-                          src={`${testimonial?.image?.url}`}
+                          src={getStrapiMedia(testimonial?.image?.url)}
                           alt={testimonial?.name}
                           fill
                           className="object-cover"

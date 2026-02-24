@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getStrapiMedia } from "@/lib/utils";
 
 const Services = ({ data }) => {
   const { title, heading, services, image } = data;
@@ -43,7 +44,7 @@ const Services = ({ data }) => {
       <div className="w-full md:w-1/2 h-full flex justify-center md:justify-end relative">
         <div className="relative w-full max-w-[700px]">
           <Image
-            src={`${image?.url}`}
+            src={getStrapiMedia(image?.url)}
             alt="image"
             width={700}
             height={600}

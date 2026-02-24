@@ -1,48 +1,12 @@
 "use client";
 
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import qs from "qs";
-
-const query = qs.stringify(
-  {
-    populate: {
-      aboutSections: {
-        on: {
-          "about.about-team": {
-            populate: [
-              "team",
-              "team.image",
-              "team.social_links",
-              "team.social_links.icon_image",
-            ],
-          },
-        },
-      },
-    },
-  },
-  {
-    encodeValuesOnly: true,
-  }
-);
-
-// get data from strapi
-const getAboutTeamsData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about-page?${query}`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getStrapiMedia } from "@/lib/utils";
+import { useAboutPageData } from "@/lib/aboutPage";
 
 const AboutTeams = () => {
-  const { data: aboutTeamsData, isLoading } = useQuery({
-    queryKey: ["aboutTeams"],
-    queryFn: getAboutTeamsData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
-  });
+  const { data: aboutTeamsData, isLoading } = useAboutPageData();
 
   if (isLoading) {
     return (
@@ -52,29 +16,52 @@ const AboutTeams = () => {
     );
   }
 
+  const aboutSections =
+    aboutTeamsData?.data?.aboutSections ||
+    aboutTeamsData?.data?.attributes?.aboutSections;
+  const teamSection = aboutSections?.find(
+    (section) => section.__component === "about.about-team",
+  );
 
-  const {title, heading, team} = aboutTeamsData?.data?.aboutSections[0]
+  if (!teamSection) return null;
+
+  const {
+    teamTitle,
+    teamDescription,
+    directorTitle,
+    directorDescription,
+    teamMember,
+  } = teamSection;
 
   return (
     <div className="w-full bg-[#1F2020] pt-[50px] md:pt-[100px] pb-[125px] md:pb-[250px]">
       <div className="w-full px-4 md:px-6 lg:w-wrapper mx-auto">
-        <div className="flex flex-col gap-[15px] md:gap-[21px] mb-10 md:mb-20">
-          <h4 className="text-white font-lato font-medium text-xs md:text-sm leading-[100%] uppercase">
-            {title}
+        <div className="flex flex-col gap-[33px] md:gap-[21px] mb-10 md:mb-20">
+          <h4 className="text-[#AD9056] font-lato font-medium text-xs md:text-sm leading-[100%] uppercase">
+            {teamTitle}
           </h4>
-          <h2 className="text-white font-sequel-normal text-[32px] md:text-[48px] leading-[40px] md:leading-[60px] tracking-tighter">
-            {heading}
+          <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%]">
+            {teamDescription}
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center md:justify-between gap-6">
-          {team?.map((member) => (
+
+        <div className="flex flex-col gap-[33px] md:gap-[21px] mb-10 md:mb-20">
+          <h4 className="text-[#AD9056] font-lato font-medium text-xs md:text-sm leading-[100%] uppercase">
+            {directorTitle}
+          </h4>
+          <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%]">
+            {directorDescription}
+          </h2>
+        </div>
+        <div className="flex flex-wrap justify-center md:justify-start gap-6">
+          {teamMember?.map((member) => (
             <div
               key={member.id}
               className="flex flex-col items-center md:items-start mb-10"
             >
               <div className="relative w-full h-auto sm:w-[265px] sm:h-[295px]">
                 <Image
-                  src={member?.image?.url}
+                  src={getStrapiMedia(member?.image?.url)}
                   alt={member?.name}
                   width={200}
                   height={200}
@@ -97,7 +84,7 @@ const AboutTeams = () => {
                     className="cursor-pointer"
                   >
                     <Image
-                      src={link?.icon_image?.url}
+                      src={getStrapiMedia(link?.icon_image?.url)}
                       alt={link?.icon_image?.url}
                       width={24}
                       height={24}
@@ -112,6 +99,6 @@ const AboutTeams = () => {
       </div>
     </div>
   );
-}
+};
 
 export default AboutTeams;

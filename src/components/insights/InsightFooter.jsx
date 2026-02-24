@@ -6,17 +6,18 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import Ln from "../../../public/assets/img/ln.svg";
 import Link from "next/link";
+import { getStrapiMedia } from "@/lib/utils";
 
 const query = qs.stringify(
   {
     populate: "*",
   },
-  { encodeValuesOnly: true }
+  { encodeValuesOnly: true },
 );
 
 const getInsightFooterData = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/insight?${query}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/insight?${query}`,
   );
   const data = await res.json();
   return data;
@@ -50,17 +51,16 @@ const InsightFooter = () => {
     );
   }
 
-
   const { footer_text, footer_bg, cta } = insightFooterData?.data;
   return (
     <div
       className="w-wrapper mx-auto flex flex-col justify-center items-center gap-9 py-30 mt-10 mb-30 rounded-[30px]"
-        style={{
-          backgroundImage: `url(${footer_bg?.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
+      style={{
+        backgroundImage: `url(${getStrapiMedia(footer_bg?.url)})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <h2 className="w-full md:max-w-[45%] mx-auto text-xl font-medium text-center leading-8 font-lato text-white uppercase">
         {footer_text}

@@ -1,27 +1,13 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
-import DownArrow from "../../../public/assets/img/arrow-down.svg"
-import Image from "next/image";
+import { ArrowDown } from "lucide-react";
 import React from "react";
-import { useQuery } from '@tanstack/react-query';
-
-// get data from strapi
-const getHeroData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?populate[sections][populate]=*`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getStrapiMedia } from "@/lib/utils";
+import { useHomePageData } from "@/lib/homePage";
 
 const HomeHero = () => {
-  const { data: heroData, isLoading, isError } = useQuery({
-    queryKey: ['hero'],
-    queryFn: getHeroData,
-    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
-    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
-  });
+  const { data: heroData, isLoading, isError } = useHomePageData();
 
   if (isLoading) {
     return (
@@ -39,15 +25,25 @@ const HomeHero = () => {
     );
   }
 
-  let heroHeading = heroData?.data?.sections[0]?.heading_text ?? 'Adino';
-  let heroBg =
-    heroData?.data?.sections[0]?.hero_bg?.url ?? "https://placehold.co/1920x1080";
-  let heroCta = heroData?.data?.sections[0]?.hero_cta?.cta_btn_text ?? 'Contact Us';
-  let heroBottomText = heroData?.data?.sections[0]?.hero_bottom_text[0]?.children[0]?.text ?? 'Description coming soon';
-  let heroFeatures = heroData?.data?.sections[0]?.hero_features ?? [];
+  const sections = heroData?.data?.sections ?? [];
+  const heroSection =
+    sections.find(
+      (section) => section.__component === "home-page.home-hero-section",
+    ) ?? {};
+
+  let heroHeading =
+    heroSection?.heading_text ??
+    "Create Assets, Optimize Liabilities, Maximize Wealth.";
+  let heroBg = heroSection?.hero_bg?.url
+    ? getStrapiMedia(heroSection?.hero_bg?.url)
+    : "https://placehold.co/1920x1080";
+  let heroCta = heroSection?.hero_cta?.cta_btn_text ?? "Discover Adino";
+  let heroBottomText =
+    heroSection?.hero_bottom_text?.[0]?.children?.[0]?.text ??
+    "Empowering Growth, Enhancing Value in Emerging Markets";
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 bg relative">
+    <div className="min-h-screen flex items-end justify-start px-4 sm:px-10 pb-10 bg relative">
       {heroBg.endsWith(".mp4") ||
       heroBg.endsWith(".webm") ||
       heroBg.endsWith(".mov") ? (
@@ -58,10 +54,7 @@ const HomeHero = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source 
-            src={heroBg} 
-            type={`video/${heroBg.split(".").pop()}`}
-          />
+          <source src={heroBg} type={`video/${heroBg.split(".").pop()}`} />
           Your browser does not support the video tag.
         </video>
       ) : (
@@ -76,43 +69,22 @@ const HomeHero = () => {
         />
       )}
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
-      <div className="text-center max-w-4xl relative z-10">
-        <h1 className="font-sequel-normal mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[74px] lg:leading-[80px] md:leading-[1.2] text-white font-medium tracking-tighter">
+      <div className="text-left max-w-5xl relative z-10 mb-10 sm:mb-20 ml-0 sm:ml-10">
+        <h1 className="font-sequel-normal mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[64px] lg:leading-[1.1] text-white font-medium tracking-tighter mb-6">
           {heroHeading}
         </h1>
-        <div className="mt-8 sm:mt-12 flex items-center justify-center gap-4">
-          <Button className="rounded-full h-[40px] sm:h-[50px] bg-[#FFFFFF1A] text-[16px] sm:text-[18px] backdrop-blur-[70px] py-[12px] sm:py-[15px] px-4 sm:pl-6 sm:pr-2.5 font-lato font-medium text-white cursor-pointer">
-            {heroCta}{" "}
-            <span className="ml-2">
-              <Image
-                src={DownArrow}
-                alt="down arrow"
-                width={24}
-                height={24}
-                className="sm:w-[30px] sm:h-[30px]"
-              />
+        <p className="text-white text-[18px] sm:text-[22px] font-lato leading-tight mb-8 max-w-2xl">
+          {heroBottomText}
+        </p>
+        <div className="flex items-center justify-start gap-4">
+          <Button className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-[16px] px-8 font-lato font-medium text-white cursor-pointer transition-colors flex items-center gap-3">
+            {heroCta}
+            <span className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
+              <ArrowDown size={14} className="text-[#1B5E39]" />
             </span>
           </Button>
-        </div>
-      </div>
-
-      <div className="flex flex-col sm:flex-row justify-between gap-6 sm:gap-10 container mx-auto absolute bottom-8 sm:bottom-20 left-0 right-0 px-4 sm:px-0">
-        <div className="w-full sm:flex-1/3">
-          <p className="text-white text-[16px] sm:text-[20px] font-lato leading-[26px] sm:leading-[33px] text-center sm:text-left">
-            {heroBottomText}
-          </p>
-        </div>
-        <div className="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-10 w-full sm:flex-2/3 justify-center items-end sm:justify-end">
-          {heroFeatures?.map((feature, index) => (
-            <span
-              key={index}
-              className="text-white w-full sm:w-1/3 text-center sm:text-left pt-2.5 border border-x-0 border-b-0 border-t-white text-base sm:text-lg font-lato font-medium"
-            >
-              {feature?.name}
-            </span>
-          ))}
         </div>
       </div>
     </div>

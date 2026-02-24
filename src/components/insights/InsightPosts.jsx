@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import qs from "qs";
 import { useQuery } from "@tanstack/react-query";
 import BlogCard from "../ui/cards/BlogCard";
+import { getStrapiMedia } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -193,7 +194,7 @@ const InsightPosts = () => {
               summary={post?.summary}
               image={
                 post?.banner_image?.url
-                  ? `${post.banner_image.url}`
+                  ? getStrapiMedia(post.banner_image.url)
                   : null
               }
               category={post?.category}

@@ -3,6 +3,7 @@
 import qs from "qs";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
+import { getStrapiMedia } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -120,7 +121,7 @@ const SubsidiaryNewsletter = () => {
                 className="flex items-center gap-4"
               >
                 <Image
-                  src={`${item?.icon_image?.url}`}
+                  src={getStrapiMedia(item?.icon_image?.url)}
                   alt="icons"
                   width={35}
                   height={35}

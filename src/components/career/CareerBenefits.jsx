@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { getStrapiMedia } from "@/lib/utils";
 
 const CareerBenefits = (data) => {
   let CareerBenefitsData = data?.data;
@@ -55,7 +56,7 @@ const CareerBenefits = (data) => {
                 </div>
                 <div className="w-full md:w-2/3 flex justify-center md:justify-end">
                   <Image
-                    src={`${benefit.image.url}`}
+                    src={getStrapiMedia(benefit.image.url)}
                     alt={benefit.title}
                     width={700}
                     height={200}

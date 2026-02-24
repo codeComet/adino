@@ -1,9 +1,10 @@
 'use client';
-
+ 
 import Link from "next/link";
 import qs from 'qs';
 import Image from "next/image";
 import { useQuery } from '@tanstack/react-query';
+import { getStrapiMedia } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -76,7 +77,7 @@ export default function Footer() {
                   className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
                 >
                   <Image
-                    src={link.icon_image.url}
+                    src={getStrapiMedia(link.icon_image.url)}
                     width={40}
                     height={40}
                     alt="icons"

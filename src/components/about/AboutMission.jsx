@@ -1,39 +1,12 @@
 "use client";
 
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import qs from "qs";
 import Image from "next/image";
-
-const query = qs.stringify(
-  {
-    populate: {
-      mission: {
-        populate: ["image"],
-      },
-    },
-  },
-  {
-    encodeValuesOnly: true,
-  }
-);
-
-// get data from strapi
-const getAboutMissionData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about-page?${query}`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getStrapiMedia } from "@/lib/utils";
+import { useAboutPageData } from "@/lib/aboutPage";
 
 const AboutMission = () => {
-  const { data: aboutMission, isLoading } = useQuery({
-    queryKey: ["aboutMission"],
-    queryFn: getAboutMissionData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
-  });
+  const { data: aboutMission, isLoading } = useAboutPageData();
 
   if (isLoading) {
     return (
@@ -43,13 +16,16 @@ const AboutMission = () => {
     );
   }
 
-  const { mission } = aboutMission.data;
+  const missionData =
+    aboutMission?.data?.mission || aboutMission?.data?.attributes?.mission;
+  if (!missionData) return null;
+
   return (
     <div className="w-wrapper mx-auto flex flex-col gap-[60px] md:gap-[120px] pb-[60px] md:pb-[120px] px-4 md:px-0">
-      {mission.map((item, index) => (
-        <div 
+      {missionData.map((item, index) => (
+        <div
           className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-[80px] 
-            ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`} 
+            ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
           key={index}
         >
           <div className="flex flex-col gap-6 w-full md:w-2/5">
@@ -63,7 +39,7 @@ const AboutMission = () => {
           </div>
           <div className="w-full md:w-3/6">
             <Image
-              src={item?.image?.url}
+              src={getStrapiMedia(item?.image?.url)}
               width={600}
               height={300}
               alt={item.title}

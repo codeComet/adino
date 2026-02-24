@@ -2,6 +2,7 @@
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { getStrapiMedia } from "@/lib/utils";
 
 const CareerHero = (data) => {
 //load data from props
@@ -42,7 +43,7 @@ const CareerHero = (data) => {
       </div>
       <div className="flex justify-center">
         <Image
-          src={`${hero_img?.url}`}
+          src={getStrapiMedia(hero_img?.url)}
           alt="Career Hero Image"
           width={600}
           height={400}

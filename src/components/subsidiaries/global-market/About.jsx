@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getStrapiMedia } from "@/lib/utils";
 
 const About = ({data}) => {
 
@@ -16,7 +17,7 @@ const About = ({data}) => {
           {description_1?.[0]?.children?.[0]?.text}
         </p>
         <Image
-          src={`${image_1?.url}`}
+          src={getStrapiMedia(image_1?.url)}
           alt="Hero Image"
           width={200}
           height={200}
@@ -25,7 +26,7 @@ const About = ({data}) => {
       </div>
       <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
         <Image
-          src={`${image_2?.url}`}
+          src={getStrapiMedia(image_2?.url)}
           alt="Hero Image"
           width={200}
           height={200}

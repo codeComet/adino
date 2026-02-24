@@ -1,42 +1,14 @@
-'use client';
+"use client";
 
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import qs from "qs";
 import HeroStatCard from "../ui/cards/HeroStatCard";
-import { useQuery } from '@tanstack/react-query';
-
-const query = qs.stringify(
-  {
-    populate: [
-      "sections",
-      "sections.about_stat_cards",
-      "sections.about_stat_cards.stat_bg_img",
-      "sections.hero_bg",
-      "sections.hero_cta",
-      "sections.hero_features",
-      "sections.about_cta",
-    ],
-  },
-  { encodeValuesOnly: true }
-);
-
-const getAboutData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${query}`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getStrapiMedia } from "@/lib/utils";
+import { useHomePageData } from "@/lib/homePage";
 
 const HomeAbout = () => {
-  const { data: aboutData, isLoading, isError } = useQuery({
-    queryKey: ['about'],
-    queryFn: getAboutData,
-    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
-    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
-  });
+  const { data: aboutData, isLoading, isError } = useHomePageData();
 
   if (isLoading) {
     return (
@@ -54,12 +26,18 @@ const HomeAbout = () => {
     );
   }
 
-  // Safely access nested data with fallback values
-  const aboutHeading = aboutData?.data?.sections?.[1]?.about_heading ?? 'About Us';
-  const aboutDesc = aboutData?.data?.sections?.[1]?.about_description?.[0]?.children?.[0]?.text ?? 'Description coming soon';
-  const aboutCta = aboutData?.data?.sections?.[1]?.about_cta?.cta_btn_text ?? 'Learn More';
-  const statCards = aboutData?.data?.sections?.[1]?.about_stat_cards ?? [];
-  
+  const sections = aboutData?.data?.sections ?? [];
+  const aboutSection =
+    sections.find(
+      (section) => section.__component === "home-page.home-about-section",
+    ) ?? {};
+
+  const aboutHeading = aboutSection?.about_heading ?? "About Us";
+  const aboutDesc =
+    aboutSection?.about_description?.[0]?.children?.[0]?.text ??
+    "Description coming soon";
+  const aboutCta = aboutSection?.about_cta?.cta_btn_text ?? "Learn More";
+  const statCards = aboutSection?.about_stat_cards ?? [];
 
   return (
     <div className="py-10 md:py-20">
@@ -92,7 +70,7 @@ const HomeAbout = () => {
               key={index}
               num={card?.stat_number}
               desc={card?.stat_desc}
-              img={card?.stat_bg_img?.url}
+              img={getStrapiMedia(card?.stat_bg_img?.url)}
             />
           ))}
         </div>

@@ -5,13 +5,14 @@ import Image from "next/image";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import BlogNewsletter from "@/components/generic/BlogNewsletter";
 import BlogCard from "@/components/ui/cards/BlogCard";
+import { getStrapiMedia } from "@/lib/utils";
 
 export default function BlogPageClient({ slugValue }) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["blog", slugValue],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[slug][$eq]=${slugValue}&populate=*`
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[slug][$eq]=${slugValue}&populate=*`,
       );
       if (!res.ok) throw new Error("Failed to fetch");
       return res.json();
@@ -31,7 +32,7 @@ export default function BlogPageClient({ slugValue }) {
     queryKey: ["related-posts", category],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[category][$eq]=${category}&pagination[limit]=4&populate=banner_image`
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[category][$eq]=${category}&pagination[limit]=4&populate=banner_image`,
       );
       if (!res.ok) throw new Error("Failed to fetch related posts");
       return res.json();
@@ -54,7 +55,7 @@ export default function BlogPageClient({ slugValue }) {
   const { title, slug, banner_image, content, createdAt, read_time } = blog;
 
   const image = banner_image?.url
-    ? `${banner_image.url}`
+    ? getStrapiMedia(banner_image.url)
     : "https://placehold.co/100x100";
 
   // Filter out current post and limit to 3
@@ -124,29 +125,22 @@ export default function BlogPageClient({ slugValue }) {
           <p>Error loading related posts: {relatedError.message}</p>
         ) : relatedPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 related-post-section">
-            {relatedPosts.map((post) => {
-              const img = post?.banner_image?.url;
-              const imageUrl = img
-                ? `${img}`
-                : "https://placehold.co/300x200";
-
-              return (
-                <div key={post.id}>
-                  <BlogCard
-                    key={`blog-card-${post.id}`}
-                    title={post?.title}
-                    summary={post?.summary}
-                    image={
-                      post?.banner_image?.url
-                        ? `${post.banner_image.url}`
-                        : null
-                    }
-                    category={post?.category}
-                    url={post?.slug ? `${post.slug}` : ""}
-                  />
-                </div>
-              );
-            })}
+            {relatedPosts.map((post) => (
+              <div key={post.id}>
+                <BlogCard
+                  key={`blog-card-${post.id}`}
+                  title={post?.title}
+                  summary={post?.summary}
+                  image={
+                    post?.banner_image?.url
+                      ? getStrapiMedia(post.banner_image.url)
+                      : null
+                  }
+                  category={post?.category}
+                  url={post?.slug ? `${post.slug}` : ""}
+                />
+              </div>
+            ))}
           </div>
         ) : (
           <p className="pt-8 text-gray-500">No related posts found.</p>

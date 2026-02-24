@@ -1,6 +1,7 @@
 import arrowRight from "../../../../public/assets/img/arrow-right.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { getStrapiMedia } from "@/lib/utils";
 
 const BlogCard = ({ title, summary, image, category, url }) => {
   return (
@@ -8,7 +9,7 @@ const BlogCard = ({ title, summary, image, category, url }) => {
       <div className="flex flex-col w-full">
         <div className="relative h-[200px] sm:h-[250px] md:h-[300px] w-full">
           <img
-            src={image}
+            src={image ? getStrapiMedia(image) : undefined}
             alt={title}
             //  on hover the image should shrink
             className="w-full h-full rounded-[10px] object-cover transition duration-300 hover:scale-90"

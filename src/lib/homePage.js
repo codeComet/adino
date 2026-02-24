@@ -1,0 +1,40 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import qs from "qs";
+
+const query = qs.stringify(
+  {
+    populate: [
+      "sections",
+      "sections.about_stat_cards",
+      "sections.about_stat_cards.stat_bg_img",
+      "sections.hero_bg",
+      "sections.hero_cta",
+      "sections.hero_features",
+      "sections.about_cta",
+      "sections.specializeItems.feature_image",
+      "sections.image",
+      "sections.iconBox",
+      "sections.iconBox.icon"
+    ],
+  },
+  { encodeValuesOnly: true },
+);
+
+const getHomePageData = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${query}`,
+  );
+  const data = await res.json();
+  return data;
+};
+
+export const useHomePageData = () => {
+  return useQuery({
+    queryKey: ["homePage"],
+    queryFn: getHomePageData,
+    staleTime: 60 * 60 * 1000,
+    cacheTime: 60 * 60 * 1000,
+  });
+};

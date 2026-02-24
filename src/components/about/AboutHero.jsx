@@ -1,42 +1,12 @@
 "use client";
 
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import qs from "qs";
 import Image from "next/image";
-
-const query = qs.stringify(
-  {
-    populate: {
-      aboutHero: {
-        populate: ["aboutHeroImg", "companyInfo"],
-      },
-      aboutCompany: {
-        populate: ["image"],
-      },
-    },
-  },
-  {
-    encodeValuesOnly: true,
-  }
-);
-
-// get data from strapi
-const getAboutHeroData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about-page?${query}`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getStrapiMedia } from "@/lib/utils";
+import { useAboutPageData } from "@/lib/aboutPage";
 
 const AboutHero = () => {
-  const { data: aboutHeroData, isLoading } = useQuery({
-    queryKey: ["aboutHero"],
-    queryFn: getAboutHeroData,
-    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-    cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
-  });
+  const { data: aboutHeroData, isLoading } = useAboutPageData();
 
   if (isLoading) {
     return (
@@ -46,9 +16,14 @@ const AboutHero = () => {
     );
   }
 
-  const { heading, aboutHeroImg, companyInfo } = aboutHeroData?.data?.aboutHero;
-  const { title, description } = aboutHeroData?.data?.aboutCompany;
-  
+  const heroData =
+    aboutHeroData?.data?.aboutHero ||
+    aboutHeroData?.data?.attributes?.aboutHero;
+  if (!heroData) return null;
+
+  const { heading, aboutHeroImg, companyInfo } = heroData;
+  const { title, description } = aboutHeroData?.data?.aboutCompany || {};
+
   return (
     <div className="py-30 md:py-40 w-wrapper mx-auto">
       <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-0 px-4 md:px-0">
@@ -73,7 +48,7 @@ const AboutHero = () => {
       {/* img */}
       <div className="flex justify-center mt-8 md:mt-10 flex-1 px-4 md:px-0">
         <Image
-          src={aboutHeroImg?.url}
+          src={getStrapiMedia(aboutHeroImg?.url)}
           alt="about hero image"
           width={1000}
           height={720}

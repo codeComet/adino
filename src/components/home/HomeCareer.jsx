@@ -1,24 +1,13 @@
-'use client';
-import Image from 'next/image'
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
-import { useQuery } from '@tanstack/react-query';
-
-const getCareerData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?populate[sections][populate]=*`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getStrapiMedia } from "@/lib/utils";
+import { useHomePageData } from "@/lib/homePage";
 
 const HomeCareer = () => {
-  const { data: careerData, isLoading, isError } = useQuery({
-    queryKey: ["career"],
-    queryFn: getCareerData,
-    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
-    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
-  });
+  const { data: careerData, isLoading, isError } = useHomePageData();
+  console.log(careerData);
 
   if (isLoading) {
     return (
@@ -36,14 +25,21 @@ const HomeCareer = () => {
     );
   }
 
-  const title = careerData?.data?.sections?.[3]?.title ?? 'Career';
-  const heading = careerData?.data?.sections?.[3]?.heading ?? 'Join Us';
-  const description = careerData?.data?.sections?.[3]?.description ?? 'Description coming soon';
-  const btn_text = careerData?.data?.sections?.[3]?.button?.cta_btn_text ?? 'Apply Now';
-  const btn_url = careerData?.data?.sections?.[3]?.button?.cta_btn_url ?? '#';
-  const external_url = careerData?.data?.sections?.[3]?.button?.isExternal ?? false;
-  const image =
-    careerData?.data?.sections?.[3]?.image?.url ?? "https://placehold.co/800x400";
+  const sections = careerData?.data?.sections ?? [];
+  const careerSection =
+    sections.find(
+      (section) => section.__component === "home-page.home-career-section",
+    ) ?? {};
+
+  const title = careerSection?.title ?? "Career";
+  const heading = careerSection?.heading ?? "Join Us";
+  const description = careerSection?.description ?? "Description coming soon";
+  const btn_text = careerSection?.button?.cta_btn_text ?? "Apply Now";
+  const btn_url = careerSection?.button?.cta_btn_url ?? "#";
+  const external_url = careerSection?.button?.isExternal ?? false;
+  const image = careerSection?.image?.url
+    ? getStrapiMedia(careerSection?.image?.url)
+    : "https://placehold.co/800x400";
 
   return (
     <section className="w-wrapper mx-auto my-6 md:my-12">
@@ -66,7 +62,13 @@ const HomeCareer = () => {
           >
             {btn_text}
             <span className="ml-2">
-              <Image src={RightArrow} alt="down arrow" width={20} height={20} className="md:w-6 md:h-6" />
+              <Image
+                src={RightArrow}
+                alt="down arrow"
+                width={20}
+                height={20}
+                className="md:w-6 md:h-6"
+              />
             </span>
           </Link>
         </div>
@@ -75,7 +77,7 @@ const HomeCareer = () => {
           <div className="relative rounded-[12px] w-full md:right-[80px]">
             {image && (
               <Image
-                src={image}
+                src={image || "https://placehold.co/800x400"}
                 alt={title || "Career image"}
                 width={800}
                 height={100}
@@ -88,6 +90,6 @@ const HomeCareer = () => {
       </div>
     </section>
   );
-}
+};
 
-export default HomeCareer
+export default HomeCareer;

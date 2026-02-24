@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { getStrapiMedia } from "@/lib/utils";
 
 const Header = ({data}) => {
     const {heading_text, hero_bg, hero_bottom_text, hero_cta} = data;
@@ -17,8 +18,8 @@ const Header = ({data}) => {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source
-            src={`${hero_bg?.url}`}
-            type={`video/${hero_bg?.url.split(".").pop()}`}
+            src={getStrapiMedia(hero_bg?.url)}
+            type={`video/${getStrapiMedia(hero_bg?.url).split(".").pop()}`}
           />
           Your browser does not support the video tag.
         </video>
@@ -26,7 +27,7 @@ const Header = ({data}) => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${hero_bg?.url})`,
+            backgroundImage: `url(${getStrapiMedia(hero_bg?.url)})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

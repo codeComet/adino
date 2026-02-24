@@ -2,38 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import qs from "qs";
-import { useQuery } from '@tanstack/react-query';
-import arrow from "../../../public/assets/img/arrow.svg"
-
-const query = qs.stringify(
-  {
-    populate: [
-      "sections",
-      "sections.specializeItems.feature_image",
-    ],
-  },
-  { encodeValuesOnly: true }
-);
-
-const getSpecializeData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${query}`
-  );
-  const data = await res.json();
-  return data;
-};
-
+import arrow from "../../../public/assets/img/arrow.svg";
+import { getStrapiMedia } from "@/lib/utils";
+import { useHomePageData } from "@/lib/homePage";
 
 const HomeSpecialize = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  
-  const { data: specializeData, isLoading, isError } = useQuery({
-    queryKey: ["specialize"],
-    queryFn: getSpecializeData,
-    staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
-    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
-  });
+
+  const { data: specializeData, isLoading, isError } = useHomePageData();
 
   if (isLoading) {
     return (
@@ -56,9 +32,14 @@ const HomeSpecialize = () => {
     );
   }
 
-  let specializeHeading = specializeData?.data?.sections[2]?.specializeHeading ?? 'Specialize';
-  let specializeItems = specializeData?.data?.sections[2]?.specializeItems ?? [];
+  const sections = specializeData?.data?.sections ?? [];
+  const specializeSection =
+    sections.find(
+      (section) => section.__component === "home-page.hero-specialize-section",
+    ) ?? {};
 
+  let specializeHeading = specializeSection?.specializeHeading ?? "Specialize";
+  let specializeItems = specializeSection?.specializeItems ?? [];
 
   return (
     <section
@@ -86,14 +67,14 @@ const HomeSpecialize = () => {
                 onBlur={() => setHoveredIndex(null)}
               >
                 {item.name}
-                <Image 
-                  src={arrow} 
-                  width={30} 
+                <Image
+                  src={arrow}
+                  width={30}
                   height={30}
                   className={`w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] md:w-[60px] md:h-[60px] transition-opacity duration-300 ${
-                    hoveredIndex === index ? 'opacity-100' : 'opacity-0'
+                    hoveredIndex === index ? "opacity-100" : "opacity-0"
                   }`}
-                  alt="arrow" 
+                  alt="arrow"
                 />
               </li>
             ))}
@@ -111,8 +92,11 @@ const HomeSpecialize = () => {
               }`}
             >
               <Image
-                src={item?.feature_image?.url}
-                alt={item.name}
+                src={
+                  getStrapiMedia(item?.feature_image?.url) ||
+                  "https://placehold.co/600x400.jpg"
+                }
+                alt={item.name || "specialize image"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 33vw"
@@ -123,6 +107,6 @@ const HomeSpecialize = () => {
       </div>
     </section>
   );
-}
+};
 
 export default HomeSpecialize;
