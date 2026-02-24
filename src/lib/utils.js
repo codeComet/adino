@@ -22,11 +22,12 @@ export function getStrapiMedia(url) {
   if (typeof url !== "string") return "";
   if (url.startsWith("http")) return url;
   if (
-    process.env.NODE_ENV === "development" &&
+    process.env.NEXT_PUBLIC_NODE_ENV === "development" &&
     process.env.NEXT_PUBLIC_STRAPI_URL
   ) {
     return `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
   }
+
   return url;
 }
 

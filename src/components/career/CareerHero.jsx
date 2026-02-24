@@ -1,11 +1,16 @@
-
 import RightArrow from "../../../public/assets/img/arrow-right.svg";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const CareerHero = (data) => {
-//load data from props
+  //load data from props
   let careerHeroData = data?.data;
   if (!careerHeroData || !careerHeroData.data) {
     return (
@@ -15,12 +20,13 @@ const CareerHero = (data) => {
     );
   }
 
-  const {cta, description, heading, title, hero_img} = careerHeroData?.data?.career?.[0] || {};
+  const { cta, description, heading, title, hero_img } =
+    careerHeroData?.data?.career?.[0] || {};
 
   return (
     <div className="w-wrapper mx-auto py-[120px] flex gap-10 md:gap-[115px] flex-wrap">
       <div className="flex flex-col items-start justify-center max-w-[600px]">
-        <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
+        <h5 className="font-lato text-sm uppercase text-[#666666] font-medium mb-10">
           {title}
         </h5>
         <h1 className="font-sequel-normal text-[32px] text-[#181818] md:text-[64px] leading-[1.2] md:leading-[76px] tracking-tighter">
@@ -41,15 +47,47 @@ const CareerHero = (data) => {
           </Button>
         </div>
       </div>
-      <div className="flex justify-center">
-        <Image
-          src={getStrapiMedia(hero_img?.url)}
-          alt="Career Hero Image"
-          width={600}
-          height={400}
-          className="object-cover rounded-lg"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 50vw"
-        />
+      <div className="flex justify-center w-full md:w-auto max-w-[600px] relative">
+        <Carousel
+          className="w-full"
+          opts={{ loop: true, align: "start" }}
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
+        >
+          <CarouselContent className="-ml-4">
+            {Array.isArray(hero_img) ? (
+              hero_img.map((img, index) => (
+                <CarouselItem
+                  key={img.id || index}
+                  className="basis-[50%] pl-4"
+                >
+                  <Image
+                    src={getStrapiMedia(img?.url)}
+                    alt={`Career Hero Image ${index + 1}`}
+                    width={600}
+                    height={400}
+                    className="object-cover rounded-lg w-full h-[300px]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 50vw"
+                  />
+                </CarouselItem>
+              ))
+            ) : (
+              <CarouselItem className="basis-full pl-4">
+                <Image
+                  src={getStrapiMedia(hero_img?.url)}
+                  alt="Career Hero Image"
+                  width={600}
+                  height={400}
+                  className="object-cover rounded-lg w-full h-auto"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 50vw"
+                />
+              </CarouselItem>
+            )}
+          </CarouselContent>
+        </Carousel>
       </div>
     </div>
   );

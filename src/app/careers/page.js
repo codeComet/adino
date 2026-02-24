@@ -76,7 +76,7 @@ const Career = () => {
   return (
     <>
       <CareerHero data={careerData}/>
-      <CareerStats data={careerData} />
+      {/* <CareerStats data={careerData} /> */}
       <CareerBenefits data={careerData} />
       <CareerJobs data={careerData} />
       <Newsletter/>
