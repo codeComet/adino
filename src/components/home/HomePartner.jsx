@@ -63,7 +63,7 @@ const HomePartner = () => {
               </div>
             )}
             <div>
-              <h3 className="text-base md:text-lg font-sequel-normal text-[#181818] mb-1">
+              <h3 className="text-base md:text-lg font-sequel-normal text-[#181818] mb-1 font-semibold">
                 {item.title}
               </h3>
               <p className="text-sm md:text-base text-[#4B5563] font-lato">
