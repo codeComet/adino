@@ -17,11 +17,15 @@ const query = qs.stringify(
           },
           "subsidiaries.global-market-about": {
             populate: "*",
+
           },
           "subsidiaries.global-market-service": {
             populate: {
               services: {
                 populate: ["image"],
+              },
+              cta: {
+                populate: "*",
               },
             },
           },

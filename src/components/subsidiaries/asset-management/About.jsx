@@ -2,7 +2,8 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
 const About = ({ data }) => {
-  const { title, heading, description_1, image_1, image_2, stats } = data;
+  const { title, heading, description_1, image_1, image_2, stats, cta_btn } = data;
+
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:py-[104px] px-4 md:px-0">
       <div className="flex gap-5 items-center mb-[40px] md:mb-[72px]">
@@ -19,6 +20,16 @@ const About = ({ data }) => {
           <p className="text-sm sm:text-base md:text-lg leading-[24px] sm:leading-[26px] md:leading-[30px] font-lato font-medium text-[#666666]">
             {description_1?.[0]?.children?.[0]?.text}
           </p>
+          <div className="mt-15">
+            <a
+              href={cta_btn?.cta_btn_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            >
+              {cta_btn?.cta_btn_text}
+            </a>
+          </div>
         </div>
         <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-3/5">
           <div className="flex flex-col sm:flex-row gap-4 justify-end">
