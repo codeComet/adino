@@ -6,7 +6,7 @@ const Header = ({data}) => {
     const {heading_text, hero_bg, hero_bottom_text, hero_cta} = data;
 
   return (
-    <div className="min-h-screen flex items-center justify-start bg relative">
+    <div className="min-h-screen flex items-end justify-start bg relative pb-20">
       {hero_bg?.url.endsWith(".mp4") ||
       hero_bg?.url.endsWith(".webm") ||
       hero_bg?.url.endsWith(".mov") ? (
