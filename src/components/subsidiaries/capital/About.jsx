@@ -6,7 +6,7 @@ import AutoScroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
 
 const About = ({ data }) => {
-  const { title, heading, description_1, carousel } = data;
+  const { title, heading, description_1, carousel, cta_btn } = data;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     AutoScroll({
@@ -17,6 +17,8 @@ const About = ({ data }) => {
       stopOnFocusIn: false,
     }),
   ]);
+
+  console.log(cta_btn)
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -70,6 +72,17 @@ const About = ({ data }) => {
         <p className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#666666] text-center max-w-[530px]">
           {description_1?.[0]?.children?.[0]?.text}
         </p>
+      </div>
+
+      <div>
+        <a
+          href={cta_btn?.cta_btn_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+        >
+          {cta_btn?.cta_btn_text}
+        </a>
       </div>
     </div>
   );

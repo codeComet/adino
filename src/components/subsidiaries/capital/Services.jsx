@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 const Services = ({ data }) => {
@@ -20,17 +19,17 @@ const Services = ({ data }) => {
           {services.length !== 0
             ? services.map((item, index) => (
                 <div
-                  className="mt-[30px] sm:mt-[40px] md:mt-[56px]"
+                  className="mt-[30px] sm:mt-6 md:mt-[34px]"
                   key={index}
                 >
                   <div className="flex gap-2 sm:gap-3 w-full mb-[30px] sm:mb-[45px] md:mb-[57px] max-w-[400px]">
                     <div>
-                      <span className="font-lato font-medium text-base sm:text-[32px] md:text-[52px] leading-7 md:leading-[52px] text-[#00000073] mr-1.5 sm:mr-2.5">
+                      <span className="font-lato font-medium text-base sm:text-[32px] md:text-[52px] leading-7 md:leading-[52px] text-[#AD9056] mr-1.5 sm:mr-2.5">
                         0{index + 1}
                       </span>
                     </div>
                     <div className="flex flex-col gap-2 sm:gap-3.5">
-                      <h3 className="font-sequel-normal text-lg sm:text-xl md:text-2xl leading-7 sm:leading-8 md:leading-10 text-black tracking-tighter">
+                      <h3 className="font-sequel-normal text-2xl sm:text-xl md:text-2xl leading-10 sm:leading-8 md:leading-10 text-black tracking-tighter">
                         {item.title}
                       </h3>
                       <p className="font-lato font-medium text-sm sm:text-base leading-5 sm:leading-6 text-[#333333]">
@@ -44,30 +43,15 @@ const Services = ({ data }) => {
         </>
 
         {/* Cta */}
-        <div className="flex gap-2 sm:gap-2.5 items-center">
-          <Link
+        <div>
+          <a
             href={cta?.cta_btn_url}
-            className="font-lato font-medium text-xs sm:text-sm leading-4.5 text-black"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
             {cta?.cta_btn_text}
-          </Link>
-          <>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="sm:w-[18px] sm:h-[18px]"
-            >
-              <path
-                d="M2 9H16M16 9L11.8933 13M16 9L11.8933 5"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </>
+          </a>
         </div>
       </div>
 

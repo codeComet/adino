@@ -102,9 +102,7 @@ const CareerHero = (data) => {
                             className="object-cover"
                             sizes="(max-width: 768px) 90vw, 55vw"
                             priority={index === 0}
-                            // ✅ If images still don't show on Vercel,
-                            // uncomment next line to confirm it's Next remotePatterns issue:
-                            // unoptimized
+                            unoptimized={process.env.NODE_ENV === "development"}
                           />
                         </div>
                       </CarouselItem>

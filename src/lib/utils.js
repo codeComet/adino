@@ -5,30 +5,38 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-export function getStrapiMedia(url) {
-  if (url == null) return "";
+export function getStrapiMedia(input) {
+  if (!input) return "";
 
-  // If the input is an object, extract the url string
-  if (typeof url === "object") {
-    if (url.data && url.data.attributes && url.data.attributes.url) {
-      url = url.data.attributes.url;
-    } else if (url.url) {
-      url = url.url;
-    } else {
-      return "";
-    }
+  let url = input;
+
+  // Strapi object shapes
+  if (typeof input === "object") {
+    url =
+      input?.data?.attributes?.url ||
+      input?.url ||
+      input?.attributes?.url ||
+      "";
   }
 
-  if (typeof url !== "string") return "";
-  if (url.startsWith("http")) return url;
-  if (
-    process.env.NEXT_PUBLIC_NODE_ENV === "development" &&
-    process.env.NEXT_PUBLIC_STRAPI_URL
-  ) {
-    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
-  }
+  if (!url || typeof url !== "string") return "";
 
-  return url;
+  // Already absolute
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
+
+  // Protocol-relative (rare)
+  if (url.startsWith("//")) return `https:${url}`;
+
+  // Prefix any relative Strapi url if base exists
+  const base = process.env.NEXT_PUBLIC_STRAPI_URL || "";
+
+  if (!base) return url; // fallback (still relative)
+
+  // Avoid double slashes
+  const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
+  const normalizedUrl = url.startsWith("/") ? url : `/${url}`;
+
+  return `${normalizedBase}${normalizedUrl}`;
 }
 
 export const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
