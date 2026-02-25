@@ -7,7 +7,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 const CareerHero = (data) => {
   //load data from props
@@ -52,8 +52,11 @@ const CareerHero = (data) => {
           className="w-full"
           opts={{ loop: true, align: "start" }}
           plugins={[
-            Autoplay({
-              delay: 2000,
+            AutoScroll({
+              speed: 1,
+              stopOnInteraction: false,
+              stopOnMouseEnter: false,
+              stopOnFocusIn: false,
             }),
           ]}
         >
