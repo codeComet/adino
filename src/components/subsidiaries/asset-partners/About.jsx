@@ -4,7 +4,6 @@ import { getStrapiMedia } from "@/lib/utils";
 const About = ({ data }) => {
   const { title, heading, description_1, image_1, stats, cta_btn } = data;
 
-  console.log(data);
 
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:pt-[104px] px-4 md:px-0">

@@ -21,6 +21,9 @@ const query = qs.stringify(
                   populate: "*",
                 },
                 cta_btn: "*",
+                image_1: {
+                  populate: "*",
+                },
               }
             },
             "subsidiaries.global-market-service": {
@@ -71,7 +74,6 @@ const AdinoPartners = () => {
   }
 
   const { sections } = adinoPartners?.data ? adinoPartners?.data : {};
-console.log(sections)
   return (
     <>
       <Header data={sections?.[0]} />
