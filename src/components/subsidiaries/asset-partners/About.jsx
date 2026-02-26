@@ -4,12 +4,14 @@ import { getStrapiMedia } from "@/lib/utils";
 const About = ({ data }) => {
   const { title, heading, description_1, image_1, stats, cta_btn } = data;
 
+  console.log(data);
+
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:pt-[104px] px-4 md:px-0">
       <div className="flex flex-col md:flex-row gap-8 md:gap-30 justify-between">
         <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
           <Image
-            src={getStrapiMedia(image_1?.url) || "https://placehold.co/600x400"}
+            src={getStrapiMedia(image_1?.url)}
             alt="About Image"
             width={600}
             height={400}
