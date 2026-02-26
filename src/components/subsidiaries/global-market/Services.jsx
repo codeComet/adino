@@ -1,17 +1,24 @@
 import Link from "next/link";
 
 const Services = ({ data }) => {
-  const { title, heading, services } = data;
+  const { title, heading, services, description } = data;
   return (
     <div className="w-full bg-[#EDF3F1] py-12 sm:py-16 md:py-20 lg:py-[104px]">
       <div className="w-wrapper mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4 sm:gap-6 pb-3 border-b border-[#00000033]">
-          <h5 className="font-lato text-xs sm:text-sm uppercase text-black font-medium bg-white rounded-full py-1 px-3 sm:px-4 w-fit">
-            {title}
-          </h5>
-          <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter">
-            {heading}
-          </h2>
+        <div className="flex gap-4 justify-between items-center sm:gap-6 pb-3 border-b border-[#00000033]">
+          <div className="flex flex-col gap-4">
+            <h5 className="font-lato text-xs sm:text-sm uppercase text-black font-medium bg-white rounded-full py-1 px-3 sm:px-4 w-fit">
+              {title}
+            </h5>
+            <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter">
+              {heading}
+            </h2>
+          </div>
+          <div>
+            <p className="font-lato font-medium text-base sm:text-lg leading-7 sm:leading-7.5 text-[#333333]">
+              {description}
+            </p>
+          </div>
         </div>
 
         {/* services */}
@@ -31,9 +38,9 @@ const Services = ({ data }) => {
                   </p>
                 </div>
                 <div className="flex gap-2.5 items-center">
-                  <Link 
-                    href={item?.url || ""} 
-                    target="_blank" 
+                  <Link
+                    href={item?.url || ""}
+                    target="_blank"
                     rel="noreferrer"
                     className="text-sm sm:text-base hover:underline"
                   >
