@@ -24,6 +24,7 @@ const AboutHero = () => {
   const { heading, aboutHeroImg, companyInfo } = heroData;
   const { title, description } = aboutHeroData?.data?.aboutCompany || {};
 
+
   return (
     <div className="py-30 md:py-40 w-wrapper mx-auto">
       <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-0 px-4 md:px-0">
