@@ -10,7 +10,6 @@ const AssetManagementMissionAndVision = ({ missionAndVisionData }) => {
       </div>
     );
   }
-  console.log(missionAndVisionData);
 
   const { missionAndVision} = missionAndVisionData?.data || {};
 
@@ -52,7 +51,6 @@ const AssetManagementMissionAndVision = ({ missionAndVisionData }) => {
             width={1000}
             height={720}
             className="rounded-md w-full h-auto"
-            unoptimized={true}
           />
         </div>
       </div>

@@ -102,7 +102,6 @@ const CareerHero = (data) => {
                             className="object-cover"
                             sizes="(max-width: 768px) 90vw, 55vw"
                             priority={index === 0}
-                            unoptimized={process.env.NODE_ENV === "development"}
                           />
                         </div>
                       </CarouselItem>

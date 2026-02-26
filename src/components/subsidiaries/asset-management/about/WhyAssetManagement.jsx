@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import { getStrapiMedia } from "@/lib/utils";
 
 const WhyAssetManagement = ({ whyAssetManagementData }) => {
   if (!whyAssetManagementData) {

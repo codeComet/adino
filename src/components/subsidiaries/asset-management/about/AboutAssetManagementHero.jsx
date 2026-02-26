@@ -48,7 +48,6 @@ const AboutAssetManagementHero = ({ hero }) => {
           width={1000}
           height={720}
           className="rounded-md w-full h-auto"
-          unoptimized={true}
         />
       </div>
     </div>

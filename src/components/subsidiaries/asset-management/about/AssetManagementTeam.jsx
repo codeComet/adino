@@ -10,7 +10,6 @@ const AssetManagementTeam = ({ teamData }) => {
       </div>
     );
   }
-  console.log(teamData);
 
   const { teamTitle, teamHeading, teamDescription, teamMembers } =
     teamData?.data || {};

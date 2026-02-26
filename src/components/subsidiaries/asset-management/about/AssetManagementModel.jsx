@@ -58,7 +58,6 @@ const AssetManagementModel = ({ modelData }) => {
             width={300}
             height={200}
             className="rounded-md w-full h-auto"
-            unoptimized={true}
           />
         </div>
       </div>
@@ -73,7 +72,6 @@ const AssetManagementModel = ({ modelData }) => {
             width={300}
             height={200}
             className="rounded-md w-full h-auto"
-            unoptimized={true}
           />
         </div>
         <div className="flex flex-col gap-6 md:w-1/2 justify-center">
