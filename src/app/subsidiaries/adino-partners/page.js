@@ -5,14 +5,42 @@ import About from "@/components/subsidiaries/asset-partners/About";
 import Services from "@/components/subsidiaries/asset-partners/Services";
 import SubsidiaryNewsletter from "@/components/generic/SubsidiaryNewsletter";
 import TestimonialGrid from "@/components/generic/TestimonialGrid";
+import qs from "qs";
 
+const query = qs.stringify(
+  {
+    populate: {
+        sections: {
+          on: {
+            "home-page.home-hero-section": {
+              populate: "*",
+            },
+            "subsidiaries.global-market-about": {
+              populate: {
+                stats: {
+                  populate: "*",
+                },
+                cta_btn: "*",
+              }
+            },
+            "subsidiaries.global-market-service": {
+              populate: "*"
+            },
+          },
+      },
+    },
+  },
+  { encodeValuesOnly: true },
+);
 const getAdinoPartnersData = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/adino-partner?populate[sections][populate]=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/adino-partner?${query}`,
   );
   const data = await res.json();
   return data;
 };
+
+
 
 const AdinoPartners = () => {
   const {
@@ -43,12 +71,13 @@ const AdinoPartners = () => {
   }
 
   const { sections } = adinoPartners?.data ? adinoPartners?.data : {};
-
+console.log(sections)
   return (
     <>
-      <Header data={sections[0]} />
-      <About data={sections[1]} />
-      <Services data={sections[2]} />
+      <Header data={sections?.[0]} />
+      <About data={sections?.[1]} />
+      <Services data={sections?.[2]} />
+      <About data={sections?.[3]} />
       <TestimonialGrid />
       <SubsidiaryNewsletter />
     </>

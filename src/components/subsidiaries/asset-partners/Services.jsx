@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
 const Services = ({ data }) => {
-  const { title, heading, services, image } = data;
+  const { title, heading, services, image, cta } = data;
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:pt-[104px] px-4 md:px-0 flex flex-col md:flex-row gap-12 md:gap-24">
       <div className="w-full md:w-1/2 h-full flex flex-col gap-8 md:gap-16">
@@ -38,6 +38,17 @@ const Services = ({ data }) => {
                 </div>
               ))
             : null}
+        </div>
+
+        <div className="mt-15">
+          <a
+            href={cta?.cta_btn_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          >
+            {cta?.cta_btn_text}
+          </a>
         </div>
       </div>
 
