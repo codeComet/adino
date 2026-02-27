@@ -50,15 +50,15 @@ const CareerHero = (data) => {
             {description}
           </p>
 
-          <Button
-            size="lg"
-            className="rounded-full bg-primary text-[16px] md:text-[18px] py-3 md:py-[15px] px-4 md:pl-6 md:pr-2.5 font-lato font-medium text-white"
+          <a
+            href={cta?.cta_btn_url}
+            className="flex items-center rounded-full bg-primary text-[16px] md:text-[18px] py-3 md:py-[10px] px-4 md:pl-6 md:pr-4 font-lato font-medium text-white"
           >
             {cta?.cta_btn_text}
             <span className="ml-2">
               <Image src={RightArrow} alt="arrow" width={24} height={24} />
             </span>
-          </Button>
+          </a>
         </div>
 
         {/* RIGHT CAROUSEL */}
