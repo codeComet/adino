@@ -1,10 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useAboutPageData } from "@/lib/aboutPage";
 
 const AboutInsight = () => {
   const { data: aboutInsightData, isLoading } = useAboutPageData();
+
+  useEffect(() => {
+    if (!isLoading) {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      }
+    }
+  }, [isLoading]);
 
   if (isLoading) {
     return (
@@ -26,7 +41,10 @@ const AboutInsight = () => {
   const { title, heading, insight_desc, stats } = insightSection;
 
   return (
-    <div className="w-full mx-auto py-20 md:py-30 px-4 md:px-0 bg-primary" id="strategy">
+    <div
+      className="w-full mx-auto py-20 md:py-30 px-4 md:px-0 bg-primary"
+      id="strategy"
+    >
       <div className="w-wrapper mx-auto flex flex-col mb-6 md:mb-[37px] gap-6 md:gap-20">
         <div className="flex flex-col gap-6 md:gap-6">
           <h4 className="text-[14px] text-left font-lato font-medium uppercase text-[#F0FDF4]">
