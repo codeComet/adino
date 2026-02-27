@@ -65,7 +65,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Social Column */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold mb-6 border-b border-white/30 pb-2">
               {social}
             </h3>
@@ -85,7 +85,7 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Explore Adino Column */}
           <div>

@@ -21,7 +21,7 @@ const CommonHeader = () => {
 
           <div className="flex items-center gap-6">
             {/* Social Icons */}
-            <div className="hidden lg:flex items-center space-x-6 text-white">
+            {/* <div className="hidden lg:flex items-center space-x-6 text-white">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -43,13 +43,14 @@ const CommonHeader = () => {
               >
                 <Image src={ig} alt="Instagram" width={40} height={40} />
               </a>
-            </div>
+            </div> */}
 
             {/* Mobile Menu */}
             <div className="md:hidden">
               <NavigationSheet type="main" />
             </div>
           </div>
+          
         </div>
       </nav>
     </>

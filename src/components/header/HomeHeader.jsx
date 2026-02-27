@@ -21,7 +21,7 @@ const HomeHeader = () => {
 
           <div className="flex items-center gap-6">
             {/* Social Icons */}
-            <div className="hidden lg:flex items-center space-x-6 text-white">
+            {/* <div className="hidden lg:flex items-center space-x-6 text-white">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -43,7 +43,7 @@ const HomeHeader = () => {
               >
                 <Image src={ig} alt="Instagram" width={24} height={24} />
               </a>
-            </div>
+            </div> */}
 
             {/* Mobile Menu */}
             <div className="md:hidden">
