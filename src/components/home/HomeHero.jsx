@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import React from "react";
 import { getStrapiMedia } from "@/lib/utils";
@@ -31,6 +30,7 @@ const HomeHero = () => {
       (section) => section.__component === "home-page.home-hero-section",
     ) ?? {};
 
+
   let heroHeading =
     heroSection?.heading_text ??
     "Create Assets, Optimize Liabilities, Maximize Wealth.";
@@ -38,6 +38,7 @@ const HomeHero = () => {
     ? getStrapiMedia(heroSection?.hero_bg?.url)
     : "https://placehold.co/1920x1080";
   let heroCta = heroSection?.hero_cta?.cta_btn_text ?? "Discover Adino";
+  let heroCtaUrl = heroSection?.hero_cta?.cta_btn_url ?? "#";
   let heroBottomText =
     heroSection?.hero_bottom_text?.[0]?.children?.[0]?.text ??
     "Empowering Growth, Enhancing Value in Emerging Markets";
@@ -79,12 +80,12 @@ const HomeHero = () => {
           {heroBottomText}
         </p>
         <div className="flex items-center justify-start gap-4">
-          <Button className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-[16px] px-8 font-lato font-medium text-white cursor-pointer transition-colors flex items-center gap-3">
+          <a href={heroCtaUrl} className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-[16px] px-8 font-lato font-medium text-white cursor-pointer transition-colors flex items-center gap-3">
             {heroCta}
             <span className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
               <ArrowDown size={14} className="text-[#1B5E39]" />
             </span>
-          </Button>
+          </a>
         </div>
       </div>
     </div>
