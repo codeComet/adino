@@ -13,7 +13,7 @@ const CareerJobs = (data) => {
 
       const { title, description } = careerJobsData?.data?.career?.[3] || {};
   return (
-    <div className="w-wrapper mx-auto ">
+    <div className="w-wrapper mx-auto" id="jobs">
       <div className="flex flex-col items-start justify-start gap-6">
         <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
           {title}
