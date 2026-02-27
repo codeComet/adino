@@ -3,9 +3,7 @@ import React from "react";
 import { getStrapiMedia } from "@/lib/utils";
 
 const CareerBenefits = (data) => {
-  let CareerBenefitsData = data?.data?.data?.career?.find(
-    (item) => item?.__component === "career.career-benefits"
-  );
+  let CareerBenefitsData = data?.data;
   if (!CareerBenefitsData || !CareerBenefitsData.data) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg relative">
@@ -14,8 +12,12 @@ const CareerBenefits = (data) => {
     );
   }
 
+  const benefitsData = CareerBenefitsData?.data?.career?.find(
+    (item) => item?.__component === "career.career-benefits"
+  );
+
   const { title, heading, description, benefits } =
-    CareerBenefitsData?.data || {};
+    benefitsData || {};
   return (
     <div className="w-wrapper mx-auto py-10 md:py-32">
       <div className="flex flex-wrap justify-between items-end gap-4 md:gap-0">
