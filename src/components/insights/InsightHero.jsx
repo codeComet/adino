@@ -1,26 +1,11 @@
 "use client";
 
-import qs from "qs";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Ln from "../../../public/assets/img/ln.svg"
 import Link from "next/link";
-
-const query = qs.stringify(
-  {
-    populate: "*",
-  },
-  { encodeValuesOnly: true }
-);
-
-const getInsightData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/insight?${query}`
-  );
-  const data = await res.json();
-  return data;
-};
+import { getInsightData } from "@/lib/api/insight";
 
 const InsightHero = () => {
   const {

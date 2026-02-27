@@ -38,7 +38,7 @@ const query = qs.stringify(
   },
 );
 
-const getAboutAssetManagementPageData = async () => {
+export const getAboutAssetManagementPageData = async () => {
   const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about-asset-management?${query}`;
   const res = await fetch(url);
   const data = await res.json();

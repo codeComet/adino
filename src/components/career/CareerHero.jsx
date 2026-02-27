@@ -21,6 +21,7 @@ const CareerHero = (data) => {
     );
   }
 
+
   const { cta, description, heading, title, hero_img } =
     careerHeroData?.data?.career?.[0] || {};
 

@@ -6,17 +6,12 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import BlogNewsletter from "@/components/generic/BlogNewsletter";
 import BlogCard from "@/components/ui/cards/BlogCard";
 import { getStrapiMedia } from "@/lib/utils";
+import { getBlogData, getRelatedPosts } from "@/lib/api/blog";
 
 export default function BlogPageClient({ slugValue }) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["blog", slugValue],
-    queryFn: async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[slug][$eq]=${slugValue}&populate=*`,
-      );
-      if (!res.ok) throw new Error("Failed to fetch");
-      return res.json();
-    },
+    queryFn: () => getBlogData(slugValue),
     enabled: !!slugValue,
   });
 
@@ -30,13 +25,7 @@ export default function BlogPageClient({ slugValue }) {
     error: relatedError,
   } = useQuery({
     queryKey: ["related-posts", category],
-    queryFn: async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?filters[category][$eq]=${category}&pagination[limit]=4&populate=banner_image`,
-      );
-      if (!res.ok) throw new Error("Failed to fetch related posts");
-      return res.json();
-    },
+    queryFn: () => getRelatedPosts(category),
     enabled: !!category,
   });
 
@@ -101,51 +90,56 @@ export default function BlogPageClient({ slugValue }) {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col-reverse md:flex-row justify-between w-wrapper mx-auto gap-10 md:gap-30 pt-3 md:pt-30">
-        <div className="w-full md:w-1/3">
-          <BlogNewsletter />
-        </div>
-        <div className="w-full md:w-2/3">
-          <div className="bg-white rounded-[10px]">
-            <BlocksRenderer content={content || []} />
+      <div className="w-wrapper mx-auto mt-10 md:mt-20 px-4 md:px-0">
+        <div className="flex flex-col lg:flex-row gap-10 md:gap-20">
+          {/* Main Content */}
+          <div className="w-full lg:w-[65%]">
+            <div className="prose max-w-none">
+              <BlocksRenderer content={content} />
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Related Posts */}
-      <div className="w-wrapper mx-auto pt-20 md:pt-30">
-        <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[40px] leading-[1.2] md:leading-[48px] tracking-tighter">
-          Related posts
-        </h2>
-
-        {relatedLoading ? (
-          <p>Loading related posts...</p>
-        ) : relatedError ? (
-          <p>Error loading related posts: {relatedError.message}</p>
-        ) : relatedPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 related-post-section">
-            {relatedPosts.map((post) => (
-              <div key={post.id}>
-                <BlogCard
-                  key={`blog-card-${post.id}`}
-                  title={post?.title}
-                  summary={post?.summary}
-                  image={
-                    post?.banner_image?.url
-                      ? getStrapiMedia(post.banner_image.url)
-                      : null
-                  }
-                  category={post?.category}
-                  url={post?.slug ? `${post.slug}` : ""}
-                />
+          {/* Sidebar - Related Posts */}
+          <div className="w-full lg:w-[35%]">
+            <div className="sticky top-24">
+              <h3 className="font-sequel-normal text-2xl mb-6 md:mb-8">
+                Related Posts
+              </h3>
+              <div className="flex flex-col gap-6 md:gap-8">
+                {relatedLoading ? (
+                  <p>Loading related posts...</p>
+                ) : relatedPosts.length > 0 ? (
+                  relatedPosts.map((post) => (
+                    <BlogCard
+                      key={post.id}
+                      category={post.category}
+                      title={post.title}
+                      date={new Date(post.createdAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )}
+                      image={
+                        post.banner_image
+                          ? getStrapiMedia(post.banner_image.url)
+                          : "https://placehold.co/100x100"
+                      }
+                      url={post.slug}
+                    />
+                  ))
+                ) : (
+                  <p className="text-gray-500">No related posts found.</p>
+                )}
               </div>
-            ))}
+            </div>
           </div>
-        ) : (
-          <p className="pt-8 text-gray-500">No related posts found.</p>
-        )}
+        </div>
       </div>
+
+      <BlogNewsletter />
     </div>
   );
 }

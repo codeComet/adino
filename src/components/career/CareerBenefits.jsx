@@ -13,7 +13,7 @@ const CareerBenefits = (data) => {
   }
 
   const { title, heading, description, benefits } =
-    CareerBenefitsData?.data?.career?.[1] || {};
+    CareerBenefitsData?.data?.career?.[2] || {};
   return (
     <div className="w-wrapper mx-auto py-10 md:py-32">
       <div className="flex flex-wrap justify-between items-end gap-4 md:gap-0">

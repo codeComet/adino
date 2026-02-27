@@ -1,28 +1,19 @@
-"use client";
 
-import AboutAssetManagementHero from "@/components/subsidiaries/asset-management/about/AboutAssetManagementHero";
-import AssetManagementModel from "@/components/subsidiaries/asset-management/about/AssetManagementModel";
-import { useAboutAssetManagementPageData } from "@/lib/subsidiary/aboutAssetmanagement";
-import AssetManagementMissionAndVision from "@/components/subsidiaries/asset-management/about/AssetManagementMissionAndVision";
-import WhyAssetManagement from "@/components/subsidiaries/asset-management/about/WhyAssetManagement";
-import AssetManagementValues from "@/components/subsidiaries/asset-management/about/AssetManagementValues";
-import AssetManagementTeam from "@/components/subsidiaries/asset-management/about/AssetManagementTeam";
+import AboutAssetManagementClient from "./AboutAssetManagementClient";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { getAboutAssetManagementPageData } from "@/lib/subsidiary/aboutAssetmanagement";
 
+export default async function Page() {
+  const queryClient = new QueryClient();
 
-const AdinoAssetManagement = () => {
-    const { data: aboutAssetManagementData, isLoading } = useAboutAssetManagementPageData();
-
+  await queryClient.prefetchQuery({
+    queryKey: ["aboutAssetManagementPage"],
+    queryFn: getAboutAssetManagementPageData,
+  });
 
   return (
-    <>
-        <AboutAssetManagementHero hero={aboutAssetManagementData} />
-        <AssetManagementModel modelData={aboutAssetManagementData} />
-        <AssetManagementMissionAndVision missionAndVisionData={aboutAssetManagementData} />
-        <WhyAssetManagement whyAssetManagementData={aboutAssetManagementData} />
-        <AssetManagementValues valuesData={aboutAssetManagementData} />
-        <AssetManagementTeam teamData={aboutAssetManagementData} />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <AboutAssetManagementClient />
+    </HydrationBoundary>
   );
-};
-
-export default AdinoAssetManagement;
+}

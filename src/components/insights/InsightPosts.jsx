@@ -1,30 +1,10 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import qs from "qs";
 import { useQuery } from "@tanstack/react-query";
 import BlogCard from "../ui/cards/BlogCard";
 import { getStrapiMedia } from "@/lib/utils";
-
-const query = qs.stringify(
-  {
-    populate: "*",
-  },
-  { encodeValuesOnly: true },
-);
-
-const getInsightPosts = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?${query}`,
-  );
-
-  if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-  }
-
-  const data = await res.json();
-  return data;
-};
+import { getInsightPosts } from "@/lib/api/insight";
 
 const InsightPosts = () => {
   const {
@@ -99,79 +79,42 @@ const InsightPosts = () => {
 
   if (isLoading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center justify-center min-h-64">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading blog posts...</p>
-          </div>
-        </div>
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Loading...</p>
       </div>
     );
   }
 
   if (isError) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center justify-center min-h-64">
-          <div className="text-center">
-            <div className="text-red-500 text-4xl mb-4">⚠️</div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Something went wrong
-            </h3>
-            <p className="text-gray-600 mb-4">
-              {error?.message ||
-                "Failed to load blog posts. Please try again later."}
-            </p>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary transition-colors"
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Add safety check for data
-  if (!insightPosts?.data || insightPosts.data.length === 0) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center py-12">
-          <div className="text-gray-400 text-6xl mb-4">📝</div>
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">
-            No blog posts available
-          </h3>
-          <p className="text-gray-500">Check back later for new content.</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Something went wrong: {error?.message}</p>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-      {/* Category Tabs */}
-      <div className="flex flex-wrap gap-2 mb-14 justify-center">
+    <div className="w-wrapper mx-auto pb-[60px] md:pb-[120px] px-4 md:px-0">
+      {/* Category Filter */}
+      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-8 md:mb-16">
         <button
           onClick={() => handleCategoryChange("all")}
-          className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+          className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm transition-colors uppercase font-lato ${
             activeCategory === "all"
-              ? "bg-[#F0FDF4] text-[#28282B] border border-[#64B46B] text-sm leading-[22px] font-lato font-normal"
-              : "text-[#707079] text-sm leading-[22px] font-lato font-normal hover:text-gray-900"
+              ? "bg-[#181818] text-white"
+              : "bg-[#F4F4F5] text-[#666666] hover:bg-gray-200"
           }`}
         >
-          All Categories
+          All
         </button>
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => handleCategoryChange(category)}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+            className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm transition-colors uppercase font-lato ${
               activeCategory === category
-                ? "bg-[#F0FDF4] text-[#28282B] border border-[#64B46B] text-sm leading-[22px] font-lato font-normal"
-                : "text-[#707079] text-sm leading-[22px] font-lato font-normal hover:text-gray-900"
+                ? "bg-[#181818] text-white"
+                : "bg-[#F4F4F5] text-[#666666] hover:bg-gray-200"
             }`}
           >
             {capitalizeCategory(category)}
@@ -179,62 +122,46 @@ const InsightPosts = () => {
         ))}
       </div>
 
-      {/* Blog Posts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 insight-posts-container">
+      {/* Posts Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {displayedPosts.map((post) => (
-          <div
+          <BlogCard
             key={post.id}
-            className="bg-white rounded-lg overflow-hidden transition-all duration-300 transform hover:-translate-y-1"
-          >
-            <BlogCard
-              key={`blog-card-${post.id}`}
-              title={post?.title}
-              summary={post?.summary}
-              image={
-                post?.banner_image?.url
-                  ? getStrapiMedia(post.banner_image.url)
-                  : null
-              }
-              category={post?.category}
-              url={post?.slug ? `${post.slug}` : ""}
-            />
-          </div>
+            category={capitalizeCategory(post.category)}
+            title={post.title}
+            date={new Date(post.createdAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+            image={
+              post.banner_image
+                ? getStrapiMedia(post.banner_image.url)
+                : "https://placehold.co/100x100"
+            }
+            url={post.slug}
+          />
         ))}
       </div>
 
-      {/* No Posts Message for filtered results */}
-      {displayedPosts.length === 0 && filteredPosts.length === 0 && (
-        <div className="text-center py-12">
-          <div className="text-gray-400 text-6xl mb-4">🔍</div>
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">
-            No posts found
-          </h3>
-          <p className="text-gray-500">
-            No blog posts available for the selected category.
+      {/* No Posts Message */}
+      {displayedPosts.length === 0 && (
+        <div className="text-center py-20">
+          <p className="text-gray-500 font-lato">
+            No posts found in this category.
           </p>
         </div>
       )}
 
-      {/* Load More Section */}
-      {displayedPosts.length > 0 && (
-        <div className="text-center mt-12">
-          {/* Post Count */}
-          <div className="text-gray-500 text-sm mb-6 uppercase tracking-wide">
-            SHOWING {displayedPosts.length} OF {filteredPosts.length}
-          </div>
-
-          {/* Load More Button */}
-          {hasMorePosts && (
-            <button
-              onClick={handleLoadMore}
-              className="inline-flex items-center px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 group text-sm cursor-pointer"
-            >
-              Load more
-              <div className="ml-2 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold group-hover:bg-white group-hover:text-primary transition-colors">
-                +
-              </div>
-            </button>
-          )}
+      {/* Load More Button */}
+      {hasMorePosts && (
+        <div className="flex justify-center mt-12 md:mt-20">
+          <button
+            onClick={handleLoadMore}
+            className="px-6 md:px-8 py-3 bg-[#181818] text-white rounded-full font-lato text-sm uppercase hover:bg-black transition-colors"
+          >
+            Load More
+          </button>
         </div>
       )}
     </div>
