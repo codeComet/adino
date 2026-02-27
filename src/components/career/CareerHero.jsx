@@ -21,13 +21,10 @@ const CareerHero = (data) => {
     );
   }
 
-  console.log(careerHeroData);
-
   const { cta, description, heading, title, hero_img } =
     careerHeroData?.data?.career?.[0] || {};
 
   const heroImgData = hero_img?.data || hero_img;
-
 
   // ✅ supports hero_img as array OR single object
   const images = Array.isArray(heroImgData)
@@ -35,8 +32,6 @@ const CareerHero = (data) => {
     : heroImgData
       ? [heroImgData]
       : [];
-
-      console.log(images)
 
   return (
     <section className="w-full relative overflow-hidden py-[60px] md:py-[120px] bg-white">
@@ -93,7 +88,7 @@ const CareerHero = (data) => {
                   </CarouselItem>
                 ) : (
                   images.map((img, index) => {
-                    const src = getStrapiMedia(img?.url);
+                    const src = getStrapiMedia(img);
                     if (!src) return null;
 
                     return (
