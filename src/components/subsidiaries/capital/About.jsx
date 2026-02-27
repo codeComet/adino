@@ -18,7 +18,6 @@ const About = ({ data }) => {
     }),
   ]);
 
-  console.log(cta_btn)
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -54,13 +53,15 @@ const About = ({ data }) => {
                 key={index}
                 className="embla__slide basis-[100%] md:basis-[50%] shrink-0 p-2"
               >
-                <Image
-                  src={`${item?.url}`}
-                  alt={`Carousel Image ${index + 1}`}
-                  width={900}
-                  height={600}
-                  className="rounded-4xl object-cover w-full h-auto"
-                />
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src={`${item?.url}`}
+                    alt={`Carousel Image ${index + 1}`}
+                    fill
+                    className="rounded-4xl object-cover"
+                    unoptimized={true}
+                  />
+                </div>
               </div>
             ))}
           </div>
