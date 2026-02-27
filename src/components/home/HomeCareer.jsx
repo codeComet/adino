@@ -7,7 +7,6 @@ import { useHomePageData } from "@/lib/homePage";
 
 const HomeCareer = () => {
   const { data: careerData, isLoading, isError } = useHomePageData();
-  console.log(careerData);
 
   if (isLoading) {
     return (

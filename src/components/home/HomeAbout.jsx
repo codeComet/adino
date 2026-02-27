@@ -37,6 +37,7 @@ const HomeAbout = () => {
     aboutSection?.about_description?.[0]?.children?.[0]?.text ??
     "Description coming soon";
   const aboutCta = aboutSection?.about_cta?.cta_btn_text ?? "Learn More";
+  const aboutCtaUrl = aboutSection?.about_cta?.cta_btn_url ?? "#";
   const statCards = aboutSection?.about_stat_cards ?? [];
 
   return (
@@ -52,15 +53,15 @@ const HomeAbout = () => {
           {aboutDesc}
         </p>
         <div className="mt-8 md:mt-12 flex items-center justify-center gap-4">
-          <Button
-            size="lg"
-            className="rounded-full bg-primary text-base leading-7 backdrop-blur-[70px] py-3 md:py-[22px] px-4 md:px-[17px] font-lato font-medium text-white cursor-pointer"
+          <a
+            href={aboutCtaUrl}
+            className="flex items-center rounded-full bg-primary text-base leading-7 backdrop-blur-[70px] py-3 md:py-[10px] px-4 md:px-[17px] font-lato font-medium text-white cursor-pointer"
           >
             {aboutCta}{" "}
             <span className="ml-2">
               <Image src={RightArrow} alt="down arrow" width={24} height={24} />
             </span>
-          </Button>
+          </a>
         </div>
 
         {/* Cards */}

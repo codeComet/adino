@@ -10,12 +10,12 @@ const query = qs.stringify(
   {
     populate: "*",
   },
-  { encodeValuesOnly: true }
+  { encodeValuesOnly: true },
 );
 
 const getInsightPosts = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?${query}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?${query}`,
   );
 
   if (!res.ok) {
@@ -33,19 +33,18 @@ const InsightPosts = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["insightposts"],
+    queryKey: ["insightPosts"],
     queryFn: getInsightPosts,
     staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
     cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
   });
 
-  // Memoize categories to prevent recalculation on every render
+  const posts = insightPosts?.data;
+
   const categories = useMemo(() => {
-    if (!insightPosts?.data) return [];
-    return [...new Set(insightPosts.data.map((post) => post.category))].filter(
-      Boolean
-    );
-  }, [insightPosts?.data]);
+    if (!posts) return [];
+    return [...new Set(posts.map((post) => post.category))].filter(Boolean);
+  }, [posts]);
 
   const categoryLabels = {
     "adino news": "Adino News",
@@ -60,12 +59,11 @@ const InsightPosts = () => {
 
   // Memoize filtered posts to prevent recalculation
   const filteredPosts = useMemo(() => {
-    if (!insightPosts?.data) return [];
-
+    if (!posts) return [];
     return activeCategory === "all"
-      ? insightPosts.data
-      : insightPosts.data.filter((post) => post.category === activeCategory);
-  }, [insightPosts?.data, activeCategory]);
+      ? posts
+      : posts.filter((post) => post.category === activeCategory);
+  }, [posts, activeCategory]);
 
   // Posts to display (limited by postsToShow)
   const displayedPosts = useMemo(() => {

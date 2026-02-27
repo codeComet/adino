@@ -5,7 +5,7 @@ import { getStrapiMedia } from "@/lib/utils";
 
 const BlogCard = ({ title, summary, image, category, url }) => {
   return (
-    <Link href={`/blog/${url}`} target="_blank" rel="noopener noreferrer">
+    <Link href={`/blog/${url}`} rel="noopener noreferrer">
       <div className="flex flex-col w-full">
         <div className="relative h-[200px] sm:h-[250px] md:h-[300px] w-full">
           <img

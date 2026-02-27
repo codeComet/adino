@@ -102,7 +102,7 @@ export default function TestimonialGrid() {
             />
             <div className="relative z-10 pb-8 md:pb-12 px-5 md:px-7.5">
               <blockquote className="font-lato font-medium text-xl md:text-2xl leading-7 md:leading-8.5">
-                "{testimonials[0]?.description[0]?.children[0]?.text}"
+                &ldquo;{testimonials[0]?.description[0]?.children[0]?.text}&rdquo;
               </blockquote>
               <div className="w-full md:w-fit flex flex-col md:flex-row justify-between gap-2 md:gap-5 mt-4 md:mt-5">
                 <p className="font-lato font-medium text-sm leading-5">
@@ -118,7 +118,7 @@ export default function TestimonialGrid() {
           {/* Second column spanning 2 columns */}
           <div className="col-span-1 md:col-span-2 bg-gray-100 rounded-3xl p-4 md:p-6 flex flex-col gap-6 md:gap-[54px] min-h-[300px] md:min-h-[416px] justify-end">
             <blockquote className="font-lato font-medium text-xl md:text-2xl leading-7 md:leading-8.5 max-w-[600px]">
-              "{testimonials[1]?.description[0]?.children[0]?.text}"
+              &ldquo;{testimonials[1]?.description[0]?.children[0]?.text}&rdquo;
             </blockquote>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
               <p className="font-lato font-medium text-sm leading-5 text-primary">
@@ -136,7 +136,7 @@ export default function TestimonialGrid() {
           {/* Third testimonial */}
           <div className="bg-[#054F3012] rounded-3xl px-6 pb-[31px] flex flex-col gap-4.5 justify-end min-h-[200px]">
             <blockquote className="text-sm font-medium font-lato text-primary leading-5">
-              "{testimonials[2]?.description[0]?.children[0]?.text}"
+              &ldquo;{testimonials[2]?.description[0]?.children[0]?.text}&rdquo;
             </blockquote>
             <div className="flex items-center gap-2">
               <p className="font-lato font-medium text-sm leading-5 text-primary">
@@ -151,7 +151,7 @@ export default function TestimonialGrid() {
           {/* Fourth testimonial */}
           <div className="bg-[#054F3012] rounded-3xl px-6 pb-[31px] flex flex-col gap-4.5 justify-end min-h-[200px]">
             <blockquote className="text-sm font-medium font-lato text-primary leading-5">
-              "{testimonials[3]?.description[0]?.children[0]?.text}"
+              &ldquo;{testimonials[3]?.description[0]?.children[0]?.text}&rdquo;
             </blockquote>
             <div className="flex items-center gap-2">
               <p className="font-lato font-medium text-sm leading-5 text-primary">
@@ -166,7 +166,7 @@ export default function TestimonialGrid() {
           {/* Fifth testimonial */}
           <div className="bg-[#054F3012] rounded-3xl px-6 pb-[31px] flex flex-col gap-4.5 justify-end min-h-[200px]">
             <blockquote className="text-sm font-medium font-lato text-primary leading-5">
-              "{testimonials[4]?.description[0]?.children[0]?.text}"
+              &ldquo;{testimonials[4]?.description[0]?.children[0]?.text}&rdquo;
             </blockquote>
             <div className="flex items-center gap-2">
               <p className="font-lato font-medium text-sm leading-5 text-primary">
@@ -184,4 +184,3 @@ export default function TestimonialGrid() {
 }
 
 // Example usage component
-

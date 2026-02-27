@@ -16,7 +16,11 @@ const query = qs.stringify(
       "sections.specializeItems.feature_image",
       "sections.image",
       "sections.iconBox",
-      "sections.iconBox.icon"
+      "sections.iconBox.icon",
+      "sections.newsCta",
+      "sections.newCta",
+      "sections.button",
+      "sections.button"
     ],
   },
   { encodeValuesOnly: true },

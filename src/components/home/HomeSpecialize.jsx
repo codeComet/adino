@@ -41,6 +41,7 @@ const HomeSpecialize = () => {
   let specializeHeading = specializeSection?.specializeHeading ?? "Specialize";
   let specializeItems = specializeSection?.specializeItems ?? [];
 
+
   return (
     <section
       className="w-wrapper mx-auto text-white rounded-3xl p-4 sm:p-6 md:py-[90px] md:px-[80px] flex flex-col md:flex-row justify-between gap-8 md:gap-5"
@@ -66,7 +67,9 @@ const HomeSpecialize = () => {
                 onFocus={() => setHoveredIndex(index)}
                 onBlur={() => setHoveredIndex(null)}
               >
+                <a href={item?.href}>
                 {item.name}
+                </a>
                 <Image
                   src={arrow}
                   width={30}
