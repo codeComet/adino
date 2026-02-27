@@ -59,7 +59,6 @@ const About = ({ data }) => {
                     alt={`Carousel Image ${index + 1}`}
                     fill
                     className="rounded-4xl object-cover"
-                    unoptimized={true}
                   />
                 </div>
               </div>
