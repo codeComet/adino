@@ -53,7 +53,7 @@ const RichTextRenderer = ({ content }) => {
 };
 
 const AboutCaptialTeam = ({ teamData }) => {
-  console.log(teamData);
+
   const { teamTitle, teamHeading, teamDescription, teamMembers } =
     teamData?.data || {};
   const [selectedMember, setSelectedMember] = useState(null);
