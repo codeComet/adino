@@ -1,8 +1,6 @@
 "use client";
-
 import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
-
 const query = qs.stringify(
   {
     populate: {
