@@ -1,19 +1,32 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import React from 'react'
 import { getStrapiMedia } from "@/lib/utils";
+import Image from 'next/image';
 
-const Header = ({ data }) => {
-  const { title, heading, description, hero_bg, cta, stats } = data;
+const AboutAdinoCaptialHero = ({ hero }) => {
+    if (!hero) {
+      return (
+        <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+          <p>Loading...</p>
+        </div>
+      );
+    }
 
-  const mediaUrl = hero_bg?.url ? getStrapiMedia(hero_bg.url) : "";
-  const isVideo =
-    !!hero_bg?.url &&
-    (hero_bg.url.endsWith(".mp4") ||
-      hero_bg.url.endsWith(".webm") ||
-      hero_bg.url.endsWith(".mov"));
+  const {
+    title,
+    heading,
+    description,
+    hero_bg,
+    cta
+  } = hero || {};
 
+    const mediaUrl = hero_bg?.url ? getStrapiMedia(hero_bg.url) : "https://placehold.co/1280x720";
+    const isVideo =
+      !!hero_bg?.url &&
+      (hero_bg.url.endsWith(".mp4") ||
+        hero_bg.url.endsWith(".webm") ||
+        hero_bg.url.endsWith(".mov"));
   return (
-    <div className="w-wrapper mx-auto pt-30 flex flex-col md:flex-row gap-3 md:gap-20 justify-between items-stretch px-4 md:px-6 md:min-h-[800px]">
+    <div className="w-wrapper mx-auto py-10 pt-30 md:py-30 flex flex-col md:flex-row gap-3 md:gap-5 justify-between items-stretch px-4 md:px-6 md:min-h-[900px]">
       {/* Left */}
       <div className="flex flex-col justify-between gap-4 md:gap-6 w-full md:w-1/2 bg-[#F0FDF4] rounded-4xl py-5 md:py-10 px-6">
         <div className="flex flex-col gap-5">
@@ -30,33 +43,29 @@ const Header = ({ data }) => {
             {description?.[0]?.children?.[0]?.text ?? ""}
           </p>
         </div>
-        <div className="flex gap-4 md:gap-[93px] flex-wrap">
-          {stats.length
-            ? stats.map((item, index) => (
-                <div key={index} className="flex flex-col items-start gap-2">
-                  <h3 className="text-[20px] sm:text-[24px] leading-[26px] sm:leading-[30px] md:text-[56px] md:leading-16 text-primary font-sequel-normal font-normal tracking-tighter">
-                    {item?.stat_number}
-                  </h3>
-                  <p className="text-xs sm:text-sm leading-5 text-primary font-lato font-medium">
-                    {item?.stat_desc}
-                  </p>
-                </div>
-              ))
-            : null}
-        </div>
 
-        <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
-          <Button
-            size="lg"
-            className="w-full rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer"
+        <div className="flex items-center justify-center gap-4 mt-4 md:mt-7.5 mb-0">
+          {cta && cta[0]?.cta_btn_text !== "" && (
+          <a
+            href={cta[0]?.cta_btn_url ?? "#"}
+            className="flex-1/2 rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-center text-white cursor-pointer"
           >
-            {cta?.cta_btn_text ?? "Start"}
-          </Button>
+            {cta[0]?.cta_btn_text ?? "Start"}
+          </a>
+          )}
+          {cta && cta[1]?.cta_btn_text !== "" && (
+          <a
+            href={cta[1]?.cta_btn_url ?? "#"}
+            className="flex-1/2 rounded-full bg-transparent text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-center text-primary cursor-pointer border-primary border-1"
+          >
+            {cta[1]?.cta_btn_text ?? "Start"}
+          </a>
+          )}
         </div>
       </div>
 
       {/* Right */}
-      <div className="w-full md:w-1/2 mt-8 md:mt-0 flex">
+      <div className="w-full md:w-1/2 mt-8 md:mt-0 flex h-[400px] md:h-auto">
         <div className="relative w-full h-full rounded-4xl overflow-hidden">
           {isVideo ? (
             <video
@@ -68,7 +77,7 @@ const Header = ({ data }) => {
             >
               {mediaUrl ? (
                 <source
-                  src={mediaUrl}
+                  src={mediaUrl ?? 'https://placehold.co/1280x720'}
                   type={`video/${mediaUrl.split(".").pop()}`}
                 />
               ) : null}
@@ -76,18 +85,19 @@ const Header = ({ data }) => {
             </video>
           ) : (
             <Image
-              src={mediaUrl}
+              src={mediaUrl ?? 'https://placehold.co/1280x720'}
               alt="Hero Image"
               fill
               className="object-cover"
               sizes="(min-width: 768px) 50vw, 100vw"
               priority
+              unoptimized={true}
             />
           )}
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Header;
+export default AboutAdinoCaptialHero;
