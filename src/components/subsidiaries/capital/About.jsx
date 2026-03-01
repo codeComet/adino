@@ -76,12 +76,12 @@ const About = ({ data }) => {
 
       <div>
         <a
-          href={cta_btn?.cta_btn_url}
+          href={cta_btn?.[0]?.cta_btn_url || "#"}
           target="_blank"
           rel="noopener noreferrer"
           className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
         >
-          {cta_btn?.cta_btn_text}
+          {cta_btn?.[0]?.cta_btn_text || "Learn More"}
         </a>
       </div>
     </div>

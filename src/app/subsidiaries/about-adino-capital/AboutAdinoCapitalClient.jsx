@@ -13,8 +13,6 @@ import AboutCaptialTeam from "@/components/subsidiaries/capital/about/AboutCapti
 const AboutAdinoCapitalClient = () => {
   const { data: aboutAdinoCapitalData } = useAboutAdinoCapitalPageData();
 
-  console.log(aboutAdinoCapitalData);
-
   return (
     <>
         <AboutAdinoCaptialHero hero={aboutAdinoCapitalData?.data?.hero || {}} />
