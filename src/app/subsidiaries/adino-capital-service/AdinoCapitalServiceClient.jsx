@@ -16,8 +16,6 @@ import AdinoCapitalSustainibility from "@/components/subsidiaries/capital/servic
 const AdinoCapitalServiceClient = () => {
   const { data: aboutAdinoCapitalServiceData } = useAdinoCapitalServicePageData();
 
-  console.log(aboutAdinoCapitalServiceData);  
-
   return (
     <>
       <AdinoCapitalServiceHero
