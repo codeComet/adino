@@ -29,7 +29,7 @@ const AboutCapitalMissionVision = ({ missionVisionData }) => {
               alt={vision?.title || ""}
               width={100}
               height={100}
-              className="w-12 h-12 rounded-full"
+              className="w-12 h-12"
             />
           </div>
           <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[48px] tracking-tighter text-[#0C0C0D] max-w-[460px]">
@@ -51,7 +51,7 @@ const AboutCapitalMissionVision = ({ missionVisionData }) => {
               alt={mission?.title || ""}
               width={100}
               height={100}
-              className="w-12 h-12 rounded-full"
+              className="w-12 h-12"
             />
           </div>
           <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[48px] tracking-tighter text-[#0C0C0D] max-w-[460px]">
