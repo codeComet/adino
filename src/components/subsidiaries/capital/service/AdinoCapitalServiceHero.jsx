@@ -2,7 +2,7 @@ import React from 'react'
 import { getStrapiMedia } from "@/lib/utils";
 import Image from 'next/image';
 
-const AboutAdinoCaptialHero = ({ hero }) => {
+const AdinoCapitalServiceHero = ({ hero }) => {
     if (!hero) {
       return (
         <div className="min-h-screen flex items-center justify-center px-6 bg relative">
@@ -28,7 +28,7 @@ const AboutAdinoCaptialHero = ({ hero }) => {
   return (
     <div className="w-wrapper mx-auto py-10 pt-30 md:py-30 flex flex-col md:flex-row gap-3 md:gap-5 justify-between items-stretch px-4 md:px-6 md:min-h-[900px]">
       {/* Left */}
-      <div className="flex flex-col justify-between gap-4 md:gap-6 w-full md:w-1/2 bg-[#F0FDF4] rounded-4xl py-5 md:py-10 px-6">
+      <div className="flex flex-col justify-between gap-4 md:gap-6 w-full md:w-1/2 bg-[#054F3012] rounded-4xl py-5 md:py-10 px-6">
         <div className="flex flex-col gap-5">
           <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
             {title}
@@ -44,22 +44,14 @@ const AboutAdinoCaptialHero = ({ hero }) => {
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mt-4 md:mt-7.5 mb-0">
+        <div className="flex items-center justify-start gap-4 mt-4 md:mt-7.5 mb-0">
           {cta && cta[0]?.cta_btn_text !== "" && (
-          <a
-            href={cta[0]?.cta_btn_url ?? "#"}
-            className="flex-1/2 rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-center text-white cursor-pointer"
-          >
-            {cta[0]?.cta_btn_text ?? "Start"}
-          </a>
-          )}
-          {cta && cta[1]?.cta_btn_text !== "" && (
-          <a
-            href={cta[1]?.cta_btn_url ?? "#"}
-            className="flex-1/2 rounded-full bg-transparent text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-center text-primary cursor-pointer border-primary border-1"
-          >
-            {cta[1]?.cta_btn_text ?? "Start"}
-          </a>
+            <a
+              href={cta[0]?.cta_btn_url ?? "#"}
+              className="w-full md:w-[300px] rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-center text-white cursor-pointer"
+            >
+              {cta[0]?.cta_btn_text ?? "Start"}
+            </a>
           )}
         </div>
       </div>
@@ -77,7 +69,7 @@ const AboutAdinoCaptialHero = ({ hero }) => {
             >
               {mediaUrl ? (
                 <source
-                  src={mediaUrl ?? 'https://placehold.co/1280x720'}
+                  src={mediaUrl ?? "https://placehold.co/1280x720"}
                   type={`video/${mediaUrl.split(".").pop()}`}
                 />
               ) : null}
@@ -85,12 +77,13 @@ const AboutAdinoCaptialHero = ({ hero }) => {
             </video>
           ) : (
             <Image
-              src={mediaUrl ?? 'https://placehold.co/1280x720'}
+              src={mediaUrl ?? "https://placehold.co/1280x720"}
               alt="Hero Image"
               fill
               className="object-cover"
               sizes="(min-width: 768px) 50vw, 100vw"
               priority
+
             />
           )}
         </div>
@@ -99,4 +92,4 @@ const AboutAdinoCaptialHero = ({ hero }) => {
   );
 }
 
-export default AboutAdinoCaptialHero;
+export default AdinoCapitalServiceHero;
