@@ -11,7 +11,6 @@ const AdinoCapitalSustainibility = ({ sustainabilityValues }) => {
     );
   }
 
-  console.log(sustainabilityValues);
 
   const {
     sustainibilityHeading,
@@ -20,7 +19,6 @@ const AdinoCapitalSustainibility = ({ sustainabilityValues }) => {
     sustainibilityDesc,
   } = sustainabilityValues || {};
 
-  console.log(sustainibilityHeading);
 
   const mediaUrl = sustainibilityImage?.url
     ? getStrapiMedia(sustainibilityImage.url)

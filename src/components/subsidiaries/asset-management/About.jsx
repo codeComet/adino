@@ -25,9 +25,9 @@ const About = ({ data }) => {
               href={cta_btn?.cta_btn_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
-              {cta_btn?.cta_btn_text}
+              {cta_btn[0]?.cta_btn_text}
             </a>
           </div>
         </div>
