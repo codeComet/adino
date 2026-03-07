@@ -79,7 +79,6 @@ const AboutTeams = () => {
                   <a
                     key={link.id}
                     href={link?.icon_url}
-                    target="_blank"
                     rel="noreferrer"
                     className="cursor-pointer"
                   >

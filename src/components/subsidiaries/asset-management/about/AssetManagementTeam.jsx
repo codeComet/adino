@@ -55,7 +55,6 @@ const AssetManagementTeam = ({ teamData }) => {
                 <a
                   key={link.id}
                   href={link.icon_url || "#"}
-                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:opacity-70 transition-opacity"
                 >

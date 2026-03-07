@@ -40,7 +40,6 @@ const Services = ({ data }) => {
                 <div className="flex gap-2.5 items-center">
                   <Link
                     href={item?.url || ""}
-                    target="_blank"
                     rel="noreferrer"
                     className="text-sm sm:text-base hover:underline"
                   >
