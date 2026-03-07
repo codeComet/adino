@@ -6,6 +6,7 @@ import AssetManagementServiceSection from "@/components/subsidiaries/asset-manag
 import AssetMangementServicePortfolio from "@/components/subsidiaries/asset-management/service/AssetMangementServicePortfolio";
 import AssetManagementServiceNdSection from "@/components/subsidiaries/asset-management/service/AssetManagementServiceNdSection";
 import AssetManagementServiceInvestment from "@/components/subsidiaries/asset-management/service/AssetManagementServiceInvestment";
+import SubsidiaryNewsletter from "@/components/generic/SubsidiaryNewsletter";
 
 
 
@@ -44,6 +45,7 @@ const AssetManagementClient = () => {
       <AssetMangementServicePortfolio portfolioData={assetManagementService?.data} />
       <AssetManagementServiceNdSection ndSection={assetManagementService?.data} />
       <AssetManagementServiceInvestment investmentData={assetManagementService?.data} />
+      <SubsidiaryNewsletter/>
     </>
   );
 };
