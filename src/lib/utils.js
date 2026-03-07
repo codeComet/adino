@@ -46,3 +46,23 @@ export async function fetchStrapi(pathWithQuery) {
   const data = await res.json();
   return data;
 }
+
+ export const renderDescription = (text) => {
+    if (!text) return null;
+
+    // Replace <br/> with a placeholder to split, handling potential variations
+    const parts = text.split(/<br\s*\/?>|\n\n/);
+
+    return parts.map((part, index) => {
+      const trimmed = part.trim();
+      if (!trimmed) return null;
+      return (
+        <p
+          key={index}
+          className="font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0"
+        >
+          {trimmed}
+        </p>
+      );
+    });
+  };

@@ -4,8 +4,6 @@ import { getStrapiMedia } from "@/lib/utils";
 const About = ({ data }) => {
   const { title, heading, description_1, image_1, image_2, stats, cta_btn } = data;
 
-  console.log(cta_btn)
-
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:py-[104px] px-4 md:px-0">
       <div className="flex gap-5 items-center mb-[40px] md:mb-[72px]">
@@ -25,7 +23,6 @@ const About = ({ data }) => {
           <div className="mt-15">
             <a
               href={cta_btn[0]?.cta_btn_url}
-              target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
