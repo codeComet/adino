@@ -16,25 +16,25 @@ const Header = ({ data }) => {
           className="font-sequel-normal text-[28px] sm:text-[32px] text-[#181818] md:text-[64px] leading-[1.2] md:leading-[76px] tracking-tighter"
           dangerouslySetInnerHTML={{ __html: heading }}
         />
-        <p className="text-[#666666] text-sm sm:text-base md:text-[20px] leading-[24px] sm:leading-[26px] md:leading-[30px] max-w-[100%] md:max-w-[778px] font-lato font-medium">
+        <p className="text-[#666666] text-sm sm:text-base md:text-[20px] leading-[24px] sm:leading-[26px] md:leading-[30px] max-w-full md:max-w-[778px] font-lato font-medium">
           {description?.[0]?.children?.[0]?.text}
         </p>
         <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
-          <Button
+          <a
+            href={cta[0]?.cta_btn_url}
+            rel="noopener noreferrer"
             size="lg"
-            className="rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer"
+            className="rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer flex items-center gap-2"
           >
-            {cta?.cta_btn_text}{" "}
-            <span className="ml-2">
-              <Image
-                src={RightArrow}
-                alt="down arrow"
-                width={20}
-                height={20}
-                className="md:w-6 md:h-6"
-              />
-            </span>
-          </Button>
+            {cta[0]?.cta_btn_text}
+            <Image
+              src={RightArrow}
+              alt="down arrow"
+              width={20}
+              height={20}
+              className="md:w-6 md:h-6"
+            />
+          </a>
         </div>
         <div className="flex gap-4 md:gap-[93px] flex-wrap">
           {stats.length !== 0
