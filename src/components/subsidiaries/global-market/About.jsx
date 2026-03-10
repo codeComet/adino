@@ -13,7 +13,6 @@ const About = ({ data }) => {
     cta_btn,
   } = data;
 
-  console.log(data);
   return (
     <div className="w-wrapper mx-auto flex flex-col md:flex-row gap-8 md:gap-20 justify-between pb-[52px] md:pb-[104px] px-4 md:px-0">
       <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">

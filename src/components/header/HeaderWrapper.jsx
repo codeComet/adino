@@ -8,7 +8,8 @@ export default function HeaderWrapper() {
   const pathname = usePathname();
   return pathname === "/" ||
     pathname === "/subsidiaries/adino-partners" ||
-    pathname === "/subsidiaries/asset-management" ? (
+    pathname === "/subsidiaries/asset-management" ||
+    pathname === "/subsidiaries/about-adino-partners" ? (
     <HomeHeader />
   ) : (
     <CommonHeader />

@@ -47,22 +47,84 @@ export async function fetchStrapi(pathWithQuery) {
   return data;
 }
 
- export const renderDescription = (text) => {
-    if (!text) return null;
+export const renderDescription = (text) => {
+  if (!text) return null;
 
-    // Replace <br/> with a placeholder to split, handling potential variations
-    const parts = text.split(/<br\s*\/?>|\n\n/);
+  // Replace <br/> with a placeholder to split, handling potential variations
+  const parts = text.split(/<br\s*\/?>|\n\n/);
 
-    return parts.map((part, index) => {
-      const trimmed = part.trim();
-      if (!trimmed) return null;
+  return parts.map((part, index) => {
+    const trimmed = part.trim();
+    if (!trimmed) return null;
+    return (
+      <p
+        key={index}
+        className="font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0"
+      >
+        {trimmed}
+      </p>
+    );
+  });
+};
+
+export const renderDescriptionFromEditor = (arr, options = {}) => {
+  if (!arr?.length) return null;
+
+  const { pClassName, liClassName, listClassName, olClassName, ulClassName } =
+    options;
+
+  const getNodeText = (node) => {
+    if (!node) return "";
+    if (typeof node.text === "string") return node.text;
+    if (Array.isArray(node.children))
+      return node.children.map(getNodeText).join("");
+    return "";
+  };
+
+  const basePClassName =
+    "font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0";
+  const baseLiClassName =
+    "font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666]";
+  const baseListClassName = "pl-5 mb-6 last:mb-0";
+
+  return arr.map((item, index) => {
+    if (item?.type === "paragraph") {
       return (
-        <p
-          key={index}
-          className="font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0"
-        >
-          {trimmed}
+        <p key={index} className={cn(basePClassName, pClassName)}>
+          {Array.isArray(item.children)
+            ? item.children.map(getNodeText).join("")
+            : ""}
         </p>
       );
-    });
-  };
+    }
+
+    if (item?.type === "list") {
+      const isOrdered = item.format === "ordered";
+      const ListTag = isOrdered ? "ol" : "ul";
+
+      return (
+        <ListTag
+          key={index}
+          className={cn(
+            baseListClassName,
+            isOrdered ? "list-decimal" : "list-disc",
+            listClassName,
+            isOrdered ? olClassName : ulClassName,
+          )}
+        >
+          {Array.isArray(item.children)
+            ? item.children.map((listItem, liIndex) => (
+                <li key={liIndex} className={cn(baseLiClassName, liClassName)}>
+                  {Array.isArray(listItem?.children)
+                    ? listItem.children.map(getNodeText).join("")
+                    : ""}
+                </li>
+              ))
+            : null}
+        </ListTag>
+      );
+    }
+
+    return null;
+  });
+};
