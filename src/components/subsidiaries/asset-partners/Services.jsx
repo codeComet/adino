@@ -3,8 +3,7 @@ import { getStrapiMedia } from "@/lib/utils";
 
 const Services = ({ data }) => {
   const { title, heading, services, image, cta } = data;
-
-  console.log(cta)
+  
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:pt-[104px] px-4 md:px-0 flex flex-col md:flex-row gap-12 md:gap-24">
       <div className="w-full md:w-1/2 h-full flex flex-col gap-8 md:gap-16">

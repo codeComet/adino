@@ -48,13 +48,21 @@ const Header = ({ data }) => {
           </p>
         </div>
         <div className="mt-4 sm:mt-6 flex gap-8">
-          <Button className="w-full sm:w-auto rounded-full font-lato font-normal text-sm sm:text-base leading-6 sm:leading-7 bg-[#AD9056] text-white cursor-pointer hover:text-white py-3 sm:py-5 px-6 sm:px-8">
+          <a
+            href={hero_cta?.cta_btn_url || "#"}
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto rounded-full font-lato font-normal text-sm sm:text-base leading-6 sm:leading-7 bg-[#AD9056] text-white cursor-pointer hover:text-white py-2 sm:py-3 px-6 sm:px-8"
+          >
             {hero_cta?.cta_btn_text}{" "}
-          </Button>
+          </a>
 
-          <Button className="w-full sm:w-auto rounded-full font-lato font-normal text-sm sm:text-base leading-6 sm:leading-7 bg-transparent border-2 border-white text-white cursor-pointer hover:text-white py-3 sm:py-5 px-6 sm:px-8">
+          <a
+            href={hero_cta_2?.cta_btn_url || "#"}
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto rounded-full font-lato font-normal text-sm sm:text-base leading-6 sm:leading-7 bg-transparent border-2 border-white text-white cursor-pointer hover:text-white py-2 sm:py-3 px-6 sm:px-8"
+          >
             {hero_cta_2?.cta_btn_text}{" "}
-          </Button>
+          </a>
         </div>
       </div>
    
