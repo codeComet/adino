@@ -51,7 +51,7 @@ const Newsletter = () => {
             />
             <button
               type="submit"
-              className="w-full bg-[#166636] hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               Submit
             </button>

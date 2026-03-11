@@ -25,15 +25,24 @@ const query = qs.stringify(
       },
     },
   },
-  { encodeValuesOnly: true }
+  { encodeValuesOnly: true },
 );
 
 const getTestimonials = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subsidiary-testimonial?${query}`
-  );
-  const data = await res.json();
-  return data;
+  const res = await fetch(`/api/strapi/subsidiary-testimonial?${query}`);
+  if (!res.ok) {
+    return {
+      data: { testimonials: { title: "", heading: "", testimonials: [] } },
+    };
+  }
+
+  try {
+    return await res.json();
+  } catch {
+    return {
+      data: { testimonials: { title: "", heading: "", testimonials: [] } },
+    };
+  }
 };
 
 const TestimonialSlider = ({ showHeading = true }) => {
@@ -57,14 +66,12 @@ const TestimonialSlider = ({ showHeading = true }) => {
   }
 
   if (isError) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
-        <p>Something went wrong. Please try again later.</p>
-      </div>
-    );
+    return null;
   }
 
-  const { testimonials, title, heading } = testimonial?.data?.testimonials;
+  const title = testimonial?.data?.testimonials?.title;
+  const heading = testimonial?.data?.testimonials?.heading;
+  const testimonials = testimonial?.data?.testimonials?.testimonials || [];
 
   return (
     <div className="w-wrapper mx-auto py-12 sm:py-16 md:py-20 lg:py-[104px]">
