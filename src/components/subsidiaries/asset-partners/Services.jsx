@@ -3,6 +3,8 @@ import { getStrapiMedia } from "@/lib/utils";
 
 const Services = ({ data }) => {
   const { title, heading, services, image, cta } = data;
+
+  console.log(cta)
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:pt-[104px] px-4 md:px-0 flex flex-col md:flex-row gap-12 md:gap-24">
       <div className="w-full md:w-1/2 h-full flex flex-col gap-8 md:gap-16">
@@ -21,7 +23,7 @@ const Services = ({ data }) => {
             ? services.map((item, index) => (
                 <div key={index}>
                   <div className="flex gap-3 md:gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <span className="font-sequel-normal font-normal text-base md:text-2xl leading-6 md:leading-16 text-white mr-1.5 sm:mr-2.5 w-[32px] h-[32px] md:w-[42px] md:h-[42px] rounded-full flex items-center justify-center bg-primary">
                         {index + 1}
                       </span>
@@ -42,11 +44,11 @@ const Services = ({ data }) => {
 
         <div className="mt-15">
           <a
-            href={cta?.cta_btn_url}
+            href={cta.cta_btn_url}
             rel="noopener noreferrer"
             className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
-            {cta?.cta_btn_text}
+            {cta.cta_btn_text}
           </a>
         </div>
       </div>

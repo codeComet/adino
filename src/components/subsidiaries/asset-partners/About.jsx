@@ -57,11 +57,11 @@ const About = ({ data }) => {
 
           <div className="mt-15">
             <a
-              href={cta_btn?.cta_btn_url}
+              href={cta_btn[0]?.cta_btn_url}
               rel="noopener noreferrer"
               className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
-              {cta_btn?.cta_btn_text}
+              {cta_btn[0]?.cta_btn_text}
             </a>
           </div>
         </div>
