@@ -1,5 +1,4 @@
 import qs from "qs";
-import { getStrapiRequestUrl } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -18,16 +17,16 @@ const query = qs.stringify(
       "sections.newsCta",
       "sections.newCta",
       "sections.button",
-      "sections.button"
+      "sections.button",
     ],
   },
   { encodeValuesOnly: true },
 );
 
 export const getHomePageData = async () => {
-  const res = await fetch(getStrapiRequestUrl(`/api/home-page?${query}`));
-  if (!res.ok) {
-    throw new Error(`Failed to fetch home page (${res.status})`);
-  }
-  return res.json();
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${query}`,
+  );
+  const data = await res.json();
+  return data;
 };

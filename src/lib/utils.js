@@ -41,28 +41,8 @@ export function getStrapiMedia(input) {
 
 export const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
-export const getStrapiRequestUrl = (pathWithQuery) => {
-  const normalizedPath =
-    typeof pathWithQuery === "string" && pathWithQuery.startsWith("/")
-      ? pathWithQuery
-      : `/${pathWithQuery || ""}`;
-
-  if (typeof window === "undefined") {
-    const base =
-      process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "";
-    const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
-    return `${normalizedBase}${normalizedPath}`;
-  }
-
-  if (normalizedPath.startsWith("/api/")) {
-    return `/api/strapi${normalizedPath.slice(4)}`;
-  }
-
-  return `/api/strapi${normalizedPath}`;
-};
-
 export async function fetchStrapi(pathWithQuery) {
-  const res = await fetch(getStrapiRequestUrl(pathWithQuery));
+  const res = await fetch(`${STRAPI_BASE_URL}${pathWithQuery}`);
   const data = await res.json();
   return data;
 }
