@@ -9,7 +9,8 @@ export default function HeaderWrapper() {
   return pathname === "/" ||
     pathname === "/subsidiaries/adino-partners" ||
     pathname === "/subsidiaries/asset-management" ||
-    pathname === "/subsidiaries/about-adino-partners" ? (
+    pathname === "/subsidiaries/about-adino-partners" ||
+    pathname === "/subsidiaries/adino-partners-service" ? (
     <HomeHeader />
   ) : (
     <CommonHeader />
