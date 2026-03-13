@@ -16,7 +16,7 @@ const AdinoPartnersServiceIndustry = ({ industryData }) => {
   return (
     <div className="w-wrapper mx-auto py-10 md:py-20 px-4 md:px-0">
       <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-        <div className="flex flex-col gap-4">
+        <div className="flex-1 flex flex-col gap-4">
           <h2 className="font-sequel-normal text-[#181818] text-3xl leading-12 md:text-5xl md:leading-15 tracking-tighter">
             {title || ""}
           </h2>
@@ -25,7 +25,7 @@ const AdinoPartnersServiceIndustry = ({ industryData }) => {
           </p>
         </div>
 
-        <div>
+        <div className="flex-1">
           <div className="flex-1 w-full">
             <div className="relative w-full rounded-2xl overflow-hidden">
               <Image
@@ -37,6 +37,7 @@ const AdinoPartnersServiceIndustry = ({ industryData }) => {
                 height={650}
                 className="w-full h-auto object-cover"
                 priority
+                unoptimized
               />
             </div>
           </div>
