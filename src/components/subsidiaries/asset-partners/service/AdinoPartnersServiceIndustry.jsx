@@ -37,7 +37,6 @@ const AdinoPartnersServiceIndustry = ({ industryData }) => {
                 height={650}
                 className="w-full h-auto object-cover"
                 priority
-                unoptimized
               />
             </div>
           </div>

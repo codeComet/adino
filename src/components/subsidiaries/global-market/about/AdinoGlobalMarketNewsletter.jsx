@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-const AdinoPartnersServiceNewsletter = () => {
+const AdinoGlobalMarketNewsletter = () => {
   return (
-    <section className="bg-[#EDF3F1] py-12 sm:py-16 md:py-20 lg:py-[104px]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-[104px]">
       <div className="w-wrapper mx-auto px-4 md:px-0">
         <div className="relative overflow-hidden rounded-[28px] bg-primary px-6 py-14 sm:px-10 md:px-16 lg:py-[88px] flex flex-col items-center text-center">
           <svg
@@ -58,18 +58,18 @@ const AdinoPartnersServiceNewsletter = () => {
 
           <div className="relative z-10 max-w-3xl">
             <h2 className="font-sequel-normal text-white text-[28px] sm:text-4xl md:text-5xl leading-[1.15] tracking-tighter">
-              Ready to Get Started?
+              Let’s Build Your Financial <br /> Future Together
             </h2>
             <p className="mt-4 font-lato font-normal text-white/90 text-sm sm:text-base md:text-lg leading-6 sm:leading-7">
-              Let&apos;s discuss how our comprehensive financial solutions can
-              help you achieve your goals.
+              We combine innovation, deep market insights, and strategic
+              investments to help you achieve your financial goals.
             </p>
             <div className="mt-8 flex justify-center">
               <Link
                 href="/contact"
                 className="bg-white text-primary font-lato font-medium rounded-full px-6 py-3 text-sm sm:text-base hover:bg-white/95 transition-colors"
               >
-                Contact our Team
+                Contact Us
               </Link>
             </div>
           </div>
@@ -79,4 +79,4 @@ const AdinoPartnersServiceNewsletter = () => {
   );
 };
 
-export default AdinoPartnersServiceNewsletter;
+export default AdinoGlobalMarketNewsletter; 
