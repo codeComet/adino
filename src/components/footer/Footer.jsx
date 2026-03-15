@@ -23,15 +23,15 @@ const query = qs.stringify(
 );
 
 const getFooterData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/footer?${query}`
-  );
-  const data = await res.json();
-  return data;
+  const res = await fetch(`/api/footer?${query}`);
+  if (!res.ok) {
+    throw new Error(`Failed to load footer (${res.status})`);
+  }
+  return res.json();
 };
 
 export default function Footer() {
-    const { data: footerData, isLoading } = useQuery({
+    const { data: footerData, isLoading, isError } = useQuery({
       queryKey: ['footer'],
       queryFn: getFooterData,
       staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
@@ -42,6 +42,14 @@ export default function Footer() {
       return (
         <div className="min-h-screen flex items-center justify-center px-6 bg relative">
           <p>Loading...</p>
+        </div>
+      );
+    }
+
+    if (isError || !footerData?.data?.footer) {
+      return (
+        <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+          <p>Something went wrong. Please try again later.</p>
         </div>
       );
     }

@@ -54,6 +54,7 @@ const AdinoGlobalMarketAboutHero = ({ heroData }) => {
             sizes="(min-width: 768px) 380px, 250px"
             className="object-contain"
             priority
+            unoptimized
           />
         </div>
       </div>
