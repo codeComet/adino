@@ -4,6 +4,7 @@ import ExecutiveManagementHeader from "@/components/subsidiaries/global-market/e
 import ManagementTeam from "@/components/subsidiaries/global-market/executive-management/ManagementTeam"
 import SubsidiaryNewsletter from "@/components/generic/SubsidiaryNewsletter";
 import { getAdinoExecutiveManagementData } from "@/lib/subsidiary/adinoExecutiveManagement";
+import AdinoGlobalMarketNewsletter from "@/components/subsidiaries/global-market/about/AdinoGlobalMarketNewsletter";
 
 const AdinoExecutiveManagementClient = () => {
   const {
@@ -37,6 +38,7 @@ const AdinoExecutiveManagementClient = () => {
     <>
       <ExecutiveManagementHeader data={adinoExecutiveManagement?.data || {}} />
       <ManagementTeam teamData={adinoExecutiveManagement?.data?.managementTeam || []} />
+      <AdinoGlobalMarketNewsletter/>
     </>
   );
 };

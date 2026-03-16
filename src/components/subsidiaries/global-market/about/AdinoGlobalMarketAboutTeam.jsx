@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { getStrapiMedia } from "@/lib/utils";
+import RightArrow from "../../../../../public/assets/img/arrow-right.svg";
 
 const RichTextRenderer = ({ content }) => {
   if (!content) return null;
@@ -76,12 +77,30 @@ const AdinoGlobalMarketAboutTeam = ({ teamData }) => {
               </span>
             </div>
 
-            <h2 className="w-full md:w-[60%] text-3xl md:text-5xl font-sequel-normal font-normal text-[#191919] leading-tight tracking-tight">
+            <h2 className="w-full md:w-[60%] text-3xl md:text-5xl font-sequel-normal font-normal text-[#191919] leading-tight tracking-tighter">
               {teamHeading}
             </h2>
 
             <div className="mt-2">
               <RichTextRenderer content={teamDescription} />
+            </div>
+
+            <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
+              <a
+                href="/subsidiaries/adino-executive-management"
+                rel="noopener noreferrer"
+                size="lg"
+                className="rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer flex items-center gap-2"
+              >
+                Executive Management
+                <Image
+                  src={RightArrow}
+                  alt="down arrow"
+                  width={20}
+                  height={20}
+                  className="md:w-6 md:h-6"
+                />
+              </a>
             </div>
           </div>
 
