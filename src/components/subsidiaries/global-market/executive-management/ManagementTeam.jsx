@@ -36,7 +36,6 @@ const ManagementTeam = ({ teamData }) => {
                     alt={alt}
                     fill
                     className="object-cover"
-                    unoptimized
                   />
                 ) : null}
               </div>
