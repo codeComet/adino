@@ -33,8 +33,6 @@ const AdinoExecutiveManagementClient = () => {
     );
   }
 
-  console.log(adinoExecutiveManagement);
-
   return (
     <>
       <ExecutiveManagementHeader data={adinoExecutiveManagement?.data || {}} />
