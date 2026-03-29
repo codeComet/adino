@@ -1,6 +1,10 @@
 import { getHomePageData } from "@/lib/api/home";
-import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
-import HomeContent from "@/components/home/HomeContent";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import WelcomeContent from "@/components/welcome/WelcomeContent";
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -12,7 +16,7 @@ export default async function Home() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <HomeContent />
+      <WelcomeContent />
     </HydrationBoundary>
   );
 }

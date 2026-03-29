@@ -27,28 +27,7 @@ const AboutValues = () => {
 
   const { title, heading, valueItems } = valuesSection;
 
-  const colors = [
-    {
-      bg: "#2A343F",
-      text: "#fff",
-    },
-    {
-      bg: "#0E382B",
-      text: "#CEFE85",
-    },
-    {
-      bg: "#F0FDF4",
-      text: "#17171A",
-    },
-    {
-      bg: "#1F2020",
-      text: "#ffffff",
-    },
-    {
-      bg: "#2A343F",
-      text: "#ffffff",
-    },
-  ];
+
 
   return (
     <section className="py-16 px-6 lg:py-30 bg-gray-50">
@@ -68,10 +47,9 @@ const AboutValues = () => {
           {valueItems?.map((item, index) => (
             <div
               key={item.id || index}
-              className="p-8 rounded-lg flex flex-col gap-[110px]"
+              className="p-8 rounded-lg flex flex-col gap-[40px]"
               style={{
-                backgroundColor: colors[index].bg,
-                color: colors[index].text,
+                backgroundColor: "#F4F3F2",
               }}
             >
               <div className="flex flex-col gap-4">
@@ -79,15 +57,15 @@ const AboutValues = () => {
                   <Image
                     src={getStrapiMedia(item.image)}
                     alt={item.title}
-                    width={25}
-                    height={25}
+                    width={35}
+                    height={35}
                   />
                 )}
-                <h3 className="font-lato font-medium text-[14px] leading-[100%] uppercase">
+                <h3 className="font-lato font-medium text-base md:text-[20px] text-black leading-[100%] uppercase">
                   {item.title}
                 </h3>
               </div>
-              <p className="font-lato font-normal text-base leading-[25px]">
+              <p className="font-lato font-normal text-base md:text-lg leading-[25px] md:leading-[28px] text-black">
                 {item.description}
               </p>
             </div>

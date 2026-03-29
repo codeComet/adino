@@ -15,36 +15,45 @@ const AdinoGlobalMarketGlobalExcellence = ({ globalExcellenceData }) => {
 
   return (
     <section className="w-wrapper mx-auto py-10 md:py-20 px-4 md:px-0">
-      <div className="flex flex-col md:flex-row items-center md:items-stretch gap-10 md:gap-16">
-        <div className="w-full md:w-1/2 flex items-center justify-center md:justify-start">
-          <div className="flex items-center gap-6 w-full">
-            <div className="relative w-full max-w-[520px] h-[320px] sm:h-[380px] md:h-[520px] rounded-[18px] overflow-hidden">
-              <Image
-                src={getStrapiMedia(icon) || "https://placehold.co/580x780"}
-                alt={title || "Global excellence image"}
-                fill
-                className="object-contain"
-                sizes="(min-width: 768px) 50vw, 100vw"
-                priority
-              />
-            </div>
-          </div>
+      <div className="mb-6 md:mb-10">
+        <h2 className="font-sequel-normal text-[#181818] text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-tighter">
+          Global Excellence
+        </h2>
+        <div className="mt-4 h-px w-full bg-[#BDBDBD]" />
+      </div>
+
+      <div className="relative w-full">
+        <div className="relative w-full h-[340px] sm:h-[420px] md:h-[520px] overflow-hidden bg-[#0B2A16]">
+          <Image
+            src={getStrapiMedia(icon) || "https://placehold.co/1600x900"}
+            alt={title || "Global excellence image"}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
         </div>
 
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <div className="inline-flex items-center justify-center rounded-full bg-[#E9F7EE] px-4 py-1 w-fit">
-            <p className="font-lato font-medium text-xs leading-5 text-primary uppercase">
-              Global Excellence
-            </p>
-          </div>
-
-          <h2 className="w-full md:w-[80%] mt-4 md:mt-5 mb-5 font-sequel-normal text-[#181818] text-3xl sm:text-4xl md:text-5xl leading-[1.15] tracking-tighter max-w-[560px]">
+        <div className="relative mt-5 md:mt-0 md:absolute md:right-[33px] md:top-[43px] w-full md:w-[420px] lg:w-[480px] md:h-[520px] bg-[#B79A57] text-white flex flex-col justify-center px-6 sm:px-10 py-10 md:py-12">
+          <h3 className="font-sequel-normal text-3xl sm:text-4xl md:text-[44px] leading-[1.05] tracking-tighter">
             {title || ""}
-          </h2>
+          </h3>
 
-          <div className="max-w-[620px] text-[#666666] text-base md:text-lg leading-[25px] md:leading-[30px] font-lato font-medium">
+          <p className="mt-4 font-lato font-medium text-base md:text-lg leading-[24px] md:leading-[30px] text-white/90">
             {description || ""}
-          </div>
+          </p>
+
+          <a
+            href="#"
+            className="mt-8 inline-flex w-fit items-center justify-center border border-white/70 px-8 py-3 text-sm md:text-base font-lato font-medium text-white hover:bg-white/10 transition-colors"
+          >
+            Learn More
+          </a>
+
+          <div
+            className="hidden md:block absolute left-0 bottom-0 w-[40px] h-[40px] bg-white"
+            style={{ clipPath: "polygon(0 0, 0 101%, 100% 101%)" }}
+          />
         </div>
       </div>
     </section>

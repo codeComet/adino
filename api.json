@@ -1,0 +1,370 @@
+{
+    "id": 2,
+    "documentId": "iwqp824u9rshcue4kfj9vid2",
+    "title": "Welcome to Adino Group",
+    "heading": "At Adino Group, we believe wealth is built with intention, guided by expertise, and sustained across generations.",
+    "description": [
+        {
+            "type": "heading",
+            "children": [
+                {
+                    "type": "text",
+                    "text": "OUR VISON",
+                    "bold": true
+                }
+            ],
+            "level": 5
+        },
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "text": "To create assets, optimize liabilities, and maximize wealth"
+                }
+            ]
+        },
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "text": "This vision shapes everything we do—and every solution we deliver for our clients.",
+                    "italic": true
+                }
+            ]
+        }
+    ],
+    "approachTitle": "Our approach is built on four integral pillars:",
+    "approachDescription": [
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "text": "At Adino Group, we are not just solving today’s financial challenges—we are building enduring value for the future.",
+                    "italic": true
+                }
+            ]
+        }
+    ],
+    "createdAt": "2026-03-29T12:06:51.124Z",
+    "updatedAt": "2026-03-29T12:06:51.124Z",
+    "publishedAt": "2026-03-29T12:06:51.131Z",
+    "pageLogo": {
+        "id": 164,
+        "documentId": "j1f7443wyp551pt6e69vsif3",
+        "name": "adino single logo.png",
+        "alternativeText": null,
+        "caption": null,
+        "width": 890,
+        "height": 892,
+        "formats": {
+            "thumbnail": {
+                "name": "thumbnail_adino single logo.png",
+                "hash": "thumbnail_adino_single_logo_e9877205dc",
+                "ext": ".png",
+                "mime": "image/png",
+                "path": null,
+                "width": 156,
+                "height": 156,
+                "size": 13.91,
+                "sizeInBytes": 13905,
+                "url": "/uploads/thumbnail_adino_single_logo_e9877205dc.png"
+            },
+            "small": {
+                "name": "small_adino single logo.png",
+                "hash": "small_adino_single_logo_e9877205dc",
+                "ext": ".png",
+                "mime": "image/png",
+                "path": null,
+                "width": 499,
+                "height": 500,
+                "size": 72.34,
+                "sizeInBytes": 72336,
+                "url": "/uploads/small_adino_single_logo_e9877205dc.png"
+            },
+            "medium": {
+                "name": "medium_adino single logo.png",
+                "hash": "medium_adino_single_logo_e9877205dc",
+                "ext": ".png",
+                "mime": "image/png",
+                "path": null,
+                "width": 748,
+                "height": 750,
+                "size": 139.95,
+                "sizeInBytes": 139951,
+                "url": "/uploads/medium_adino_single_logo_e9877205dc.png"
+            }
+        },
+        "hash": "adino_single_logo_e9877205dc",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 32.4,
+        "url": "/uploads/adino_single_logo_e9877205dc.png",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2026-03-29T12:02:14.271Z",
+        "updatedAt": "2026-03-29T12:02:14.271Z",
+        "publishedAt": "2026-03-29T12:02:14.272Z",
+        "related": [
+            {
+                "__type": "api::welcome-page.welcome-page",
+                "id": 2,
+                "documentId": "iwqp824u9rshcue4kfj9vid2",
+                "title": "Welcome to Adino Group",
+                "heading": "At Adino Group, we believe wealth is built with intention, guided by expertise, and sustained across generations.",
+                "description": [
+                    {
+                        "type": "heading",
+                        "children": [
+                            {
+                                "type": "text",
+                                "text": "OUR VISON",
+                                "bold": true
+                            }
+                        ],
+                        "level": 5
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "type": "text",
+                                "text": "To create assets, optimize liabilities, and maximize wealth"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "type": "text",
+                                "text": "This vision shapes everything we do—and every solution we deliver for our clients.",
+                                "italic": true
+                            }
+                        ]
+                    }
+                ],
+                "approachTitle": "Our approach is built on four integral pillars:",
+                "approachDescription": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "type": "text",
+                                "text": "At Adino Group, we are not just solving today’s financial challenges—we are building enduring value for the future.",
+                                "italic": true
+                            }
+                        ]
+                    }
+                ],
+                "createdAt": "2026-03-29T12:06:51.124Z",
+                "updatedAt": "2026-03-29T12:06:51.124Z",
+                "publishedAt": "2026-03-29T12:06:51.131Z"
+            }
+        ]
+    },
+    "testimonial": {
+        "id": 177,
+        "name": "Osita Maduagwu",
+        "location_designation": "Chief Marketing Officer",
+        "description": [
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "type": "text",
+                        "text": "Nigeria’s financial landscape presents a clear opportunity: businesses need better access to credit to scale, while investors require more flexible, high-quality avenues to deploy capital effectively and grow wealth. Adino Group was established in 2013 to bridge this gap."
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "type": "text",
+                        "text": "Today, we operate as a diversified financial services group spanning investment holding, markets trading, asset & wealth management, deal structuring, credits, and real estate. Each member of our leadership team brings over 20 years of experience, with backgrounds across leading financial institutions, including GTBank, Ecobank, Access Bank, Standard Chartered, First Bank, and Nova Bank. This wealth of experience, combined with deep market knowledge and disciplined execution, provides us with the cutting edge required to excel in our chosen environment."
+                    }
+                ]
+            }
+        ],
+        "image": {
+            "id": 165,
+            "documentId": "tt3t0y5ezsauv0qarxpr5okp",
+            "name": "e488973786df0b3ea3ed0a776c9ab63e168ad0b9.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1008,
+            "height": 1080,
+            "formats": {
+                "thumbnail": {
+                    "name": "thumbnail_e488973786df0b3ea3ed0a776c9ab63e168ad0b9.jpg",
+                    "hash": "thumbnail_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "path": null,
+                    "width": 146,
+                    "height": 156,
+                    "size": 4.22,
+                    "sizeInBytes": 4219,
+                    "url": "/uploads/thumbnail_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e.jpg"
+                },
+                "large": {
+                    "name": "large_e488973786df0b3ea3ed0a776c9ab63e168ad0b9.jpg",
+                    "hash": "large_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "path": null,
+                    "width": 933,
+                    "height": 1000,
+                    "size": 57.64,
+                    "sizeInBytes": 57642,
+                    "url": "/uploads/large_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e.jpg"
+                },
+                "medium": {
+                    "name": "medium_e488973786df0b3ea3ed0a776c9ab63e168ad0b9.jpg",
+                    "hash": "medium_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "path": null,
+                    "width": 700,
+                    "height": 750,
+                    "size": 38.88,
+                    "sizeInBytes": 38877,
+                    "url": "/uploads/medium_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e.jpg"
+                },
+                "small": {
+                    "name": "small_e488973786df0b3ea3ed0a776c9ab63e168ad0b9.jpg",
+                    "hash": "small_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e",
+                    "ext": ".jpg",
+                    "mime": "image/jpeg",
+                    "path": null,
+                    "width": 467,
+                    "height": 500,
+                    "size": 22,
+                    "sizeInBytes": 21995,
+                    "url": "/uploads/small_e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e.jpg"
+                }
+            },
+            "hash": "e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 58.92,
+            "url": "/uploads/e488973786df0b3ea3ed0a776c9ab63e168ad0b9_6ed4b4fe4e.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2026-03-29T12:03:45.576Z",
+            "updatedAt": "2026-03-29T12:03:45.576Z",
+            "publishedAt": "2026-03-29T12:03:45.576Z"
+        }
+    },
+    "approachItems": [
+        {
+            "id": 367,
+            "title": "Credit",
+            "description": "Unlocking liquidity and expanding access to capital for businesses\n",
+            "icon": {
+                "id": 169,
+                "documentId": "xieducwm6urnwaaje3ix3iun",
+                "name": "Icon.svg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 33,
+                "height": 24,
+                "formats": null,
+                "hash": "Icon_d4a401ae07",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 1.15,
+                "url": "/uploads/Icon_d4a401ae07.svg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2026-03-29T12:05:39.419Z",
+                "updatedAt": "2026-03-29T12:05:39.419Z",
+                "publishedAt": "2026-03-29T12:05:39.419Z"
+            }
+        },
+        {
+            "id": 368,
+            "title": "Markets",
+            "description": "Driving efficiency in capital and foreign exchange markets through trading and risk management",
+            "icon": {
+                "id": 168,
+                "documentId": "b3gs7a90ixigq0ok2t6khtz2",
+                "name": "Icon (1).svg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 30,
+                "height": 18,
+                "formats": null,
+                "hash": "Icon_1_639a489911",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 0.21,
+                "url": "/uploads/Icon_1_639a489911.svg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2026-03-29T12:05:39.418Z",
+                "updatedAt": "2026-03-29T12:05:39.418Z",
+                "publishedAt": "2026-03-29T12:05:39.418Z"
+            }
+        },
+        {
+            "id": 369,
+            "title": "Real Estate",
+            "description": "Creating stable, long-term value through property investments\n\n",
+            "icon": {
+                "id": 166,
+                "documentId": "xj7lpq66a3pj7tr7iz8q5tw3",
+                "name": "Icon (2).svg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 30,
+                "height": 27,
+                "formats": null,
+                "hash": "Icon_2_f6a3f4b076",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 0.35,
+                "url": "/uploads/Icon_2_f6a3f4b076.svg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2026-03-29T12:05:39.415Z",
+                "updatedAt": "2026-03-29T12:05:39.415Z",
+                "publishedAt": "2026-03-29T12:05:39.415Z"
+            }
+        },
+        {
+            "id": 370,
+            "title": "Wealth",
+            "description": "Preserving capital, growing assets, and enabling intergenerational prosperity\n",
+            "icon": {
+                "id": 167,
+                "documentId": "h6ipsccg5imwmu033fag1doz",
+                "name": "Icon (3).svg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 29,
+                "height": 27,
+                "formats": null,
+                "hash": "Icon_3_d21fe05456",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 1.25,
+                "url": "/uploads/Icon_3_d21fe05456.svg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2026-03-29T12:05:39.417Z",
+                "updatedAt": "2026-03-29T12:05:39.417Z",
+                "publishedAt": "2026-03-29T12:05:39.417Z"
+            }
+        }
+    ]
+}

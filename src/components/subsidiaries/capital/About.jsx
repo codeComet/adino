@@ -36,35 +36,12 @@ const About = ({ data }) => {
   return (
     <div className="flex flex-col gap-8 md:gap-10 items-center justify-between py-[52px] md:py-[104px] px-4 md:px-0">
       <div className="flex flex-col gap-4 md:gap-6 justify-center items-center w-full md:w-1/2">
-        <h5 className="font-lato text-sm uppercase text-primary font-medium bg-white rounded-full py-1 px-4 w-fit border border-primary">
+        <h5 className="font-lato text-base md:text-xl uppercase text-primary font-medium bg-white rounded-full py-1 px-4 w-fit border border-primary mb-5">
           {title}
         </h5>
         <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter text-primary max-w-[460px] text-center">
           {heading}
         </h2>
-      </div>
-
-      {/* Embla Carousel */}
-      <div className="embla overflow-hidden w-full">
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container flex">
-            {carousel?.map((item, index) => (
-              <div
-                key={index}
-                className="embla__slide basis-[100%] md:basis-[50%] shrink-0 p-2"
-              >
-                <div className="relative w-full h-[400px] md:h-[600px]">
-                  <Image
-                    src={`${item?.url}`}
-                    alt={`Carousel Image ${index + 1}`}
-                    fill
-                    className="rounded-4xl object-cover"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Description */}
@@ -85,6 +62,29 @@ const About = ({ data }) => {
           </a>
         </div>
       )}
+
+      {/* Embla Carousel */}
+      <div className="embla overflow-hidden w-full mt-10">
+        <div className="embla__viewport" ref={emblaRef}>
+          <div className="embla__container flex">
+            {carousel?.map((item, index) => (
+              <div
+                key={index}
+                className="embla__slide basis-full md:basis-[50%] shrink-0 p-2"
+              >
+                <div className="relative w-full h-[400px] md:h-[600px]">
+                  <Image
+                    src={`${item?.url}`}
+                    alt={`Carousel Image ${index + 1}`}
+                    fill
+                    className="rounded-4xl object-cover"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

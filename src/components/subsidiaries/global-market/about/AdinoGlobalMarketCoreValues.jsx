@@ -1,4 +1,5 @@
 import React from "react";
+import { getStrapiMedia } from "@/lib/utils";
 
 const AdinoGlobalMarketCoreValues = ({ coreValuesData }) => {
   if (!coreValuesData) {
@@ -14,6 +15,7 @@ const AdinoGlobalMarketCoreValues = ({ coreValuesData }) => {
     coreValueHeading,
     coreValueDescription,
     coreValueItems,
+    coreValueBgImg,
   } = coreValuesData || {};
 
   const itemsRaw = coreValueItems;
@@ -25,60 +27,67 @@ const AdinoGlobalMarketCoreValues = ({ coreValuesData }) => {
 
   if (!coreValueHeading && !coreValueDescription && !items.length) return null;
 
+  const backgroundInput = coreValueBgImg?.url ?? coreValueBgImg ?? "";
+  const backgroundUrl = getStrapiMedia(backgroundInput);
+
   return (
-    <section className="w-wrapper mx-auto py-12 md:py-24 px-4 md:px-0">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="inline-flex items-center justify-center rounded-full bg-[#E9F7EE] px-4 py-1 w-fit">
-          <p className="font-lato font-medium text-xs leading-5 text-primary uppercase">
-            {coreValuesTitle || "VALUES"}
-          </p>
-        </div>
+    <section className="relative w-full">
+      <div
+        className="absolute inset-0 bg-black"
+        style={
+          backgroundUrl
+            ? {
+                backgroundImage: `url(${backgroundUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }
+            : undefined
+        }
+      />
+      <div className="absolute inset-0 bg-black/50" />
 
-        <h2 className="mt-3 font-sequel-normal text-[#0B1B3F] text-4xl md:text-5xl leading-[1.05] tracking-tighter">
-          {coreValueHeading || "Core Values"}
-        </h2>
+      <div className="relative z-10 w-wrapper mx-auto py-16 md:py-24 md:pb-0! px-4 md:px-0">
+        <div className="grid grid-cols-1 gap-12 items-start">
+          <div className="max-w-xl">
+            <h2 className="mt-3 font-sequel-normal text-white text-4xl md:text-5xl leading-[1.05] tracking-tighter">
+              {coreValueHeading || "Our Core Values"}
+            </h2>
 
-        {coreValueDescription ? (
-          <p className="mt-5 font-lato font-normal text-[#666666] text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px]">
-            {coreValueDescription}
-          </p>
-        ) : null}
-      </div>
-
-      {items.length ? (
-        <div className="mt-12 md:mt-16 max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {items.map((item, index) => {
-              const col = index % 3;
-              const row = Math.floor(index / 3);
-
-              const baseCell =
-                "py-10 md:py-12 px-6 md:px-10 text-left border-[#E6F2EA]";
-              const topBorders =
-                index === 0
-                  ? ""
-                  : row === 0
-                    ? "border-t md:border-t-0"
-                    : "border-t md:border-t";
-              const desktopBorders = col === 0 ? "" : "md:border-l";
-
-              return (
-                <div
-                  key={item?.id || index}
-                  className={`${baseCell} ${topBorders} ${desktopBorders}`.trim()}
-                >
-                  <p className="font-lato font-semibold text-xs leading-4 uppercase tracking-[0.18em] text-[#0E1435]">
-                    {item?.title || ""}
-                  </p>
-                  <p className="mt-4 font-lato font-normal text-[#474B64] text-sm md:text-base leading-[22px] md:leading-[26px] max-w-[320px]">
-                    {item?.description || ""}
-                  </p>
-                </div>
-              );
-            })}
+            {coreValueDescription ? (
+              <div className="mt-5 max-w-[560px]">
+                <p className="text-white font-lato font-normal text-base md:text-lg leading-[24px] md:leading-[30px]">
+                  {coreValueDescription}
+                </p>
+              </div>
+            ) : null}
           </div>
+
+          {items.length ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:mt-10 md:max-w-[800px] mx-auto mb-[-100px]"> 
+              {items.map((item, index) => {
+                return (
+                  <div
+                    key={item?.id || index}
+                    className="bg-[#B08F54] px-7 py-8 md:px-8 md:py-15"
+                    style={{
+                      clipPath:
+                        "polygon(0 0, 100% 0, 100% 85%, 91% 100%, 0 100%)",
+                    }}
+                  >
+                    <p className="font-lato font-semibold text-base md:text-[20px] leading-4 uppercase tracking-[0.18em] text-white md:mb-9">
+                      {item?.title || ""}
+                    </p>
+                    <p className="mt-4 font-lato font-normal text-white text-base md:text-lg leading-[22px] md:leading-[28px] max-w-[320px]">
+                      {item?.description || ""}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      </div>
     </section>
   );
 };

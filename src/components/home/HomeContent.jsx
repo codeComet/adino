@@ -6,7 +6,6 @@ import HomeHero from "@/components/home/HomeHero";
 import HomeNews from "@/components/home/HomeNews";
 import HomeSpecialize from "@/components/home/HomeSpecialize";
 import HomePartner from "@/components/home/HomePartner";
-import HomeHeader from "@/components/header/HomeHeader";
 import { useHomePageData } from "@/lib/homePage";
 
 const SECTION_COMPONENTS = {
@@ -41,7 +40,6 @@ export default function HomeContent() {
 
   return (
     <>
-      <HomeHeader />
       {sections.map((section) => {
         const Component = SECTION_COMPONENTS[section.__component];
 

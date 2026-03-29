@@ -18,6 +18,9 @@ const query = qs.stringify(
       globalExcellence: {
         populate: "*",
       },
+      coreValueBgImg: {
+        populate: "*",
+      },
       coreValueItems: {
         populate: "*",
       },

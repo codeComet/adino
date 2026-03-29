@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import React from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import { useHomePageData } from "@/lib/homePage";
@@ -80,10 +80,16 @@ const HomeHero = () => {
           {heroBottomText}
         </p>
         <div className="flex items-center justify-start gap-4">
-          <a href={heroCtaUrl} className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-[16px] px-8 font-lato font-medium text-white cursor-pointer transition-colors flex items-center gap-3">
+          <a
+            href={heroCtaUrl}
+            className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-base md:text-lg pl-8 pr-2 font-lato font-medium text-white cursor-pointer transition-colors flex items-center gap-3 group"
+          >
             {heroCta}
-            <span className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
-              <ArrowRight size={14} className="text-[#1B5E39]" />
+            <span className="bg-white rounded-full w-8 h-8 flex items-center justify-center transition-colors group-hover:bg-[#AD9056]">
+              <ArrowDown
+                size={14}
+                className="text-[#1B5E39] transition-colors group-hover:text-white"
+              />
             </span>
           </a>
         </div>

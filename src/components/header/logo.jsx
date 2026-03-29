@@ -1,12 +1,22 @@
-'use client';
+"use client";
 
 import Image from "next/image";
-import logo from "../../../public/assets/img/logo.svg";
-import greenLogo from "../../../public/assets/img/logo-green.svg"
+import greenLogo from "../../../public/assets/img/logo-green.svg";
+import { getStrapiMedia } from "@/lib/utils";
 
-export const Logo = ({type}) => (
-  <div className="flex items-center space-x-2">
-    {type === "home" && <Image src={logo} alt="Adino Logo" width={140} height={100} priority />}
-    {type === "main" && <Image src={greenLogo} alt="Adino Logo" width={170} height="auto" priority />}
-  </div>
-);
+export const Logo = ({ media }) => {
+  const mediaUrl = getStrapiMedia(media);
+
+  return (
+    <div className="flex items-center space-x-2">
+      <Image
+        src={mediaUrl || greenLogo}
+        alt="Adino Logo"
+        width={170}
+        height={60}
+        priority
+        className="md:scale-130"
+      />
+    </div>
+  );
+};

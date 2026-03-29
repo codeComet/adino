@@ -1,23 +1,24 @@
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
-import Image from "next/image";
-import fb from "../../../public/assets/img/fb-green.svg";
-import ig from "../../../public/assets/img/instagram-green.svg";
-import ln from "../../../public/assets/img/ln-green.svg";
 import Link from "next/link";
 
-const CommonHeader = () => {
+// import Image from "next/image";
+// import fb from "../../../public/assets/img/fb-green.svg";
+// import ig from "../../../public/assets/img/instagram-green.svg";
+// import ln from "../../../public/assets/img/ln-green.svg";
+
+const CommonHeader = ({ logoMedia }) => {
   return (
     <>
-      <nav className="h-20 flex items-center absolute w-full z-50 px-6 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <nav className="h-20 flex items-center absolute w-full z-50 px-6 my-5">
         <div className="h-full flex items-center justify-between w-full mx-auto max-w-7xl">
           <Link href="/">
-            <Logo type="main" />
+            <Logo media={logoMedia} />
           </Link>
 
           {/* Desktop Menu */}
-          <NavMenu className="hidden md:flex" type="main" />
+          <NavMenu className="hidden md:flex" />
 
           <div className="flex items-center gap-6">
             {/* Social Icons */}
@@ -47,10 +48,9 @@ const CommonHeader = () => {
 
             {/* Mobile Menu */}
             <div className="md:hidden">
-              <NavigationSheet type="main" />
+              <NavigationSheet />
             </div>
           </div>
-          
         </div>
       </nav>
     </>

@@ -77,7 +77,7 @@ const HomeNews = () => {
         <div className="w-full md:w-auto">
           <a
             href={newsApiData?.newsCta?.cta_btn_url}
-            className="flex items-center md:w-auto rounded-full bg-primary text-sm md:text-base backdrop-blur-[70px] py-3 md:py-[10px] px-4 md:pl-6 md:pr-2.5 font-lato font-medium text-white cursor-pointer"
+            className="flex items-center md:w-auto rounded-full bg-primary text-sm md:text-base backdrop-blur-[70px] py-3 md:py-[10px] px-4 md:pl-6 md:pr-2.5 font-lato font-medium text-white transition cursor-pointer hover:bg-[#AD9056]"
           >
             {newsApiData?.newsCta?.cta_btn_text}
             <span className="ml-2">

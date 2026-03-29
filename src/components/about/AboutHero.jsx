@@ -55,15 +55,16 @@ const AboutHero = () => {
           width={1000}
           height={720}
           className="rounded-md w-full h-auto"
+          priority
         />
       </div>
 
       {/* about company */}
       <div className="flex flex-col gap-4 pt-16 md:pt-28 px-4 md:px-0">
-        <h2 className="font-lato font-medium text-[14px] leading-3.5 text-[#181818] text-center uppercase">
+        <h2 className="font-lato font-medium text-lg md:text-[20px] leading-3.5 text-primary text-center uppercase">
           {title}
         </h2>
-        <p className="font-lato font-normal text-xl md:text-2xl leading-[30px] md:leading-[35px] text-[#666666] text-center max-w-full md:max-w-[742px] mx-auto">
+        <p className="font-lato font-normal text-base md:text-xl leading-[30px] md:leading-[35px] text-[#666666] text-center max-w-full md:max-w-[742px] mx-auto">
           {description}
         </p>
       </div>

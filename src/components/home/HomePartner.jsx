@@ -52,13 +52,13 @@ const HomePartner = () => {
         {iconBoxes?.map((item) => (
           <div key={item.id} className="flex flex-col items-start gap-4">
             {item?.icon?.url && (
-              <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#E6F4EF] flex items-center justify-center">
+              <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center">
                 <Image
                   src={getStrapiMedia(item.icon.url)}
                   alt={item.title || "icon"}
                   width={32}
                   height={32}
-                  className="w-6 h-6 md:w-7 md:h-7 object-contain"
+                  className="w-6 h-6 md:w-12 md:h-12 object-contain"
                 />
               </div>
             )}

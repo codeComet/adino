@@ -24,8 +24,8 @@ const AboutAdinoGlobalMarketClient = () => {
       <AdinoGlobalMarketAboutSection aboutData={aboutAdinoGlobalMarketData?.data?.about || {}} />
       <AdinoGlobalMarketAboutMissionVission missionVisionData={aboutAdinoGlobalMarketData?.data?.missionAndVision || []} />
       <AdinoGlobalMarketGlobalExcellence globalExcellenceData={aboutAdinoGlobalMarketData?.data?.globalExcellence || {}} />
-      <AdinoGlobalMarketCoreValues coreValuesData={aboutAdinoGlobalMarketData?.data || {}} />
       <AdinoGlobalMarketApproach approachData={aboutAdinoGlobalMarketData?.data || {}} />
+      <AdinoGlobalMarketCoreValues coreValuesData={aboutAdinoGlobalMarketData?.data || {}} />
       <AdinoGlobalMarketAboutTeam teamData={aboutAdinoGlobalMarketData?.data || {}} />
       <AdinoGlobalMarketNewsletter/>
     </>

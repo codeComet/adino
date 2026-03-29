@@ -34,10 +34,10 @@ const AboutTeams = () => {
   } = teamSection;
 
   return (
-    <div className="w-full bg-[#1F2020] pt-[50px] md:pt-[100px] pb-[125px] md:pb-[250px]">
+    <div className="w-full bg-[#AD9056] pt-[50px] md:py-[100px]">
       <div className="w-full px-4 md:px-6 lg:w-wrapper mx-auto">
         <div className="flex flex-col gap-[33px] md:gap-[21px] mb-10 md:mb-20">
-          <h4 className="text-[#AD9056] font-lato font-medium text-xs md:text-sm leading-[100%] uppercase">
+          <h4 className="text-white font-lato font-medium text-base md:text-xl leading-[100%] uppercase w-fit pb-2 border-b border-white">
             {teamTitle}
           </h4>
           <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%]">
@@ -45,15 +45,16 @@ const AboutTeams = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-[33px] md:gap-[21px] mb-10 md:mb-20">
-          <h4 className="text-[#AD9056] font-lato font-medium text-xs md:text-sm leading-[100%] uppercase">
+        <div className="flex flex-col gap-[33px] md:gap-[21px]">
+          <h4 className="text-white font-lato font-medium text-base md:text-xl leading-[100%] uppercase w-fit pb-2 border-b border-white">
             {directorTitle}
           </h4>
           <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%]">
             {directorDescription}
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center md:justify-start gap-6">
+        {teamMember?.length > 0 && (
+        <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-10 md:mt-20">
           {teamMember?.map((member) => (
             <div
               key={member.id}
@@ -95,6 +96,7 @@ const AboutTeams = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
     </div>
   );
