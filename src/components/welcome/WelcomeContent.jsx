@@ -10,10 +10,16 @@ import quoteIcon from "../../../public/assets/img/quote.svg";
 
 const WelcomeContent = () => {
   const { data } = useWelcomePageData();
-  const [dismissed, setDismissed] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.localStorage.getItem("adino_welcome_dismissed") === "true";
-  });
+  const [dismissed, setDismissed] = useState(false);
+
+  React.useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem("adino_welcome_dismissed");
+      if (stored === "true") {
+        setDismissed(true);
+      }
+    } catch {}
+  }, []);
 
   const handleDismiss = useCallback(() => {
     if (typeof window !== "undefined") {

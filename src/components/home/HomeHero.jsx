@@ -5,7 +5,7 @@ import React from "react";
 import { getStrapiMedia } from "@/lib/utils";
 import { useHomePageData } from "@/lib/homePage";
 
-const HomeHero = () => {
+const HomeHeroClient = () => {
   const { data: heroData, isLoading, isError } = useHomePageData();
 
   if (isLoading) {
@@ -29,7 +29,6 @@ const HomeHero = () => {
     sections.find(
       (section) => section.__component === "home-page.home-hero-section",
     ) ?? {};
-
 
   let heroHeading =
     heroSection?.heading_text ??
@@ -96,5 +95,23 @@ const HomeHero = () => {
       </div>
     </div>
   );
+};
+
+const HomeHero = () => {
+  const [hasMounted, setHasMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return <HomeHeroClient />;
 };
 export default HomeHero;
