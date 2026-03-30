@@ -17,9 +17,9 @@ const AboutAssetManagementClient = () => {
       <AboutAssetManagementHero hero={aboutAssetManagementData} />
       <AssetManagementModel modelData={aboutAssetManagementData} />
       <AssetManagementMissionAndVision missionAndVisionData={aboutAssetManagementData} />
+      <AssetManagementTeam teamData={aboutAssetManagementData} />
       <WhyAssetManagement whyAssetManagementData={aboutAssetManagementData} />
       <AssetManagementValues valuesData={aboutAssetManagementData} />
-      <AssetManagementTeam teamData={aboutAssetManagementData} />
     </>
   );
 };

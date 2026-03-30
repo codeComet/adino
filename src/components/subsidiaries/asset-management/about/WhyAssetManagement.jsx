@@ -13,13 +13,13 @@ const WhyAssetManagement = ({ whyAssetManagementData }) => {
     whyAssetManagementData?.data || {};
 
   return (
-    <div className="bg-[#F9F9FB]">
+    <div className="bg-primary">
       <div className="w-wrapper mx-auto flex flex-col gap-0 py-10 md:py-20">
         <div className="flex flex-col items-center justify-center gap-6 mb-10">
-          <h2 className="text-2xl leading-[45px] md:text-5xl md:leading-[60px] font-lato font-normal text-[#171A1C]">
+          <h2 className="text-2xl leading-[45px] md:text-5xl md:leading-[60px] font-lato font-normal text-white">
             {whyTitle}
           </h2>
-          <p className="text-center w-full md:w-[70%] text-[14px] leading-[24px] md:text-[20px] md:leading-[30px] font-lato font-normal text-[#555555]">
+          <p className="text-center w-full md:w-[70%] text-[14px] leading-[24px] md:text-[20px] md:leading-[30px] font-lato font-normal text-white">
             {whyDescription}
           </p>
         </div>

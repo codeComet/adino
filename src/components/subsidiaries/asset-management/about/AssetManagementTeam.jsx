@@ -35,40 +35,37 @@ const AssetManagementTeam = ({ teamData }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10 md:mt-16">
         {teamMembers?.map((member) => (
-          <div key={member.id} className="flex flex-col gap-4">
-            <div className="w-full aspect-square relative bg-[#E5E0DD] overflow-hidden">
+          <div key={member.id} className="flex flex-col items-center group">
+            <div className="relative w-full aspect-4/5 mb-4 overflow-hidden bg-[#8B8B9E]">
               {member.image?.url && (
                 <Image
                   src={getStrapiMedia(member.image.url)}
-                  alt={member.image.alternativeText || member.name}
+                  alt={
+                    member.image?.alternativeText ||
+                    member.name ||
+                    "Team Member"
+                  }
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               )}
-            </div>
-            <div className="flex flex-col gap-1">
-              <h3 className="text-xl font-medium text-black">{member.name}</h3>
-              <p className="text-base text-black">{member.designation}</p>
-            </div>
-            <div className="flex items-center gap-4 mt-2">
-              {member.social_links?.map((link) => (
-                <a
-                  key={link.id}
-                  href={link.icon_url || "#"}
-                  rel="noopener noreferrer"
-                  className="hover:opacity-70 transition-opacity"
-                >
-                  {link.icon_image?.url && (
-                    <Image
-                      src={getStrapiMedia(link.icon_image.url)}
-                      alt={link.name || "Social Icon"}
-                      width={24}
-                      height={24}
-                      className="w-5 h-5 object-contain"
-                    />
-                  )}
-                </a>
-              ))}
+
+              <div
+                className="absolute bottom-0 left-0 right-0 h-1/4 pl-4 py-6 flex flex-col items-start justify-center"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0) 0%, #166635 100%)",
+                  backdropFilter: "blur(1px)",
+                  boxShadow: "0px 2.7px 24.33px 0px #00000033",
+                }}
+              >
+                <h3 className="text-white font-sequel-normal font-medium text-sm md:text-[20px] text-left leading-snug">
+                  {member?.name}
+                </h3>
+                <p className="text-white/80 font-lato text-sm text-left mt-1">
+                  {member?.designation}
+                </p>
+              </div>
             </div>
           </div>
         ))}
