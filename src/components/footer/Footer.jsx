@@ -38,8 +38,6 @@ export default function Footer() {
       staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
       cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
     });
-
-    console.log(footerData?.data?.footer);
     
     if (isLoading) {
       return (
