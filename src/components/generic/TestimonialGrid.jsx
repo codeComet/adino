@@ -33,7 +33,7 @@ export default function TestimonialGrid() {
     queryKey: ["testimonialGrid"],
     queryFn: getTestimonials,
     staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
-    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
+    gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
   });
 
   if (isLoading) {

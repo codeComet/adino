@@ -31,8 +31,8 @@ const query = qs.stringify(
           },
           image: {
             populate: "*",
-          }
-        }
+          },
+        },
       },
     },
   },
@@ -51,8 +51,8 @@ export const getAboutAssetManagementPageData = async () => {
 export const useAboutAssetManagementPageData = () => {
   return useQuery({
     queryKey: ["aboutAssetManagementPage"],
-    queryFn: getAboutAssetManagementPageData,   
+    queryFn: getAboutAssetManagementPageData,
     staleTime: 5 * 60 * 1000,
-    cacheTime: 30 * 60 * 1000,
+    gcTime: 24 * 60 * 60 * 1000,
   });
 };

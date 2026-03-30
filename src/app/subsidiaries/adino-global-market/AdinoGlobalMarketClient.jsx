@@ -1,11 +1,10 @@
-
 "use client";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/subsidiaries/global-market/Header";
 import About from "@/components/subsidiaries/global-market/About";
-import Services from '@/components/subsidiaries/global-market/Services';
-import TestimonialSlider from '@/components/generic/TestimonialSlider';
-import SubsidiaryNewsletter from '@/components/generic/SubsidiaryNewsletter';
+import Services from "@/components/subsidiaries/global-market/Services";
+import TestimonialSlider from "@/components/generic/TestimonialSlider";
+import SubsidiaryNewsletter from "@/components/generic/SubsidiaryNewsletter";
 import { getGlobalMarketData } from "@/lib/subsidiary/adinoGlobalMarket";
 
 const AdinoGlobalMarketClient = () => {
@@ -17,7 +16,7 @@ const AdinoGlobalMarketClient = () => {
     queryKey: ["globalMarketData"],
     queryFn: getGlobalMarketData,
     staleTime: 60 * 60 * 1000, // Data stays fresh for 1 hour
-    cacheTime: 60 * 60 * 1000, // Cache persists for 1 hour
+    gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
   });
 
   if (isLoading) {
@@ -36,19 +35,17 @@ const AdinoGlobalMarketClient = () => {
     );
   }
 
-  const {
-    sections,
-  } = globalMarketData?.data ? globalMarketData?.data : {};
+  const { sections } = globalMarketData?.data ? globalMarketData?.data : {};
 
   return (
     <>
-      <Header data={sections[0]}/>
-      <About data={sections[1]}/>
-      <Services data={sections[2]}/>
-      <TestimonialSlider/>
-      <SubsidiaryNewsletter/>
+      <Header data={sections[0]} />
+      <About data={sections[1]} />
+      <Services data={sections[2]} />
+      {/* <TestimonialSlider/> */}
+      <SubsidiaryNewsletter />
     </>
-  )
-}
+  );
+};
 
 export default AdinoGlobalMarketClient;

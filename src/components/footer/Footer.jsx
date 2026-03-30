@@ -36,7 +36,7 @@ export default function Footer() {
       queryKey: ['footer'],
       queryFn: getFooterData,
       staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-      cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
+      gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
     });
     
     if (isLoading) {

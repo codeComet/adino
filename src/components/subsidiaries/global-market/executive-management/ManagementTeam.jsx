@@ -28,25 +28,33 @@ const ManagementTeam = ({ teamData }) => {
             "Team member";
 
           return (
-            <div key={key} className="flex flex-col gap-4">
-              <div className="w-full aspect-4/5 relative bg-[#D9D9D9] rounded-2xl overflow-hidden">
+            <div key={key} className="flex flex-col items-center group">
+              <div className="relative w-full aspect-4/5 mb-4 overflow-hidden bg-[#8B8B9E] rounded-2xl">
                 {imageUrl ? (
                   <Image
                     src={imageUrl}
                     alt={alt}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : null}
-              </div>
 
-              <div className="flex flex-col gap-1 items-center">
-                <h3 className="font-lato font-medium text-base md:text-[20px] leading-[1.2] tracking-tight text-[#0E1435]">
-                  {member?.name || ""}
-                </h3>
-                <p className="font-lato font-normal text-base text-[#474B64]">
-                  {member?.location_designation || ""}
-                </p>
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-1/4 pl-4 py-6 flex flex-col items-start justify-center"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0) 0%, #166635 100%)",
+                    backdropFilter: "blur(1px)",
+                    boxShadow: "0px 2.7px 24.33px 0px #00000033",
+                  }}
+                >
+                  <h3 className="text-white font-sequel-normal font-medium text-sm md:text-[20px] text-left leading-snug">
+                    {member?.name || ""}
+                  </h3>
+                  <p className="text-white/80 font-lato text-sm text-left mt-1">
+                    {member?.location_designation || ""}
+                  </p>
+                </div>
               </div>
             </div>
           );

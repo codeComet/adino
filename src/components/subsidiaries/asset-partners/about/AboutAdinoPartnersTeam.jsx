@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowUpRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import { getStrapiMedia } from "@/lib/utils";
 
 const RichTextRenderer = ({ content, className, pClassName }) => {
@@ -11,7 +11,7 @@ const RichTextRenderer = ({ content, className, pClassName }) => {
   if (typeof content === "string") {
     return (
       <p
-        className={`text-base leading-7 text-[#333333] font-lato ${pClassName || ""}`}
+        className={`text-base font-medium leading-7 text-[#474B64] font-lato ${pClassName || ""}`}
       >
         {content}
       </p>
@@ -22,7 +22,7 @@ const RichTextRenderer = ({ content, className, pClassName }) => {
   if (Array.isArray(content)) {
     return (
       <div
-        className={`flex flex-col gap-4 text-base leading-7 text-[#333333] font-lato ${className || ""}`}
+        className={`flex flex-col gap-4 text-base leading-7 text-[#474B64] font-lato ${className || ""}`}
       >
         {content.map((item, index) => {
           if (item.type === "paragraph") {
@@ -66,68 +66,74 @@ const AboutAdinoPartnersTeam = ({ teamData }) => {
     teamData ||
     {};
 
-  const { teamHeading, teamDescription, teamMembers } = data;
+  const { teamTitle, teamHeading, teamDescription, teamMembers } = data;
   const [selectedMember, setSelectedMember] = useState(null);
 
   if (!teamData) return null;
 
   return (
-    <section className="w-full py-16 md:py-24 bg-white">
+    <section className="w-full py-16 md:py-24 bg-white md:pt-50">
       <div className="w-full px-4 md:px-6 lg:w-wrapper mx-auto">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-sequel-normal font-normal text-[#054F30] leading-tight tracking-tight">
-            {teamHeading}
-          </h2>
-
-          <div className="mt-3">
-            <RichTextRenderer
-              content={teamDescription}
-              className="items-center"
-              pClassName="text-[#666666] text-sm md:text-base leading-[22px] md:leading-[26px]"
-            />
-          </div>
-        </div>
-
-        <div className="mt-12 md:mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {teamMembers?.map((member) => (
-            <div
-              key={member.id}
-              className="group cursor-pointer rounded-2xl border border-[#E9E9E9] bg-white p-4 transition-colors hover:bg-[#F2FBF6] hover:border-[#D7F2E3]"
-              onClick={() => setSelectedMember(member)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ")
-                  setSelectedMember(member);
-              }}
-            >
-              <div className="relative w-full aspect-4/5 overflow-hidden rounded-xl bg-[#D9D9D9]">
-                {member.image && (
-                  <Image
-                    src={getStrapiMedia(member.image)}
-                    alt={member.name || "Team Member"}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                )}
-              </div>
-
-              <div className="mt-4 flex items-start justify-between gap-3">
-                <div className="flex flex-col">
-                  <h3 className="text-[#000000] font-sequel-normal font-medium text-base md:text-lg leading-snug">
-                    {member?.name}
-                  </h3>
-                  <p className="w-fit bg-[#F4FFFB] p-2 text-primary font-lato text-base md:text-lg mt-2">
-                    {member?.location_designation}
-                  </p>
-                </div>
-
-                <div className="mt-1 text-[#666666] group-hover:text-primary transition-colors">
-                  <ArrowUpRight className="w-7 h-7" />
-                </div>
-              </div>
+        <div className="grid grid-cols-1 gap-12 lg:gap-20">
+          <div className="flex flex-col gap-6">
+            <div className="inline-flex">
+              <span className="bg-[#F0FDF4] font-lato text-sm uppercase text-primary font-medium rounded-full py-2 px-6">
+                {teamTitle || "OUR TEAM"}
+              </span>
             </div>
-          ))}
+
+            <h2 className="w-full md:w-[60%] text-3xl md:text-5xl font-sequel-normal font-normal text-[#191919] leading-tight tracking-tighter">
+              {teamHeading}
+            </h2>
+
+            <div className="mt-2 md:max-w-[95%]">
+              <RichTextRenderer content={teamDescription} />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+            {teamMembers?.map((member) => (
+              <div
+                key={member.id}
+                className="flex flex-col items-center group cursor-pointer"
+                onClick={() => setSelectedMember(member)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ")
+                    setSelectedMember(member);
+                }}
+              >
+                <div className="relative w-full aspect-4/5 mb-4 overflow-hidden bg-[#8B8B9E]">
+                  {member.image && (
+                    <Image
+                      src={getStrapiMedia(member.image)}
+                      alt={member.name || "Team Member"}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  )}
+
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-1/4 pl-4 py-6 flex flex-col items-start justify-center"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(0,0,0,0) 0%, #166635 100%)",
+                      backdropFilter: "blur(1px)",
+                      boxShadow: "0px 2.7px 24.33px 0px #00000033",
+                    }}
+                  >
+                    <h3 className="text-white font-sequel-normal font-medium text-sm md:text-[20px] text-left leading-snug">
+                      {member?.name}
+                    </h3>
+                    <p className="text-white/80 font-lato text-sm text-left mt-1">
+                      {member?.location_designation}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

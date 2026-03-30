@@ -26,6 +26,6 @@ export const useAdinoExecutiveManagementData = () => {
     queryKey: ["adinoExecutiveManagement"],
     queryFn: getAdinoExecutiveManagementData,
     staleTime: 5 * 60 * 1000,
-    cacheTime: 30 * 60 * 1000,
+    gcTime: 24 * 60 * 60 * 1000,
   });
 };

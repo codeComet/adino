@@ -79,7 +79,7 @@ const AdinoGlobalMarketAboutHero = ({ heroData }) => {
 
         {descriptionText ? (
           <div className="max-w-full sm:max-w-[600px] md:max-w-[750px]">
-            <p className="text-white font-lato font-medium text-base sm:text-lg md:text-xl leading-6 sm:leading-7 md:leading-7.5 mt-4 border-l border-white pl-5">
+            <p className="text-white font-lato font-medium text-base sm:text-lg md:text-xl leading-6 sm:leading-7 md:leading-7.5 mt-4">
               {descriptionText}
             </p>
           </div>

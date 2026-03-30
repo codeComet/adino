@@ -8,6 +8,6 @@ export const useWelcomePageData = () => {
     queryKey: ["welcomePage"],
     queryFn: getWelcomePageData,
     staleTime: 60 * 60 * 1000,
-    cacheTime: 60 * 60 * 1000,
+    gcTime: 24 * 60 * 60 * 1000,
   });
 };

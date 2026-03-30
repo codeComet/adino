@@ -10,7 +10,7 @@ const AboutAdinoPartnersWhySection = ({ whySectionData }) => {
       <div className="flex flex-col md:flex-row gap-8 md:gap-30 justify-between">
         <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
           <Image
-            src={getStrapiMedia(icon?.url) || "https://via.placeholder.com/600x400"}
+            src={getStrapiMedia(icon?.url) || "https://placehold.co/600x400"}
             alt="About Image"
             width={600}
             height={400}

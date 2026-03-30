@@ -8,7 +8,7 @@ const ExecutiveManagementHeader = ({data}) => {
     <div className="w-wrapper mx-auto pt-30 md:pt-40 pb-16 md:pb-24 px-4 md:px-0 flex flex-col gap-7">
       {title ? (
         <div className="block items-start justify-start rounded-full px-0 py-1 uppercase">
-          <p className="font-lato font-medium text-sm leading-5 text-[#181818]">
+          <p className="font-lato font-medium text-base md:text-xl uppercase leading-5 text-[#181818]">
             {title}
           </p>
         </div>

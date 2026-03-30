@@ -1,87 +1,110 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import RightArrow from "../../../../public/assets/img/arrow-right.svg";
 import { getStrapiMedia } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 
 const Header = ({ data }) => {
   const { title, heading, description, hero_bg, cta, stats } = data;
 
-  return (
-    <div className="w-wrapper mx-auto min-h-screen py-25 flex flex-col md:flex-row gap-3 md:gap-20 justify-between px-4 md:px-6">
-      <div className="flex flex-col justify-center gap-4 md:gap-6 w-full md:w-1/2">
-        <h5 className="font-lato text-sm uppercase text-[#666666] font-medium">
-          {title}
-        </h5>
-        <h1
-          className="font-sequel-normal text-[28px] sm:text-[32px] text-[#181818] md:text-[64px] leading-[1.2] md:leading-[76px] tracking-tighter"
-          dangerouslySetInnerHTML={{ __html: heading }}
-        />
-        <p className="text-[#666666] text-sm sm:text-base md:text-[20px] leading-[24px] sm:leading-[26px] md:leading-[30px] max-w-full md:max-w-[778px] font-lato font-medium">
-          {description?.[0]?.children?.[0]?.text}
-        </p>
-        <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
-          <a
-            href={cta[0]?.cta_btn_url}
-            rel="noopener noreferrer"
-            size="lg"
-            className="rounded-full bg-primary text-sm sm:text-base leading-7 backdrop-blur-[70px] py-2.5 sm:py-3 md:py-[15px] px-4 font-lato font-medium text-white cursor-pointer flex items-center gap-2"
-          >
-            {cta[0]?.cta_btn_text}
-            <Image
-              src={RightArrow}
-              alt="down arrow"
-              width={20}
-              height={20}
-              className="md:w-6 md:h-6"
-            />
-          </a>
-        </div>
-        <div className="flex gap-4 md:gap-[93px] flex-wrap">
-          {stats.length !== 0
-            ? stats.map((item, index) => (
-                <div key={index} className="flex flex-col items-start gap-2">
-                  <h3 className="text-[20px] sm:text-[24px] leading-[26px] sm:leading-[30px] md:text-[56px] md:leading-16 text-primary font-sequel-normal font-normal tracking-tighter">
-                    {item?.stat_number}
-                  </h3>
-                  <p className="text-xs sm:text-sm leading-5 text-primary font-lato font-medium">
-                    {item?.stat_desc}
-                  </p>
-                </div>
-              ))
-            : null}
-        </div>
-      </div>
+  const headingText = heading ?? title ?? "";
+  const descriptionText =
+    typeof description === "string"
+      ? description
+      : (description?.[0]?.children?.[0]?.text ?? "");
+  const backgroundInput = hero_bg?.url ?? hero_bg ?? "";
+  const backgroundUrl = getStrapiMedia(backgroundInput);
+  const isVideoBackground =
+    typeof backgroundInput === "string" &&
+    (backgroundInput.endsWith(".mp4") ||
+      backgroundInput.endsWith(".webm") ||
+      backgroundInput.endsWith(".mov"));
+  const ctaText = cta?.[0]?.cta_btn_text ?? "";
+  const ctaUrl = cta?.[0]?.cta_btn_url ?? "";
 
-      <div className="flex items-center justify-center w-full md:w-1/2 mt-8 md:mt-0">
-        <>
-          {hero_bg?.url.endsWith(".mp4") ||
-          hero_bg?.url.endsWith(".webm") ||
-          hero_bg?.url.endsWith(".mov") ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-[300px] md:h-[666px] object-cover rounded-xl md:rounded-none"
+  return (
+    <section className="min-h-screen flex items-end justify-start bg relative pb-20">
+      {isVideoBackground && backgroundUrl ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src={backgroundUrl}
+            type={`video/${backgroundUrl.split(".").pop()}`}
+          />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div
+          className="absolute inset-0 bg-black"
+          style={
+            backgroundUrl
+              ? {
+                  backgroundImage: `url(${backgroundUrl})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }
+              : undefined
+          }
+        />
+      )}
+
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      <div className="w-wrapper mx-auto flex flex-col gap-3 relative z-10 px-4 md:px-6">
+        <h5 className="font-lato text-base md:text-xl uppercase text-white font-medium">
+          {title || "Adino"}
+        </h5>
+
+        <h1
+          className="font-sequel-normal text-2xl sm:text-3xl md:text-[64px] md:leading-[76px] text-white font-medium tracking-tighter max-w-2xl"
+          dangerouslySetInnerHTML={{ __html: headingText }}
+        />
+
+        {descriptionText ? (
+          <div className="max-w-full sm:max-w-[600px] md:max-w-[750px]">
+            <p className="text-white font-lato font-medium text-base sm:text-lg md:text-xl leading-6 sm:leading-7 md:leading-7.5 mt-4">
+              {descriptionText}
+            </p>
+          </div>
+        ) : null}
+
+        {ctaText ? (
+          <div className="flex items-center justify-start gap-4 mt-5">
+            <a
+              href={ctaUrl}
+              rel="noopener noreferrer"
+              className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-base md:text-lg pl-8 pr-2 font-lato font-medium text-white cursor-pointer transition-colors flex items-center gap-3 group"
             >
-              <source
-                src={getStrapiMedia(hero_bg?.url)}
-                type={`video/${getStrapiMedia(hero_bg?.url).split(".").pop()}`}
-              />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <Image
-              src={getStrapiMedia(hero_bg?.url)}
-              alt="Hero Image"
-              width={650}
-              height={650}
-              className="w-full h-[300px] md:h-auto object-cover rounded-lg md:rounded-none"
-            />
-          )}
-        </>
+              {ctaText}
+              <span className="bg-white rounded-full w-8 h-8 flex items-center justify-center transition-colors group-hover:bg-[#AD9056]">
+                <ArrowRight
+                  size={14}
+                  className="text-[#1B5E39] transition-colors group-hover:text-white"
+                />
+              </span>
+            </a>
+          </div>
+        ) : null}
+
+        {Array.isArray(stats) && stats.length ? (
+          <div className="flex gap-4 md:gap-[93px] flex-wrap mt-8">
+            {stats.map((item, index) => (
+              <div key={index} className="flex flex-col items-start gap-2">
+                <h3 className="text-[20px] sm:text-[24px] leading-[26px] sm:leading-[30px] md:text-[56px] md:leading-16 text-white font-sequel-normal font-normal tracking-tighter">
+                  {item?.stat_number}
+                </h3>
+                <p className="text-xs sm:text-sm leading-5 text-white/80 font-lato font-medium">
+                  {item?.stat_desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
-    </div>
+    </section>
   );
 };
 

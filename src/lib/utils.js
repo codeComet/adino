@@ -47,7 +47,7 @@ export async function fetchStrapi(pathWithQuery) {
   return data;
 }
 
-export const renderDescription = (text) => {
+export const renderDescription = (text, options = {}) => {
   if (!text) return null;
 
   // Replace <br/> with a placeholder to split, handling potential variations
@@ -59,7 +59,7 @@ export const renderDescription = (text) => {
     return (
       <p
         key={index}
-        className="font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0"
+        className={cn("font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0", options.pClassName)}
       >
         {trimmed}
       </p>
