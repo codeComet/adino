@@ -28,6 +28,9 @@ const query = qs.stringify(
         populate: {
           social_links: {
             populate: "*",
+          },
+          image: {
+            populate: "*",
           }
         }
       },
