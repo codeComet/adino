@@ -15,6 +15,7 @@ const query = qs.stringify(
           "explore_adino_pages",
           "governance_pages",
           "more_info_pages",
+          "subsidiaryLinks",
         ],
       },
     },
@@ -37,6 +38,8 @@ export default function Footer() {
       staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
       cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
     });
+
+    console.log(footerData?.data?.footer);
     
     if (isLoading) {
       return (
@@ -55,7 +58,7 @@ export default function Footer() {
     }
 
     const {footer} = footerData.data;
-    const {social, social_links, explore_adino_text, explore_adino_pages, governance_text, governance_pages, more_info_pages, more_info_text, address_text, address_content } = footer
+    const {social, social_links, explore_adino_text, explore_adino_pages, governance_text, governance_pages, more_info_pages, more_info_text, address_text, address_content, subsidiaryText, subsidiaryLinks } = footer
 
   return (
     <footer className="bg-green-800 text-white py-12 px-6 relative overflow-hidden">
@@ -71,33 +74,31 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           {/* Social Column */}
           {footerData?.data?.footer?.showIcons && (
             <div>
-            <h3 className="text-lg font-semibold mb-6 border-b border-white/30 pb-2">
-              {social}
-            </h3>
-            <div className="flex flex-col space-y-4">
-              {social_links.map((link, index) => (
-                <Link
-                  href={link.icon_url}
-                  key={index}
-                  className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
-                >
-                  <Image
-                    src={getStrapiMedia(link.icon_image.url)}
-                    width={40}
-                    height={40}
-                    alt="icons"
-                  />
-                </Link>
-              ))}
+              <h3 className="text-lg font-semibold mb-6 border-b border-white/30 pb-2">
+                {social}
+              </h3>
+              <div className="flex flex-col space-y-4">
+                {social_links.map((link, index) => (
+                  <Link
+                    href={link.icon_url}
+                    key={index}
+                    className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                  >
+                    <Image
+                      src={getStrapiMedia(link.icon_image.url)}
+                      width={40}
+                      height={40}
+                      alt="icons"
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
           )}
-
-
 
           {/* Explore Adino Column */}
           <div>
@@ -134,6 +135,26 @@ export default function Footer() {
               ))}
             </div>
           </div>
+
+          {/* Subsidiary Column */}
+          {footerData?.data?.footer?.subsidiaryLinks && (
+            <div>
+              <h3 className="text-lg font-semibold mb-6 border-b border-white/30 pb-2">
+                {subsidiaryText}
+              </h3>
+              <div className="space-y-3">
+                {subsidiaryLinks.map((link, index) => (
+                  <Link
+                    href={link.href || "#"}
+                    key={index}
+                    className="block text-white/80 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Address Column */}
           <div>
