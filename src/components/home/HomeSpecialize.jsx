@@ -61,7 +61,7 @@ const HomeSpecialize = () => {
             specializeItems.map((item, index) => (
               <li
                 key={item.id}
-                className="relative font-sequel-light text-xl sm:text-3xl md:text-5xl lg:text-6xl font-light cursor-pointer group flex items-center gap-2 sm:gap-4 hover:translate-y-2 sm:hover:translate-y-4 hover:translate-x-2 sm:hover:translate-x-5 transition-transform"
+                className="relative font-sequel-light text-xl sm:text-3xl md:text-5xl lg:text-[54px] font-light cursor-pointer group flex items-center gap-2 sm:gap-4 hover:translate-y-2 sm:hover:translate-y-4 hover:translate-x-2 sm:hover:translate-x-5 transition-transform"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onFocus={() => setHoveredIndex(index)}

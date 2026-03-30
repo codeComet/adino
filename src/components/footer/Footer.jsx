@@ -38,6 +38,9 @@ export default function Footer() {
       cacheTime: 30 * 60 * 1000, // Cache persists for 30 minutes
     });
 
+
+    console.log(footerData?.data?.footer);
+    
     if (isLoading) {
       return (
         <div className="min-h-screen flex items-center justify-center px-6 bg relative">
@@ -73,7 +76,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Social Column */}
-          {/* <div>
+          {footerData?.data?.footer?.showIcons && (
+            <div>
             <h3 className="text-lg font-semibold mb-6 border-b border-white/30 pb-2">
               {social}
             </h3>
@@ -93,7 +97,10 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-          </div> */}
+          </div>
+          )}
+
+
 
           {/* Explore Adino Column */}
           <div>

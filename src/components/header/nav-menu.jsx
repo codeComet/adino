@@ -43,6 +43,15 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
       } ${className}`}
     >
       <Link
+        href="/"
+        className={`hover:text-[#AD9056] ${
+          pathname === "/" ? "text-[#AD9056]" : ""
+        }`}
+      >
+        Home
+      </Link>
+      
+      <Link
         href="/about"
         className={`hover:text-[#AD9056] ${
           pathname === "/about" ? "text-[#AD9056]" : ""
