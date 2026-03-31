@@ -59,7 +59,10 @@ export const renderDescription = (text, options = {}) => {
     return (
       <p
         key={index}
-        className={cn("font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0", options.pClassName)}
+        className={cn(
+          "font-lato font-normal text-base md:text-lg leading-[28px] text-[#666666] mb-6 last:mb-0",
+          options.pClassName,
+        )}
       >
         {trimmed}
       </p>

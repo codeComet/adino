@@ -23,8 +23,8 @@ const query = qs.stringify(
         populate: "*",
       },
       whySectionItems: {
-        populate: "*"
-      }
+        populate: "*",
+      },
     },
   },
   {
@@ -42,7 +42,7 @@ export const getAboutAdinoPartnersPageData = async () => {
 export const useAboutAdinoPartnersPageData = () => {
   return useQuery({
     queryKey: ["aboutAdinoPartnersPage"],
-    queryFn: getAboutAdinoPartnersPageData, 
+    queryFn: getAboutAdinoPartnersPageData,
     staleTime: 5 * 60 * 1000,
     gcTime: 24 * 60 * 60 * 1000,
   });

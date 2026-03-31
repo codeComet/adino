@@ -5,9 +5,8 @@ import AdinoCapitalServiceAbout from "@/components/subsidiaries/capital/service/
 import { useAdinoCapitalServicePageData } from "@/lib/subsidiary/adinoCapitalService";
 import AdinoCapitalServices from "@/components/subsidiaries/capital/service/AdinoCapitalServices";
 import AdinoCaptialIndustry from "@/components/subsidiaries/capital/service/AdinoCaptialIndustry";
-import AdinoCapitalWhySection from "@/components/subsidiaries/capital/service/AdinoCapitalWhySection";
-import AdinoCapitalUniqueSection from "@/components/subsidiaries/capital/service/AdinoCapitalUniqueSection";
 import AdinoCapitalSustainibility from "@/components/subsidiaries/capital/service/AdinoCapitalSustainibility";
+import AdinoCapitalWhySection from "@/components/subsidiaries/capital/service/AdinoCapitalWhySection";
 
 
 
@@ -30,9 +29,8 @@ const AdinoCapitalServiceClient = () => {
       <AdinoCaptialIndustry
         industryValues={aboutAdinoCapitalServiceData?.data || {}}
       />
-      <AdinoCapitalWhySection whySectionData={aboutAdinoCapitalServiceData?.data?.whyAdinoSection || {}}/>
-      <AdinoCapitalUniqueSection uniqueSectionData={aboutAdinoCapitalServiceData?.data || {}}/>
       <AdinoCapitalSustainibility sustainabilityValues={aboutAdinoCapitalServiceData?.data || {}}/>
+      <AdinoCapitalWhySection whySectionData={aboutAdinoCapitalServiceData?.data || {}}/>
     </>
   );
 };

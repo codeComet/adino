@@ -6,30 +6,29 @@ import { useQuery } from "@tanstack/react-query";
 // get data from strapi
 const getNewsletterData = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/newsletter`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/newsletter`,
   );
   const data = await res.json();
   return data;
 };
 
-
 const Newsletter = () => {
-    const { data: newsletterData, isLoading } = useQuery({
-      queryKey: ["newsletter"],
-      queryFn: getNewsletterData,
-      staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-      gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
-    });
+  const { data: newsletterData, isLoading } = useQuery({
+    queryKey: ["newsletter"],
+    queryFn: getNewsletterData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
+  });
 
-    if (isLoading) {
-      return (
-        <div className="min-h-screen flex items-center justify-center px-6 bg relative">
-          <p>Loading...</p>
-        </div>
-      );
-    }
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
-    const {heading, description} = newsletterData?.data;
+  const { heading, description } = newsletterData?.data;
   return (
     <section className="bg-gray-100 py-16 px-4 sm:py-20 lg:py-24">
       <div className="max-w-2xl mx-auto text-center">

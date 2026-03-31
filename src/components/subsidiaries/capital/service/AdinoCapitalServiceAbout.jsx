@@ -12,24 +12,24 @@ const AdinoCapitalServiceAbout = ({aboutData}) => {
     const {title,heading, cta_btn, description_1} = aboutData || {};
     
   return (
-    <div className="w-wrapper mx-auto flex flex-col gap-8 md:gap-5 items-center justify-between py-[52px] md:py-[30px] px-4 md:px-0">
-      <div className="flex flex-col gap-4 md:gap-6 justify-center items-center">
+    <div className="w-wrapper mx-auto flex flex-col gap-8 md:gap-5 items-start justify-between py-[52px] md:py-[60px] px-4 md:px-0">
+      <div className="flex flex-col gap-4 md:gap-6 justify-start items-start">
         <h5 className="font-lato text-sm uppercase text-primary font-medium bg-white rounded-full py-2 px-6 border border-primary">
           {title}
         </h5>
-        <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter text-primary max-w-[460px] text-center">
+        <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter text-primary">
           {heading}
         </h2>
       </div>
 
       {/* Description */}
-      <div className="flex flex-col gap-4 md:gap-6 justify-center items-center w-full md:max-w-[700px] mt-8 md:mt-12">
+      <div className="flex flex-col gap-4 md:gap-6 justify-start items-start w-full md:max-w-[80%]">
           {description_1?.map((item, index) => {
             if (item.type === "paragraph") {
               return (
                 <p
                   key={index}
-                  className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#666666] text-center"
+                  className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#666666]"
                 >
                   {item.children.map((child) => child.text).join("")}
                 </p>

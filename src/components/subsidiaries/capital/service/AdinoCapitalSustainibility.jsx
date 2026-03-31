@@ -25,7 +25,7 @@ const AdinoCapitalSustainibility = ({ sustainabilityValues }) => {
     : "https://placehold.co/600x400";
 
   return (
-    <div className="w-full py-10 md:py-20 bg-[#EDF3F1]">
+    <div className="w-full py-10 md:py-20 bg-[#F0FDF4]">
       <div className="w-wrapper mx-auto flex flex-col md:flex-row gap-8 md:gap-16 items-start">
         {/* Left Column - Content */}
         <div className="w-full md:w-1/2 flex flex-col gap-6">

@@ -17,12 +17,12 @@ const query = qs.stringify(
       },
     },
   },
-  { encodeValuesOnly: true }
+  { encodeValuesOnly: true },
 );
 
 const getSubsidiaryNewsletter = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subsidiary-newsletter?${query}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subsidiary-newsletter?${query}`,
   );
   const data = await res.json();
   return data;

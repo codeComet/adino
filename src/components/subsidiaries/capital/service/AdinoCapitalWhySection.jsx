@@ -1,13 +1,13 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const RichTextRenderer = ({ content }) => {
   if (!content) return null;
 
   if (typeof content === "string") {
     return (
-      <p className="font-lato font-medium text-white text-base md:text-lg leading-relaxed">
+      <p className="font-lato font-medium text-white/70 text-base md:text-lg leading-[28px] md:leading-[34px] text-center">
         {content}
       </p>
     );
@@ -15,7 +15,7 @@ const RichTextRenderer = ({ content }) => {
 
   if (Array.isArray(content)) {
     return (
-      <div className="flex flex-col gap-4 font-lato font-medium text-white text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
+      <div className="flex flex-col gap-4 font-lato font-medium text-white/70 text-base md:text-lg leading-[28px] md:leading-[34px] text-center max-w-4xl mx-auto">
         {content.map((item, index) => {
           if (item.type === "paragraph") {
             return (
@@ -43,53 +43,87 @@ const RichTextRenderer = ({ content }) => {
 const AdinoCapitalWhySection = ({ whySectionData }) => {
   if (!whySectionData) return null;
 
-  const { heading, description_1, cta_btn } = whySectionData;
-  const bgImage =
-    "https://supportive-creativity-cd56af8fec.media.strapiapp.com/Section_CTA_Section_3fa55eb78c.png";
+  const {
+    whyAdinoSectionCta,
+    whyAdinoSectionHeading,
+    whyAdinoSectionDescription,
+  } = whySectionData;
+
+  const ctas = Array.isArray(whyAdinoSectionCta)
+    ? whyAdinoSectionCta
+    : whyAdinoSectionCta
+      ? [whyAdinoSectionCta]
+      : [];
 
   return (
-    <section className="relative w-full py-20 md:py-32 overflow-hidden bg-[#0F5132]">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={bgImage}
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
+    <section className="w-full bg-linear-to-b from-[#F0FDF4] to-white py-10 md:py-20">
+      <div className="w-wrapper mx-auto px-4 md:px-0">
+        <div className="relative overflow-hidden rounded-[32px] md:rounded-[48px] bg-primary px-6 py-10 md:px-16 md:py-16 shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
+          <div
+            className="absolute left-0 bottom-0 w-[280px] h-[180px] opacity-20"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
+              backgroundSize: "6px 6px",
+            }}
+          />
+          <div
+            className="absolute right-0 bottom-0 w-[280px] h-[180px] opacity-20"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
+              backgroundSize: "6px 6px",
+            }}
+          />
 
-      <div className="relative z-10 w-wrapper mx-auto px-6 md:px-10 text-center">
-        <div className="flex flex-col items-center gap-8 md:gap-10">
-          {/* Heading */}
-          {heading && (
-            <h2 className="font-sequel-normal text-[#C5A059] text-3xl md:text-5xl lg:text-[56px] leading-tight tracking-tight">
-              {heading}
-            </h2>
-          )}
+          <div className="relative z-10 flex flex-col items-center text-center">
+            {whyAdinoSectionHeading ? (
+              <h2 className="font-sequel-normal text-white text-[28px] md:text-5xl lg:text-[56px] leading-[1.1] tracking-tighter">
+                {whyAdinoSectionHeading}
+              </h2>
+            ) : null}
 
-          {/* Description */}
-          {description_1 && (
-            <div className="max-w-[900px]">
-              <RichTextRenderer content={description_1} />
-            </div>
-          )}
+            {whyAdinoSectionDescription ? (
+              <div className="mt-5 md:mt-7 max-w-[920px]">
+                <RichTextRenderer content={whyAdinoSectionDescription} />
+              </div>
+            ) : null}
 
-          {/* CTA Button */}
-          {cta_btn && cta_btn.length > 0 && (
-            <div className="mt-4">
-              {cta_btn.map((btn) => (
-                <Link
-                  key={btn.id}
-                  href={btn.cta_btn_url || "/"}
-                  className="inline-flex items-center justify-center bg-white text-[#0F5132] font-lato font-bold text-base md:text-lg px-8 py-3 md:px-10 md:py-4 rounded-full transition-transform hover:scale-105 hover:shadow-lg"
-                >
-                  {btn.cta_btn_text}
-                </Link>
-              ))}
-            </div>
-          )}
+            {ctas.length ? (
+              <div className="mt-7 md:mt-10 flex flex-wrap items-center justify-center gap-3">
+                {ctas.map((btn, index) => {
+                  const href = btn?.cta_btn_url || "/";
+                  const isExternal =
+                    Boolean(btn?.isExternal) ||
+                    (typeof href === "string" && href.startsWith("http"));
+                  const className =
+                    "inline-flex items-center justify-center gap-2 bg-white text-[#0F5132] font-lato font-semibold text-sm md:text-base px-6 py-3 rounded-full hover:bg-white/95 transition-colors";
+
+                  return isExternal ? (
+                    <a
+                      key={btn?.id ?? `${btn?.cta_btn_text ?? "cta"}-${index}`}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                    >
+                      {btn?.cta_btn_text || "Contact us"}
+                      <ArrowRight size={16} />
+                    </a>
+                  ) : (
+                    <Link
+                      key={btn?.id ?? `${btn?.cta_btn_text ?? "cta"}-${index}`}
+                      href={href}
+                      className={className}
+                    >
+                      {btn?.cta_btn_text || "Contact us"}
+                      <ArrowRight size={16} />
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </section>

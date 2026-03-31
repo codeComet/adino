@@ -27,13 +27,10 @@ const query = qs.stringify(
       industryImg: {
         populate: "*",
       },
-      whyAdinoSection: {
-        populate: "*",
-      },
-      whyItems: {
-        populate: "*",
-      },
       sustainibilityImage: {
+        populate: "*",
+      },
+      whyAdinoSectionCta: {
         populate: "*",
       },
     },

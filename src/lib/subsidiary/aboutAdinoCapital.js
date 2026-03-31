@@ -8,11 +8,11 @@ const query = qs.stringify(
         populate: "*",
       },
       about: {
-        populate:  {
-            cta_btn: {
-                populate: "*"
-            }
-        }
+        populate: {
+          cta_btn: {
+            populate: "*",
+          },
+        },
       },
       missionAndVision: {
         populate: "*",

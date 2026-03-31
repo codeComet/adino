@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const getJobListData = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/jobs?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/jobs?populate=*`,
   );
   const data = await res.json();
   return data;

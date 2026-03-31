@@ -64,7 +64,11 @@ const TestimonialSlider = ({ showHeading = true }) => {
     );
   }
 
-  const { title, heading, testimonials = [] } = testimonial?.data?.testimonials || {};
+  const {
+    title,
+    heading,
+    testimonials = [],
+  } = testimonial?.data?.testimonials || {};
 
   return (
     <div className="w-wrapper mx-auto py-12 sm:py-16 md:py-20 lg:py-[104px]">
