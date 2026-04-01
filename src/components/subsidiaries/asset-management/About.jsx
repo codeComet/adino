@@ -24,7 +24,7 @@ const About = ({ data }) => {
             <a
               href={cta_btn[0]?.cta_btn_url}
               rel="noopener noreferrer"
-              className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-15 transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-full"
             >
               {cta_btn[0]?.cta_btn_text}
             </a>

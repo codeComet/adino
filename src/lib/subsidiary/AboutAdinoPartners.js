@@ -10,7 +10,10 @@ const query = qs.stringify(
       about: {
         populate: "*",
       },
-      missionAndVision: {
+      missionAndVisionBgImg: {
+        populate: "*",
+      },
+      missionAndVisionItem: {
         populate: "*",
       },
       coreValueItems: {
@@ -22,7 +25,7 @@ const query = qs.stringify(
       teamMembers: {
         populate: "*",
       },
-      whySectionItems: {
+      whyAdinoSectionCta: {
         populate: "*",
       },
     },

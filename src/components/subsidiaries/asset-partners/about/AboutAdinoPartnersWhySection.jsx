@@ -4,29 +4,50 @@ import Image from "next/image";
 import { renderDescription } from "@/lib/utils";
 
 const AboutAdinoPartnersWhySection = ({ whySectionData }) => {
-  const { title, description, icon } = whySectionData;
+  const { title, description, icon } = whySectionData?.whyAdinoSection || {};
+  const { cta_btn_text, cta_btn_url } =
+    whySectionData?.whyAdinoSectionCta || {};
+
+  const imageUrl = getStrapiMedia(icon?.url) || "https://placehold.co/1600x900";
+  const hasContent = Boolean(title || description || cta_btn_text);
+  if (!imageUrl && !hasContent) return null;
+
   return (
-    <div className="w-wrapper mx-auto py-10 md:py-20 px-4 md:px-0">
-      <div className="flex flex-col md:flex-row gap-8 md:gap-30 justify-between">
-        <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
-          <Image
-            src={getStrapiMedia(icon?.url) || "https://placehold.co/600x400"}
-            alt="About Image"
-            width={600}
-            height={400}
-            className="h-full object-cover rounded-lg md:rounded-none"
-          />
-        </div>
-        <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
-          <div className="flex flex-col gap-6 max-w-[400px]">
-            <h2 className="font-sequel-normal text-primary text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter max-w-[460px]">
+    <section className="w-full">
+      <div className="relative overflow-hidden min-h-[520px] md:min-h-[620px]">
+        <Image
+          src={imageUrl}
+          alt={title || "Why Choose Adino Partners"}
+          fill
+          sizes="(max-width: 768px) 100vw, 1200px"
+          className="object-cover"
+          priority={false}
+        />
+
+        <div className="relative z-10 w-full h-full flex items-center justify-center md:justify-end p-4 md:p-15">
+          <div className="w-full max-w-[620px] bg-white shadow-sm p-6 sm:p-8 md:p-12">
+            <h2 className="font-sequel-normal text-primary text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter">
               {title}
             </h2>
+
+            <div className="mt-6 font-lato text-[#666666] text-sm md:text-base leading-[26px] md:leading-[30px]">
+              {renderDescription(description)}
+            </div>
+
+            {cta_btn_text ? (
+              <div className="mt-10">
+                <a
+                  href={cta_btn_url || "#"}
+                  className="inline-flex items-center justify-center rounded-full border border-primary text-primary px-8 py-3 text-sm md:text-base font-lato"
+                >
+                  {cta_btn_text}
+                </a>
+              </div>
+            ) : null}
           </div>
-          <div>{renderDescription(description)}</div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

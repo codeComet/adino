@@ -43,7 +43,7 @@ const AdinoPartnersClient = () => {
       <About data={sections?.[1]} />
       <Services data={sections?.[2]} />
       <About data={sections?.[3]} />
-      <TestimonialGrid />
+      {/* <TestimonialGrid /> */}
       <SubsidiaryNewsletter />
     </>
   );

@@ -1,6 +1,5 @@
 "use client";
 import AboutAdinoPartnersAbout from "@/components/subsidiaries/asset-partners/about/AboutAdinoPartnersAbout";
-import AboutAdinoPartnersBottomWhySection from "@/components/subsidiaries/asset-partners/about/AboutAdinoPartnersBottomWhySection";
 import AboutAdinoPartnersCoreSection from "@/components/subsidiaries/asset-partners/about/AboutAdinoPartnersCoreSection";
 import AboutAdinoPartnersHero from "@/components/subsidiaries/asset-partners/about/AboutAdinoPartnersHero";
 import AboutAdinoPartnersMissionVission from "@/components/subsidiaries/asset-partners/about/AboutAdinoPartnersMissionVission";
@@ -19,15 +18,15 @@ const AboutAdinoPartnersClient = () => {
         aboutData={aboutAdinoPartnersData?.data?.about || {}}
       />
       <AboutAdinoPartnersMissionVission
-        missionData={aboutAdinoPartnersData?.data?.missionAndVision || {}}
+        missionData={aboutAdinoPartnersData?.data || {}}
       />
       <AboutAdinoPartnersCoreSection coreData={aboutAdinoPartnersData?.data} />
-      <AboutAdinoPartnersWhySection
-        whySectionData={aboutAdinoPartnersData?.data?.whyAdinoSection || {}}
-      />
       <AboutAdinoPartnersTeam teamData={aboutAdinoPartnersData} />
-      <AboutAdinoPartnersBottomWhySection whyData={aboutAdinoPartnersData} />
-      <AboutAdinoPartnersNewsletter />
+      <AboutAdinoPartnersWhySection
+        whySectionData={aboutAdinoPartnersData?.data || {}}
+      />
+      {/* <AboutAdinoPartnersBottomWhySection whyData={aboutAdinoPartnersData} /> */}
+      {/* <AboutAdinoPartnersNewsletter /> */}
     </>
   );
 };

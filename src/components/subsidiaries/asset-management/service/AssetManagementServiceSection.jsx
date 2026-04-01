@@ -23,7 +23,8 @@ const AssetManagementServiceSection = ({ serviceData }) => {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {serviceItems.map((item, index) => (
-            <div key={index} className="bg-primary p-6 rounded-lg shadow-md">
+            <div key={index} className="bg-primary p-8 rounded-lg shadow-md md:pb-[100px]">
+              {item.icon && (
               <Image
                 src={getStrapiMedia(item.icon)}
                 alt={item.title}
@@ -31,6 +32,7 @@ const AssetManagementServiceSection = ({ serviceData }) => {
                 height={80}
                 className="mb-4"
               />
+              )}
               <h3 className="font-sequel-normal text-xl md:text-[26px] md:leading-[30px] font-bold text-white mb-4">
                 {item.title}
               </h3>

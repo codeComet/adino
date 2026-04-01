@@ -6,7 +6,7 @@ const About = ({ data }) => {
 
 
   return (
-    <div className="w-wrapper mx-auto pt-[52px] md:pt-[104px] px-4 md:px-0">
+    <div className="w-wrapper mx-auto py-[52px] md:py-[104px] px-4 md:px-0">
       <div className="flex flex-col md:flex-row gap-8 md:gap-30 justify-between">
         <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
           <Image
@@ -55,15 +55,17 @@ const About = ({ data }) => {
             ))}
           </div>
 
+{cta_btn.length > 0 && (
           <div className="mt-15">
             <a
               href={cta_btn[0]?.cta_btn_url}
               rel="noopener noreferrer"
-              className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-10 rounded-sm transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-15 rounded-full transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               {cta_btn[0]?.cta_btn_text}
             </a>
           </div>
+          )}
         </div>
       </div>
     </div>

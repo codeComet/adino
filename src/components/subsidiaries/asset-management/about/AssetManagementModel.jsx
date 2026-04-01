@@ -19,7 +19,7 @@ const AssetManagementModel = ({ modelData }) => {
       {/* Strength */}
       <div className="flex flex-col md:flex-row justify-center md:justify-between gap-6 md:gap-30">
         <div className="flex flex-col justify-center gap-6 md:w-1/2">
-          <h2 className="text-2xl leading-[45px] md:text-5xl md:leading-[60px] font-lato font-normal text-black">
+          <h2 className="text-2xl leading-[45px] md:text-5xl md:leading-[60px] font-lato font-normal text-black tracking-tighter">
             {ourStrength?.title}
           </h2>
           <div className="font-lato font-normal text-base md:text-lg leading-[24px] md:leading-[30px] text-[#3B3E3C] flex flex-col gap-4">
@@ -75,7 +75,7 @@ const AssetManagementModel = ({ modelData }) => {
           />
         </div>
         <div className="flex flex-col gap-6 md:w-1/2 justify-center">
-          <h2 className="text-2xl leading-[45px] md:text-5xl md:leading-[60px] font-lato font-normal text-black">
+          <h2 className="text-2xl leading-[45px] md:text-5xl md:leading-[60px] font-lato font-normal text-black tracking-tighter">
             {ourModel?.title}
           </h2>
           <div className="font-lato font-normal text-base md:text-lg leading-[24px] md:leading-[30px] text-[#3B3E3C] flex flex-col gap-4">

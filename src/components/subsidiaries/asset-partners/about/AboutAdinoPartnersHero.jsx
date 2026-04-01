@@ -20,6 +20,7 @@ const AboutAdinoPartnersHero = ({ hero }) => {
     heroBgUrl.endsWith(".webm") ||
     heroBgUrl.endsWith(".mov");
 
+  const cta_btn = hero?.hero_cta ?? {};
   const normalizedHeading = headingText.replace(/[\u2028\u2029]/g, "\n");
 
   return (
@@ -63,6 +64,18 @@ const AboutAdinoPartnersHero = ({ hero }) => {
             {heroBottomText}
           </p>
         </div>
+
+        {cta_btn?.cta_btn_text && (
+          <div className="mt-4 sm:mt-6 flex gap-8">
+            <a
+              href={cta_btn?.cta_btn_url || "#"}
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto rounded-full font-lato font-normal text-sm sm:text-base leading-6 sm:leading-7 bg-[#AD9056] text-white cursor-pointer hover:text-white py-2 sm:py-3 px-6 sm:px-8"
+            >
+              {cta_btn?.cta_btn_text}{" "}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

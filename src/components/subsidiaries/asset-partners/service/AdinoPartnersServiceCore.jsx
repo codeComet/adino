@@ -65,8 +65,11 @@ const AdinoPartnersServiceCore = ({ coreStrategyData }) => {
               <div
                 key={item?.id ?? `${index}-${item?.title ?? "item"}`}
                 className={[
-                  "rounded-2xl border border-primary/50 bg-white p-6 md:p-8",
+                  "p-6 md:p-8",
                   index === 0 ? "md:col-span-2" : "",
+                  index === 0 ? "bg-primary" : "",
+                  index === 1 ? "bg-[#FAFAFA]" : "",
+                  index === 2 ? "bg-[#AD9056]" : "",
                 ].join(" ")}
               >
                 <div className="flex flex-col items-start gap-4 md:gap-6">
@@ -81,10 +84,10 @@ const AdinoPartnersServiceCore = ({ coreStrategyData }) => {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="font-sequel-normal text-[#181818] text-lg md:text-2xl leading-tight tracking-tighter">
+                    <h3 className={`font-sequel-normal text-${index === 0 || index === 2? "white" : "#181818"} text-lg md:text-2xl leading-tight tracking-tighter`}>
                       {item?.title || ""}
                     </h3>
-                    <p className="mt-3 font-lato font-normal text-[#666666] text-sm md:text-base leading-[24px] md:leading-[28px] max-w-[720px]">
+                    <p className={`mt-3 font-lato font-normal text-${index === 0 || index === 2? "white" : "#666666"} text-sm md:text-base leading-[24px] md:leading-[28px] max-w-[720px]`}>
                       {item?.description || ""}
                     </p>
                   </div>

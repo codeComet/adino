@@ -18,11 +18,11 @@ const AdinoPartnersServiceClient = () => {
       <AdinoPartnersServiceFocus
         focusData={adinoPartnersServiceData?.data || {}}
       />
-      <AdinoPartnersServiceIndustry
-        industryData={adinoPartnersServiceData?.data?.keyIndustry || {}}
-      />
       <AdinoPartnersServiceCore
         coreStrategyData={adinoPartnersServiceData?.data || {}}
+      />
+      <AdinoPartnersServiceIndustry
+        industryData={adinoPartnersServiceData?.data?.keyIndustry || {}}
       />
       <AdinoPartnersServiceNewsletter/>
     </>

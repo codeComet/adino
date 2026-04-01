@@ -25,7 +25,7 @@ const AboutAssetManagementHero = ({ hero }) => {
         <h4 className="uppercase w-[150px] md:w-[100px] text-[14px] font-lato font-normal text-[#666666]">
           our story
         </h4>
-        <div className="h-[1px] w-full bg-[#DCDCDC]"></div>
+        <div className="h-px w-full bg-[#DCDCDC]"></div>
       </div>
 
       <div className="flex flex-col md:flex-row justify-center md:items-center gap-10 md:gap-0 px-0">

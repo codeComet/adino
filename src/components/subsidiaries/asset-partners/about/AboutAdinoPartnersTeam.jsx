@@ -72,7 +72,7 @@ const AboutAdinoPartnersTeam = ({ teamData }) => {
   if (!teamData) return null;
 
   return (
-    <section className="w-full py-16 md:py-24 bg-white md:pt-50">
+    <section className="w-full py-16 md:py-24 bg-white">
       <div className="w-full px-4 md:px-6 lg:w-wrapper mx-auto">
         <div className="grid grid-cols-1 gap-12 lg:gap-20">
           <div className="flex flex-col gap-6">

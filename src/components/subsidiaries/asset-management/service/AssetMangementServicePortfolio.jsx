@@ -61,7 +61,7 @@ const AssetMangementServicePortfolio = ({ portfolioData }) => {
         {/* Right Column: Content */}
         <div className="flex flex-col">
           {portFolioSecondHeading && (
-            <h3 className="font-sequel-normal text-2xl md:text-[32px] leading-tight tracking-tighter text-[#181818] mb-8">
+            <h3 className="font-sequel-normal text-2xl md:text-[32px] leading-tight tracking-tighter text-[#181818] mb-8 tracking-tighter">
               {portFolioSecondHeading}
             </h3>
           )}
@@ -76,7 +76,7 @@ const AssetMangementServicePortfolio = ({ portfolioData }) => {
                   key={index}
                   className="bg-[#EDF4F2] p-8 md:p-10 rounded-sm"
                 >
-                  <h4 className="font-sequel-normal text-xl md:text-[24px] font-medium text-[#181818] mb-4">
+                  <h4 className="font-sequel-normal text-xl md:text-[24px] font-medium text-[#181818] mb-4 tracking-tighter">
                     {itemTitle}
                   </h4>
                   <p className="font-lato text-base leading-[26px] text-[#666666] mb-8">
