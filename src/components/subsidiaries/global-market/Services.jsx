@@ -42,6 +42,9 @@ const Services = ({ data }) => {
                   <h3 className="font-sequel-normal text-xl sm:text-2xl leading-8 sm:leading-10 text-black tracking-tighter">
                     {item.title}
                   </h3>
+                  {renderDescription(item.description, {
+                    pClassName: "text-[#333333]",
+                  })}
                 </div>
                 <button
                   type="button"

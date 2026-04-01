@@ -38,11 +38,7 @@ const Header = ({data}) => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="w-wrapper mx-auto flex flex-col gap-3 relative z-10">
-        <h5 className="font-lato text-xs md:text-sm uppercase text-white font-medium">
-          Adino
-        </h5>
-
-        <h1 className="font-sequel-normal text-2xl sm:text-3xl md:text-[64px] md:leading-[76px] text-white font-medium tracking-tighter">
+        <h1 className="font-sequel-normal text-2xl sm:text-3xl md:text-[64px] md:leading-[76px] text-white font-medium tracking-tighter md:max-w-[40%]">
           {heading_text}
         </h1>
 
