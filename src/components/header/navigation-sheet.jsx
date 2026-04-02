@@ -12,7 +12,7 @@ export const NavigationSheet = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="w-6 h-6 text-white" />
+        <Menu className="w-6 h-6 text-[#AD9056]" />
       </SheetTrigger>
       <SheetContent side="right" className="w-3/4 sm:w-1/2 p-6">
         {/* Required for accessibility */}

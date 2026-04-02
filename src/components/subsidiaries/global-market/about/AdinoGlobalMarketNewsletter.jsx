@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const AdinoGlobalMarketNewsletter = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-[104px]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-[104px]" id="contact-form">
       <div className="w-wrapper mx-auto px-4 md:px-0">
         <div className="relative overflow-hidden rounded-[28px] bg-primary px-6 py-14 sm:px-10 md:px-16 lg:py-[88px] flex flex-col items-center text-center">
           <svg

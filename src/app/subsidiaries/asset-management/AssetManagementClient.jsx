@@ -43,7 +43,7 @@ const AssetManagementClient = () => {
       <Header data={sections[0]} />
       <About data={sections[1]} />
       <Services data={sections[2]} />
-      <AssetTestimonial />
+      {/* <AssetTestimonial /> */}
       <SubsidiaryNewsletter />
     </>
   );

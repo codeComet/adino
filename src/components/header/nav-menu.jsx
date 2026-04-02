@@ -59,6 +59,14 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
       >
         About
       </Link>
+      {/* <Link
+        href="/what-we-do"
+        className={`hover:text-[#AD9056] ${
+          pathname === "/what-we-do" ? "text-[#AD9056]" : ""
+        }`}
+      >
+        What We Do
+      </Link> */}
 
       <div className="relative group" ref={dropdownRef}>
         <button
@@ -312,6 +320,14 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
         }`}
       >
         Careers
+      </Link>
+      <Link
+        href="/csr"
+        className={`hover:text-[#AD9056] ${
+          pathname === "/csr" ? "text-[#AD9056]" : ""
+        }`}
+      >
+        CSR
       </Link>
       <Link
         href="/contact"

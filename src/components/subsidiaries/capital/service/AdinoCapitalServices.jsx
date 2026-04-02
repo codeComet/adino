@@ -28,6 +28,7 @@ const AdinoCapitalServices = ({ serviceItems = [] }) => {
       <div
         key={`${heading ?? "service"}-${index}`}
         className={`bg-[#1C693C] px-6 py-10 md:px-10 md:py-14 flex flex-col gap-4 md:gap-6 ${minHeightClassName}`}
+        id="capital-service"
       >
         {rawIcon ? (
           <div className="w-6 h-6 md:w-7 md:h-7 relative">
