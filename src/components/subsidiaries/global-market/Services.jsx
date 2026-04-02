@@ -46,12 +46,13 @@ const Services = ({ data }) => {
                     pClassName: "text-[#333333]",
                   })}
                 </div>
+                {item?.url_text && (
                 <button
                   type="button"
                   onClick={() => setSelectedService(item)}
                   className="flex gap-2.5 items-center text-sm sm:text-base hover:underline"
                 >
-                  Learn More
+                  {item?.url_text}
                   <svg
                     width="16"
                     height="17"
@@ -68,6 +69,7 @@ const Services = ({ data }) => {
                     />
                   </svg>
                 </button>
+                )}
               </div>
             ))
           : null}
