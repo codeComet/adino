@@ -82,12 +82,14 @@ const AssetMangementServicePortfolio = ({ portfolioData }) => {
                   <p className="font-lato text-base leading-[26px] text-[#666666] mb-8">
                     {itemDesc}
                   </p>
+                  {item?.url_text && (
                   <Link
-                    href={item.link || "#"}
+                    href={item.url || "#"}
                     className="inline-block bg-primary text-white px-8 py-3 rounded text-base font-medium hover:bg-[#14452a] transition-colors"
                   >
-                    Learn More
+                    {item?.url_text}
                   </Link>
+                  )}
                 </div>
               );
             })}
