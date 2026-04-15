@@ -26,9 +26,6 @@ const query = qs.stringify(
       },
       teamMembers: {
         populate: {
-          social_links: {
-            populate: "*",
-          },
           image: {
             populate: "*",
           },
