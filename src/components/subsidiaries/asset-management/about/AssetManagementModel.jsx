@@ -53,7 +53,7 @@ const AssetManagementModel = ({ modelData }) => {
 
         <div className="md:w-1/2">
           <Image
-            src={getStrapiMedia(ourStrength?.image?.url)}
+            src={getStrapiMedia(ourStrength?.image?.url) || "https://placehold.co/300x200"}
             alt={ourModel?.image?.alternativeText || "our model image"}
             width={300}
             height={200}
@@ -67,7 +67,7 @@ const AssetManagementModel = ({ modelData }) => {
       <div className="flex flex-col-reverse md:flex-row justify-center md:justify-between gap-6 md:gap-30 md:flex-nowrap">
         <div className="md:w-1/2">
           <Image
-            src={getStrapiMedia(ourModel?.image?.url)}
+            src={getStrapiMedia(ourModel?.image?.url) || "https://placehold.co/300x200"}
             alt={ourModel?.image?.alternativeText || "our model image"}
             width={300}
             height={200}

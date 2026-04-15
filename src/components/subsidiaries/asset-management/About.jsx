@@ -34,7 +34,7 @@ const About = ({ data }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-end">
             <div className="flex flex-col gap-6 md:gap-8 w-full sm:w-1/2">
               <Image
-                src={getStrapiMedia(image_1?.url)}
+                src={getStrapiMedia(image_1?.url) || "https://placehold.co/500x200"}
                 alt="Hero Image"
                 width={500}
                 height={200}
@@ -51,7 +51,7 @@ const About = ({ data }) => {
             </div>
             <div className="flex flex-col gap-6 md:gap-8 w-full sm:w-1/2">
               <Image
-                src={getStrapiMedia(image_2?.url)}
+                src={getStrapiMedia(image_2?.url) || "https://placehold.co/500x200"}
                 alt="Hero Image"
                 width={500}
                 height={200}

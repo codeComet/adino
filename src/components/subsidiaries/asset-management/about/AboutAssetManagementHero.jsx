@@ -43,7 +43,7 @@ const AboutAssetManagementHero = ({ hero }) => {
       {/* img */}
       <div className="flex justify-center mt-8 md:mt-10 flex-1 px-4 md:px-0">
         <Image
-          src={getStrapiMedia(hero_bg?.url)}
+          src={getStrapiMedia(hero_bg?.url) || "https://placehold.co/1000x720"}
           alt="about hero image"
           width={1000}
           height={720}

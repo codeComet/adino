@@ -46,7 +46,7 @@ const AssetManagementMissionAndVision = ({ missionAndVisionData }) => {
 
         <div className="w-full md:w-1/2">
           <Image
-            src={getStrapiMedia(missionAndVision?.missionImage?.url)}
+            src={getStrapiMedia(missionAndVision?.missionImage?.url) || "https://placehold.co/1000x720"}
             alt="mission and vision image"
             width={1000}
             height={720}
