@@ -150,8 +150,8 @@ const AssetManagementTeam = ({ teamData }) => {
                     <h3 className="text-white font-sequel-normal font-medium text-sm md:text-[20px] text-left leading-snug">
                       {member?.name}
                     </h3>
-                    <p className="text-white/80 font-lato text-sm text-left mt-1">
-                      {member?.designation}
+                    <p className="text-white font-lato text-sm text-left mt-1 italic">
+                      {member?.location_designation}
                     </p>
                   </div>
                 </div>
