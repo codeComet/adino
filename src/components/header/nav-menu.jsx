@@ -186,7 +186,7 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
                   className="inline-flex items-center rounded-full bg-[#AD9056] px-4 py-1 text-white text-xs sm:text-sm font-lato font-medium hover:bg-[#9C7F4A] transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  About
+                  About Us
                 </Link>
                 <Link
                   href="/subsidiaries/adino-partners-service"

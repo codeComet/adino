@@ -28,18 +28,20 @@ const About = ({ data }) => {
         <Image
           src={getStrapiMedia(image_1?.url)}
           alt="Hero Image"
-          width={200}
-          height={200}
+          width={image_1?.width || 1200}
+          height={image_1?.height || 800}
           className="w-full h-[250px] sm:h-[300px] md:h-auto object-cover rounded-lg md:rounded-none"
+          unoptimized
         />
       </div>
       <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
         <Image
           src={getStrapiMedia(image_2?.url)}
           alt="Hero Image"
-          width={200}
-          height={200}
+          width={image_2?.width || 1200}
+          height={image_2?.height || 800}
           className="w-full h-[250px] sm:h-[300px] md:h-auto object-cover rounded-lg md:rounded-none"
+          unoptimized
         />
         <p className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#333333]">
           {description_2?.[0]?.children?.[0]?.text}

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { getStrapiMedia } from "@/lib/utils";
 import { X } from "lucide-react";
-import quoteIcon from "../../../public/assets/img/quote.svg";
+import quoteIcon from "../../../public/assets/img/quote.png";
 
 const WelcomeContent = () => {
   const { data } = useWelcomePageData();

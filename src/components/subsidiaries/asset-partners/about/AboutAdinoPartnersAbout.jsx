@@ -15,7 +15,7 @@ const AboutAdinoPartnersAbout = ({ aboutData }) => {
   return (
     <div className="w-wrapper mx-auto py-10 md:py-20">
       <h5 className="font-lato text-base md:text-xl uppercase font-medium text-[#5D6D78] rounded-full py-2 w-fit">
-        About
+        About Us
       </h5>
       <h2 className="font-sequel-normal text-primary text-3xl leading-12 md:text-5xl md:leading-15 tracking-tighter">
         {about_heading}

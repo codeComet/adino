@@ -18,15 +18,15 @@ const About = ({ data }) => {
           />
         </div>
         <div className="flex flex-col gap-4 md:gap-6 justify-center w-full md:w-1/2">
-          <div className="flex flex-col gap-6 max-w-[400px] mb-10">
-            <h2 className="font-sequel-normal text-primary text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter max-w-[460px]">
+          <div className="flex flex-col gap-6 max-w-[400px]">
+            <h2 className="text-center md:text-left font-sequel-normal text-primary text-[25px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter max-w-[460px]">
               {heading}
             </h2>
           </div>
           <>
             {description_1 && description_1?.map((item, index) => (
               <p
-                className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#666666]"
+                className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#666666] text-justify"
                 key={index}
               >
                 {item?.children?.[0]?.text}
@@ -44,10 +44,10 @@ const About = ({ data }) => {
                   className="w-[40px] h-[40px] object-cover"
                 />
                 <div className={`flex flex-col ${item?.title === null ? "gap-0" : "gap-4"}`}>
-                  <h3 className="text-[24px] leading-[30px] tracking-tighter font-sequel-normal text-[#181818] font-semibold">
+                  <h3 className="text-left text-[24px] leading-[30px] tracking-tighter font-sequel-normal text-[#181818] font-semibold">
                     {item?.title}
                   </h3>
-                  <p className="text-base md:text-lg font-lato font-medium text-[#666666] leading-6 md:leading-7.5">
+                  <p className="text-left text-base md:text-lg font-lato font-medium text-[#666666] leading-6 md:leading-7.5">
                     {item?.description}
                   </p>
                 </div>
