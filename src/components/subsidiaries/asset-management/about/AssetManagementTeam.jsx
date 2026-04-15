@@ -26,7 +26,16 @@ const RichTextRenderer = ({ content, className, pClassName }) => {
           if (item.type === "paragraph") {
             return (
               <p key={index} className={pClassName || ""}>
-                {item.children?.map((child) => child.text).join("")}
+                {item.children?.map((child, i) => {
+                  if (child.bold) {
+                    return (
+                      <strong key={i} className="font-bold">
+                        {child.text}
+                      </strong>
+                    );
+                  }
+                  return child.text;
+                })}
               </p>
             );
           }
@@ -43,7 +52,16 @@ const RichTextRenderer = ({ content, className, pClassName }) => {
               >
                 {item.children?.map((listItem, liIndex) => (
                   <li key={liIndex}>
-                    {listItem.children?.map((child) => child.text).join("")}
+                    {listItem.children?.map((child, i) => {
+                      if (child.bold) {
+                        return (
+                          <strong key={i} className="font-bold">
+                            {child.text}
+                          </strong>
+                        );
+                      }
+                      return child.text;
+                    })}
                   </li>
                 ))}
               </ListTag>
@@ -196,8 +214,8 @@ const AssetManagementTeam = ({ teamData }) => {
                     <Dialog.Title className="text-lg md:text-3xl font-sequel-normal font-medium text-black mb-1">
                       {selectedMember?.name}
                     </Dialog.Title>
-                    <p className="text-[#054F30] font-lato text-lg font-medium mb-6">
-                      {selectedMember?.designation}
+                    <p className="text-black font-lato text-lg font-medium mb-6">
+                      {selectedMember?.location_designation}
                     </p>
                   </div>
                 </div>
