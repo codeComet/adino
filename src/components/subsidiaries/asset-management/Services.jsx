@@ -42,7 +42,8 @@ const Services = ({ data }) => {
                   alt={item.title}
                   width={150}
                   height={150}
-                  className="w-[100px] xs:w-[120px] sm:w-[150px] h-auto object-contain"
+                  className="w-full md:w-[150px] h-auto object-contain"
+                  unoptimized
                 />
               </div>
             ))
