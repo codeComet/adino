@@ -38,7 +38,7 @@ const Services = ({ data }) => {
                 className="flex flex-col md:flex-row md:items-center justify-between py-4 sm:py-5 border-b border-[#00000033] gap-4 md:gap-0"
                 key={index}
               >
-                <div className="flex flex-col gap-2 sm:gap-3 w-full md:w-1/2">
+                <div className="flex flex-col gap-2 sm:gap-3 w-full md:w-2/3">
                   <h3 className="font-sequel-normal text-xl sm:text-2xl leading-8 sm:leading-10 text-black tracking-tighter">
                     {item.title}
                   </h3>
