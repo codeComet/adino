@@ -8,6 +8,7 @@ import sub1 from "../../../public/assets/img/sub-1.svg";
 import sub2 from "../../../public/assets/img/sub-2.svg";
 import sub3 from "../../../public/assets/img/sub-3.svg";
 import sub4 from "../../../public/assets/img/sub-4.svg";
+import compass from "../../../public/assets/img/adino-mark.png";
 import rightArrow from "../../../public/assets/img/rightarrow.svg";
 
 export const NavMenu = ({ className = "", variant = "desktop" }) => {
@@ -103,11 +104,11 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
               >
                 <span className="shrink-0">
                   <Image
-                    src={sub1}
-                    width={30}
-                    height={30}
+                    src={compass}
+                    width={50}
+                    height={50}
                     alt="menu"
-                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                    className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px]"
                   />
                 </span>
                 <span className="flex flex-col grow gap-1 sm:gap-2">
@@ -155,11 +156,11 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
               >
                 <span className="shrink-0">
                   <Image
-                    src={sub2}
-                    width={30}
-                    height={30}
+                    src={compass}
+                    width={50}
+                    height={50}
                     alt="menu"
-                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                    className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px]"
                   />
                 </span>
                 <span className="flex flex-col grow gap-1 sm:gap-2">
@@ -207,11 +208,11 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
               >
                 <span className="shrink-0">
                   <Image
-                    src={sub3}
-                    width={30}
-                    height={30}
+                    src={compass}
+                    width={50}
+                    height={50}
                     alt="menu"
-                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                    className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px]"
                   />
                 </span>
                 <span className="flex flex-col grow gap-1 sm:gap-2">
@@ -259,11 +260,11 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
               >
                 <span className="shrink-0">
                   <Image
-                    src={sub4}
-                    width={30}
-                    height={30}
+                    src={compass}
+                    width={50}
+                    height={50}
                     alt="menu"
-                    className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+                    className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px]"
                   />
                 </span>
                 <span className="flex flex-col grow gap-1 sm:gap-2">
