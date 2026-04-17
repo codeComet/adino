@@ -7,7 +7,7 @@ import Image from "next/image"
 
 const BlogNewsletter = () => {
   return (
-    <div className="w-full p-6 bg-white rounded-xl shadow border flex flex-col gap-6 sticky top-10">
+    <div className="w-full p-6 bg-white rounded-xl shadow border flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <h2 className="text-xl md:text-2xl md:leading-10 font-semibold mb-1">
           Subscribe to newsletter

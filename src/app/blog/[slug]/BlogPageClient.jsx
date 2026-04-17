@@ -1,6 +1,5 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
 import Image from "next/image";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import BlogNewsletter from "@/components/generic/BlogNewsletter";
@@ -19,11 +18,7 @@ export default function BlogPageClient({ slugValue }) {
   const category = blog?.category;
 
   // Move the second useQuery hook before any early returns
-  const {
-    data: relatedData,
-    isLoading: relatedLoading,
-    error: relatedError,
-  } = useQuery({
+  const { data: relatedData, isLoading: relatedLoading } = useQuery({
     queryKey: ["related-posts", category],
     queryFn: () => getRelatedPosts(category),
     enabled: !!category,
@@ -101,7 +96,7 @@ export default function BlogPageClient({ slugValue }) {
 
           {/* Sidebar - Related Posts */}
           <div className="w-full lg:w-[35%]">
-            <div className="sticky top-24">
+            <div className="sticky top-24 flex flex-col gap-8">
               <h3 className="font-sequel-normal text-2xl mb-6 md:mb-8">
                 Related Posts
               </h3>
@@ -134,12 +129,11 @@ export default function BlogPageClient({ slugValue }) {
                   <p className="text-gray-500">No related posts found.</p>
                 )}
               </div>
+              <BlogNewsletter />
             </div>
           </div>
         </div>
       </div>
-
-      <BlogNewsletter />
     </div>
   );
 }
