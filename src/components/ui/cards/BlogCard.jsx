@@ -21,13 +21,16 @@ const BlogCard = ({ title, summary, image, category, url }) => {
             </p>
           </div>
         </div>
-        <div className="my-4 sm:my-6">
+        <div className="my-2">
           <p className="text-[#181818] font-lato font-normal text-[18px] sm:text-[20px] md:text-[22px] leading-[1.2] sm:leading-[26.4px]">
             {summary}
           </p>
         </div>
+        <div>
+          <h2 className="font-lato text-[#181818] text-base md:text-xl">{title}</h2>
+        </div>
         <div className="mt-3 sm:mt-4 w-fit read-more-btn">
-          <p className="flex items-center gap-1 sm:gap-2 text-[#166636] font-lato font-medium py-2 px-5 text-sm rounded-full border border-[#166636] hover:bg-[#166636] hover:text-white transition-colors">
+          <p className="flex items-center gap-1 sm:gap-2 text-primary font-lato font-medium py-2 px-5 text-sm rounded-full border border-[#166636] hover:bg-[#166636] hover:text-white transition-colors">
             Read More
             <Image
               src={arrowRight}

@@ -128,7 +128,7 @@ const InsightPosts = () => {
           <BlogCard
             key={post.id}
             category={capitalizeCategory(post.category)}
-            title={post.title}
+            title={post.title || "hello"}
             date={new Date(post.createdAt).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",

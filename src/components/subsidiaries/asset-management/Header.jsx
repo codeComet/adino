@@ -1,9 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { getStrapiMedia } from "@/lib/utils";
 
-const Header = ({data}) => {
-    const {heading_text, hero_bg, hero_bottom_text, hero_cta} = data;
+const Header = ({ data }) => {
+  const { heading_text, hero_bg, hero_bottom_text, hero_cta } = data;
+  const ctaText = hero_cta?.cta_btn_text ?? "";
+  const ctaUrl = hero_cta?.cta_btn_url ?? "";
 
   return (
     <div className="min-h-screen flex items-end justify-start bg relative pb-20">
@@ -47,10 +48,19 @@ const Header = ({data}) => {
             {hero_bottom_text?.[0]?.children?.[0]?.text}
           </p>
         </div>
-        <div className="mt-4 md:mt-16">
-          <Button className="w-full sm:w-auto rounded-full font-lato font-normal text-sm sm:text-base leading-6 sm:leading-7 bg-primary text-white cursor-pointer hover:text-white py-3 sm:py-5 px-6 sm:px-8">
-            {hero_cta?.cta_btn_text}{" "}
-          </Button>
+        <div className="flex items-center justify-start gap-4 mt-4 md:mt-16">
+          {ctaUrl ? (
+            <Button
+              asChild
+              className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-base md:text-lg px-8 md:py-6 md:px-8 font-lato font-medium text-white cursor-pointer transition-colors md:w-[250px] text-center"
+            >
+              <a href={ctaUrl}>{ctaText}</a>
+            </Button>
+          ) : (
+            <Button className="rounded-full h-[50px] bg-[#1B5E39] hover:bg-[#154a2d] text-base md:text-lg px-6 md:p-8 font-lato font-medium text-white cursor-pointer transition-colors md:w-[250px] text-center">
+              {ctaText}
+            </Button>
+          )}
         </div>
       </div>
     </div>

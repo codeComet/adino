@@ -117,7 +117,7 @@ const Body = ({ heading, description, box, cta }) => {
       </div>
 
       <div className="mt-12 md:mt-20">
-        <div className="flex flex-col md:flex-row items-stretch md:items-center">
+        <div className="flex flex-col md:flex-row-reverse items-stretch md:items-center">
           <div className="relative w-full md:w-3/5 min-h-[260px] md:min-h-[560px] bg-[#F4F4F5] overflow-hidden z-0">
             {boxImageUrl ? (
               <Image

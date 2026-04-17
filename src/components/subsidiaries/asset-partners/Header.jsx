@@ -28,7 +28,6 @@ const Header = ({ data }) => {
           style={{
             backgroundImage: `url(${getStrapiMedia(hero_bg?.url)})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         />

@@ -29,7 +29,16 @@ export default function ContactHeader({title, heading, mapHeading}) {
 
             {/* Map */}
             <div className="relative">
-              <ContactMap />
+              {/* <ContactMap /> */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5321355316887!2d3.4477547999999993!3d6.454050499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4ee64d307d3%3A0x3322e378b368859c!2s10a%20Alexander%20Ave%2C%20Ikoyi%2C%20Lagos%20106104%2C%20Lagos!5e0!3m2!1sen!2sng!4v1776299795845!5m2!1sen!2sng"
+                width="600"
+                height="450"
+                style={{border: "0"}}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
 

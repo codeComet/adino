@@ -2,7 +2,8 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
 const About = ({ data }) => {
-  const { title, heading, description_1, image_1, image_2, stats, cta_btn } = data;
+  const { title, heading, description_1, image_1, image_2, stats, cta_btn } =
+    data;
 
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:py-[104px] px-4 md:px-0">
@@ -34,11 +35,13 @@ const About = ({ data }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-end">
             <div className="flex flex-col gap-6 md:gap-8 w-full sm:w-1/2">
               <Image
-                src={getStrapiMedia(image_1?.url) || "https://placehold.co/500x200"}
+                src={
+                  getStrapiMedia(image_1?.url) || "https://placehold.co/500x200"
+                }
                 alt="Hero Image"
                 width={500}
                 height={200}
-                className="w-full h-[200px] sm:h-[250px] md:h-auto object-cover rounded-lg md:rounded-none"
+                className="w-full h-[200px] sm:h-[250px] md:h-[360px] lg:h-[420px] object-cover rounded-lg md:rounded-none"
               />
               <div className="flex flex-col gap-2 md:gap-3 justify-center w-full">
                 <h3 className="text-[20px] sm:text-[24px] leading-[24px] md:text-[56px] md:leading-[64px] tracking-tighter font-sequel-normal text-[#181818]">
@@ -51,11 +54,13 @@ const About = ({ data }) => {
             </div>
             <div className="flex flex-col gap-6 md:gap-8 w-full sm:w-1/2">
               <Image
-                src={getStrapiMedia(image_2?.url) || "https://placehold.co/500x200"}
+                src={
+                  getStrapiMedia(image_2?.url) || "https://placehold.co/500x200"
+                }
                 alt="Hero Image"
                 width={500}
                 height={200}
-                className="w-full h-[200px] sm:h-[250px] md:h-auto object-cover rounded-lg md:rounded-none"
+                className="w-full h-[200px] sm:h-[250px] md:h-[360px] lg:h-[420px] object-cover rounded-lg md:rounded-none"
               />
               <div className="flex flex-col gap-2 md:gap-3 justify-center w-full">
                 <h3 className="text-[20px] sm:text-[24px] leading-[24px] md:text-[56px] md:leading-[64px] tracking-tighter font-sequel-normal text-[#181818]">
