@@ -4,14 +4,21 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { getStrapiMedia } from "@/lib/utils";
 
+const renderTextWithBreaks = (text) =>
+  text
+    .split(/(<br\s*\/?>)/gi)
+    .map((part, index) =>
+      /<br\s*\/?>/i.test(part) ? <br key={index} /> : part,
+    );
+
 const RichTextRenderer = ({ content }) => {
   if (!content) return null;
 
-  // If it's a string, just render it in a paragraph
+  // Convert inline <br /> tags from CMS strings into actual line breaks.
   if (typeof content === "string") {
     return (
       <p className="text-base font-medium leading-7 text-[#474B64] font-lato">
-        {content}
+        {renderTextWithBreaks(content)}
       </p>
     );
   }
@@ -24,7 +31,12 @@ const RichTextRenderer = ({ content }) => {
           if (item.type === "paragraph") {
             return (
               <p key={index}>
-                {item.children.map((child) => child.text).join("")}
+                {item.children.map((child, idx) => (
+                  <React.Fragment key={idx}>
+                    {child.text}
+                    {child.type === "break" && <br />}
+                  </React.Fragment>
+                ))}
               </p>
             );
           }
@@ -39,7 +51,12 @@ const RichTextRenderer = ({ content }) => {
               >
                 {item.children.map((listItem, liIndex) => (
                   <li key={liIndex}>
-                    {listItem.children.map((child) => child.text).join("")}
+                    {listItem.children.map((child, idx) => (
+                      <React.Fragment key={idx}>
+                        {child.text}
+                        {child.type === "break" && <br />}
+                      </React.Fragment>
+                    ))}
                   </li>
                 ))}
               </ListTag>
