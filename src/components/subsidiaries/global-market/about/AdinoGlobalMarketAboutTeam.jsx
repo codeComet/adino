@@ -22,7 +22,7 @@ const RichTextRenderer = ({ content }) => {
         {content.map((item, index) => {
           if (item.type === "paragraph") {
             return (
-              <p key={index}>
+              <p key={index} className="text-justify">
                 {item.children.map((child) => child.text).join("")}
               </p>
             );
@@ -85,7 +85,7 @@ const AdinoGlobalMarketAboutTeam = ({ teamData }) => {
               <RichTextRenderer content={teamDescription} />
             </div>
 
-            <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
+            {/* <div className="flex items-center justify-start mt-4 md:mt-7.5 mb-8 md:mb-14.5">
               <a
                 href="/subsidiaries/adino-executive-management"
                 rel="noopener noreferrer"
@@ -101,7 +101,7 @@ const AdinoGlobalMarketAboutTeam = ({ teamData }) => {
                   className="md:w-6 md:h-6"
                 />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column: Team Members Grid */}

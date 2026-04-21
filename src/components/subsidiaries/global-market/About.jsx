@@ -22,7 +22,7 @@ const About = ({ data }) => {
         <h2 className="font-sequel-normal text-[24px] sm:text-[28px] md:text-[32px] lg:text-5xl leading-[1.2] md:leading-[60px] tracking-tighter">
           {heading}
         </h2>
-        <p className="text-base md:text-lg leading-[26px] md:leading-[35px] font-lato font-medium text-[#333333]">
+        <p className="text-base text-justify md:text-lg leading-[26px] md:leading-[35px] font-lato font-medium text-[#333333]">
           {description_1?.[0]?.children?.[0]?.text}
         </p>
         <Image
@@ -43,7 +43,7 @@ const About = ({ data }) => {
           className="w-full h-[250px] sm:h-[300px] md:h-auto object-cover rounded-lg md:rounded-none"
           unoptimized
         />
-        <p className="text-base md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#333333]">
+        <p className="text-base text-justify md:text-lg leading-[26px] md:leading-[30px] font-lato font-medium text-[#333333]">
           {description_2?.[0]?.children?.[0]?.text}
         </p>
         <div className="w-full md:max-w-fit flex items-center justify-start mt-4 md:mt-7.5 mb-8 bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2">

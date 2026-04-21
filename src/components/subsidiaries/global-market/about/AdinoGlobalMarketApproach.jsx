@@ -56,11 +56,11 @@ const AdinoGlobalMarketApproach = ({ approachData, data }) => {
     <div className="mt-4 text-[#666666]">
       {renderDescriptionFromEditor(approachDescription, {
         pClassName:
-          "font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#666666] mb-3 last:mb-0",
+          "text-justify font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#666666] mb-3 last:mb-0",
       })}
     </div>
   ) : approachDescription ? (
-    <p className="mt-4 font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#666666] max-w-[680px]">
+    <p className="mt-4 text-justify font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#666666] max-w-[680px]">
       {approachDescription}
     </p>
   ) : null;
@@ -69,11 +69,11 @@ const AdinoGlobalMarketApproach = ({ approachData, data }) => {
     <div className="mt-5 text-[#474B64]">
       {renderDescriptionFromEditor(itemDescription, {
         pClassName:
-          "font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#474B64] mb-3 last:mb-0",
+          "text-justify font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#474B64] mb-3 last:mb-0",
       })}
     </div>
   ) : itemDescription ? (
-    <p className="mt-5 font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#666666]">
+    <p className="mt-5 text-justify font-lato font-normal text-sm sm:text-base md:text-lg leading-[24px] md:leading-[30px] text-[#666666]">
       {itemDescription}
     </p>
   ) : null;

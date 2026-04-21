@@ -16,7 +16,7 @@ const ExecutiveManagementHeader = ({data}) => {
       <h1 className="font-sequel-normal font-normal text-[28px] sm:text-[32px] md:text-[64px] leading-[1.15] md:leading-[1.05] tracking-tighter text-black w-full md:w-[40%]">
         {heading}
       </h1>
-      <div className="text-base md:text-lg leading-[30px] text-[#474B64] font-lato md:w-[55%]">
+      <div className="text-base text-justify md:text-lg leading-[30px] text-[#474B64] font-lato md:w-[55%]">
         {renderDescriptionFromEditor(description)}
       </div>
     </div>

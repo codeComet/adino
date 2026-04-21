@@ -56,7 +56,7 @@ const AdinoGlobalMarketCoreValues = ({ coreValuesData }) => {
 
             {coreValueDescription ? (
               <div className="mt-5 max-w-[560px]">
-                <p className="text-white font-lato font-normal text-base md:text-lg leading-[24px] md:leading-[30px]">
+                <p className="text-white text-justify font-lato font-normal text-base md:text-lg leading-[24px] md:leading-[30px]">
                   {coreValueDescription}
                 </p>
               </div>
@@ -78,7 +78,7 @@ const AdinoGlobalMarketCoreValues = ({ coreValuesData }) => {
                     <p className="font-lato font-semibold text-base md:text-[20px] leading-4 uppercase tracking-[0.18em] text-white md:mb-9">
                       {item?.title || ""}
                     </p>
-                    <p className="mt-4 font-lato font-normal text-white text-base md:text-lg leading-[22px] md:leading-[28px] max-w-[320px]">
+                    <p className="mt-4  font-lato font-normal text-white text-base md:text-lg leading-[22px] md:leading-[28px] max-w-[320px]">
                       {item?.description || ""}
                     </p>
                   </div>

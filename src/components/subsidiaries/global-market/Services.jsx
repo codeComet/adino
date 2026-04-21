@@ -26,7 +26,7 @@ const Services = ({ data }) => {
             </h2>
           </div>
           <div className="flex-1">
-            {renderDescription(description, { pClassName: "text-black" })}
+            {renderDescription(description, { pClassName: "text-black text-justify" })}
           </div>
         </div>
 
@@ -43,7 +43,7 @@ const Services = ({ data }) => {
                     {item.title}
                   </h3>
                   {renderDescription(item.description, {
-                    pClassName: "text-[#333333]",
+                    pClassName: "text-[#333333] text-justify",
                   })}
                 </div>
                 {item?.url_text && (

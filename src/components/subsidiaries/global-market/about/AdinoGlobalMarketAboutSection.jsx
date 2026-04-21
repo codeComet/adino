@@ -15,10 +15,10 @@ const AdinoGlobalMarketAboutSection = ({ aboutData }) => {
   const descriptionNode = Array.isArray(about_description) ? (
     renderDescriptionFromEditor(about_description, {
       pClassName:
-        "w-full md:w-[90%] mt-5 text-[#666666] text-base md:text-lg leading-normal md:leading-[34px]",
+        "w-full text-justify md:w-[90%] mt-5 text-[#666666] text-base md:text-lg leading-normal md:leading-[34px]",
     })
   ) : (
-    <p className="w-full md:w-[90%] mt-5 text-[#666666] text-base md:text-lg leading-normal md:leading-[34px] font-lato">
+    <p className="w-full text-justify md:w-[90%] mt-5 text-[#666666] text-base md:text-lg leading-normal md:leading-[34px] font-lato">
       {about_description || ""}
     </p>
   );

@@ -40,7 +40,7 @@ const AdinoGlobalMarketAboutMissionVission = ({ missionVisionData }) => {
                   <Image src={minusIcon} alt="minus" width={24} height={24} />
                 </div>
               </div>
-              <p className="text-base md:text-lg leading-[28px] font-lato font-medium text-[#787878] md:max-w-[85%]">
+              <p className="text-base text-justify md:text-lg leading-[28px] font-lato font-medium text-[#787878] md:max-w-[85%]">
                 {item?.description || ""}
               </p>
             </div>

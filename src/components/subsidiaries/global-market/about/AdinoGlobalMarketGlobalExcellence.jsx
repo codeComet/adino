@@ -39,16 +39,16 @@ const AdinoGlobalMarketGlobalExcellence = ({ globalExcellenceData }) => {
             {title || ""}
           </h3>
 
-          <p className="mt-4 font-lato font-medium text-base md:text-lg leading-[24px] md:leading-[30px] text-white/90">
+          <p className="mt-4 text-justify font-lato font-medium text-base md:text-lg leading-[24px] md:leading-[30px] text-white/90">
             {description || ""}
           </p>
 
-          <a
+          {/* <a
             href="#"
             className="mt-8 inline-flex w-fit items-center justify-center border border-white/70 px-8 py-3 text-sm md:text-base font-lato font-medium text-white hover:bg-white/10 transition-colors"
           >
             Learn More
-          </a>
+          </a> */}
 
           <div
             className="hidden md:block absolute left-0 bottom-0 w-[40px] h-[40px] bg-white"

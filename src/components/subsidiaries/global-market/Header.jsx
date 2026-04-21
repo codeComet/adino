@@ -65,7 +65,7 @@ const Header = ({ data }) => {
 
         {descriptionText ? (
           <div className="max-w-full sm:max-w-[600px] md:max-w-[750px]">
-            <p className="text-white font-lato font-medium text-base sm:text-lg md:text-xl leading-6 sm:leading-7 md:leading-7.5 mt-4">
+            <p className="text-white text-justify font-lato font-medium text-base sm:text-lg md:text-xl leading-6 sm:leading-7 md:leading-7.5 mt-4">
               {descriptionText}
             </p>
           </div>
@@ -96,7 +96,7 @@ const Header = ({ data }) => {
                 <h3 className="text-[20px] sm:text-[24px] leading-[26px] sm:leading-[30px] md:text-[56px] md:leading-16 text-white font-sequel-normal font-normal tracking-tighter">
                   {item?.stat_number}
                 </h3>
-                <p className="text-xs sm:text-sm leading-5 text-white/80 font-lato font-medium">
+                <p className="text-xs sm:text-sm text-justify leading-5 text-white/80 font-lato font-medium">
                   {item?.stat_desc}
                 </p>
               </div>
