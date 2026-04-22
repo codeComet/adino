@@ -4,10 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import sub1 from "../../../public/assets/img/sub-1.svg";
-import sub2 from "../../../public/assets/img/sub-2.svg";
-import sub3 from "../../../public/assets/img/sub-3.svg";
-import sub4 from "../../../public/assets/img/sub-4.svg";
 import compass from "../../../public/assets/img/adino-mark.png";
 import rightArrow from "../../../public/assets/img/rightarrow.svg";
 
@@ -40,7 +36,7 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
       className={`flex font-lato ${
         variant === "mobile"
           ? mobileStyles
-          : "bg-primary rounded-full px-10 py-2 text-white text-base space-x-9"
+          : "bg-primary rounded-full px-4 xl:px-6 2xl:px-10 py-2 text-white text-sm xl:text-[15px] 2xl:text-base gap-4 xl:gap-6 2xl:gap-9"
       } ${className}`}
     >
       <Link

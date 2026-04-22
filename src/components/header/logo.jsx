@@ -8,14 +8,14 @@ export const Logo = ({ media }) => {
   const mediaUrl = getStrapiMedia(media);
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex shrink-0 items-center">
       <Image
         src={mediaUrl || greenLogo}
         alt="Adino Logo"
         width={170}
         height={60}
         priority
-        className="md:scale-130"
+        className="h-auto w-[120px] sm:w-[140px] lg:w-[150px] xl:w-[170px] 2xl:w-[190px]"
       />
     </div>
   );

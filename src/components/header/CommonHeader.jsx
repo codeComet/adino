@@ -11,14 +11,14 @@ import Link from "next/link";
 const CommonHeader = ({ logoMedia }) => {
   return (
     <>
-      <nav className="h-20 flex items-center absolute w-full z-50 px-6 my-5">
-        <div className="h-full flex items-center justify-between w-full mx-auto max-w-7xl">
+      <nav className="absolute z-50 my-5 flex h-20 w-full items-center px-4 sm:px-6">
+        <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-4">
           <Link href="/">
             <Logo media={logoMedia} />
           </Link>
 
           {/* Desktop Menu */}
-          <NavMenu className="hidden md:flex" />
+          <NavMenu className="hidden lg:flex" />
 
           <div className="flex items-center gap-6">
             {/* Social Icons */}
@@ -47,7 +47,7 @@ const CommonHeader = ({ logoMedia }) => {
             </div> */}
 
             {/* Mobile Menu */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <NavigationSheet />
             </div>
           </div>
