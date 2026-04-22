@@ -40,7 +40,7 @@ const AboutTeams = () => {
           <h4 className="text-white font-lato font-medium text-base md:text-xl leading-[100%] uppercase w-fit pb-2 border-b border-white">
             {teamTitle}
           </h4>
-          <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%]">
+          <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%] text-justify">
             {teamDescription}
           </h2>
         </div>
@@ -49,7 +49,7 @@ const AboutTeams = () => {
           <h4 className="text-white font-lato font-medium text-base md:text-xl leading-[100%] uppercase w-fit pb-2 border-b border-white">
             {directorTitle}
           </h4>
-          <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%]">
+          <h2 className="text-white font-sequel-normal text-[20px] md:text-[28px] leading-[30px] md:leading-[42px] tracking-tighter w-full md:w-[80%] text-justify">
             {directorDescription}
           </h2>
         </div>
