@@ -46,7 +46,7 @@ const InsightHero = () => {
           {heading}
         </h1>
         <div className="mt-4 md:mt-6 w-full md:w-auto">
-          <Link href={cta?.cta_btn_link ? cta?.cta_btn_link : "/"} className="block w-full md:w-auto">
+          <Link href={cta?.cta_btn_url ? cta?.cta_btn_url : "/"} className="block w-full md:w-auto">
             <Button
               size="lg"
               className="w-full md:w-auto rounded-full bg-primary text-sm md:text-base md:leading-[28px] backdrop-blur-[70px] py-2.5 md:py-[10px] px-4 md:px-[17px] font-lato font-medium text-white cursor-pointer"

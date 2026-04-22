@@ -15,7 +15,7 @@ export const Logo = ({ media }) => {
         width={170}
         height={60}
         priority
-        className="h-auto w-[120px] sm:w-[140px] lg:w-[160px] xl:w-[250px] 2xl:w-[270px]"
+        className="h-auto w-[120px] sm:w-[140px] lg:w-[160px] xl:w-[250px]"
       />
     </div>
   );
