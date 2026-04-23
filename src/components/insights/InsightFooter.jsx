@@ -67,7 +67,7 @@ const InsightFooter = () => {
       </h2>
       <div className="w-full mx-auto md:w-auto">
         <Link
-          href={cta?.cta_btn_link ? cta?.cta_btn_link : "/"}
+          href={cta?.cta_btn_url ? cta?.cta_btn_url : "/"}
           className="block w-full text-center md:w-auto"
         >
           <Button
