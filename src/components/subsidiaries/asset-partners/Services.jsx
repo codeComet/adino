@@ -63,7 +63,7 @@ const Services = ({ data }) => {
           />
           <div className="w-[140px] md:w-[187px] h-[100px] md:h-[125px] p-3 md:p-4 bg-white absolute left-2 md:left-5 bottom-2 md:bottom-5 flex flex-col justify-start items-start">
             <h2 className="text-primary font-sequel-normal text-xl md:text-[56px] md:leading-[64px] tracking-tighter">
-              11+
+              13+
             </h2>
             <p className="text-sm md:text-lg leading-[22px] md:leading-[30px] font-lato font-medium text-[#666666]">
               Years of experience
