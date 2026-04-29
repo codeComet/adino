@@ -94,58 +94,6 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
           <li className="md:py-[15px] md:px-[20px]">
             <div className="flex flex-col gap-2 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">
               <Link
-                href="/subsidiaries/adino-capital"
-                className="flex items-center gap-3"
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="shrink-0">
-                  <Image
-                    src={compass}
-                    width={50}
-                    height={50}
-                    alt="menu"
-                    className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px]"
-                  />
-                </span>
-                <span className="flex flex-col grow gap-1 sm:gap-2">
-                  <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
-                    Adino <br /> Capital
-                  </span>
-                  <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
-                    Grow with Adino Capital.
-                  </span>
-                </span>
-                <span className="ml-auto">
-                  <Image
-                    src={rightArrow}
-                    width={15}
-                    height={15}
-                    alt="arrow"
-                    className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
-                  />
-                </span>
-              </Link>
-              <div className="flex gap-2 ml-[32px] sm:ml-[42px]">
-                <Link
-                  href="/subsidiaries/about-adino-capital"
-                  className="inline-flex items-center rounded-full bg-[#AD9056] px-4 py-1 text-white text-xs sm:text-sm font-lato font-medium hover:bg-[#9C7F4A] transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/subsidiaries/adino-capital-service"
-                  className="inline-flex items-center rounded-full bg-[#AD9056] px-4 py-1 text-white text-xs sm:text-sm font-lato font-medium hover:bg-[#9C7F4A] transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Services
-                </Link>
-              </div>
-            </div>
-          </li>
-          <li className="md:py-[15px] md:px-[20px]">
-            <div className="flex flex-col gap-2 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-              <Link
                 href="/subsidiaries/adino-partners"
                 className="flex items-center gap-3"
                 onClick={() => setIsOpen(false)}
@@ -187,6 +135,58 @@ export const NavMenu = ({ className = "", variant = "desktop" }) => {
                 </Link>
                 <Link
                   href="/subsidiaries/adino-partners-service"
+                  className="inline-flex items-center rounded-full bg-[#AD9056] px-4 py-1 text-white text-xs sm:text-sm font-lato font-medium hover:bg-[#9C7F4A] transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Services
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li className="md:py-[15px] md:px-[20px]">
+            <div className="flex flex-col gap-2 p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+              <Link
+                href="/subsidiaries/adino-capital"
+                className="flex items-center gap-3"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="shrink-0">
+                  <Image
+                    src={compass}
+                    width={50}
+                    height={50}
+                    alt="menu"
+                    className="w-[50px] h-[50px] sm:w-[50px] sm:h-[50px]"
+                  />
+                </span>
+                <span className="flex flex-col grow gap-1 sm:gap-2">
+                  <span className="font-sequel-normal text-base sm:text-lg tracking-[-1%] text-[#181818] leading-4.5">
+                    Adino <br /> Capital
+                  </span>
+                  <span className="text-xs sm:text-sm text-[#666666] font-lato font-medium tracking-[-1%]">
+                    Grow with Adino Capital.
+                  </span>
+                </span>
+                <span className="ml-auto">
+                  <Image
+                    src={rightArrow}
+                    width={15}
+                    height={15}
+                    alt="arrow"
+                    className="w-[12px] h-[12px] sm:w-[15px] sm:h-[15px]"
+                  />
+                </span>
+              </Link>
+              <div className="flex gap-2 ml-[32px] sm:ml-[42px]">
+                <Link
+                  href="/subsidiaries/about-adino-capital"
+                  className="inline-flex items-center rounded-full bg-[#AD9056] px-4 py-1 text-white text-xs sm:text-sm font-lato font-medium hover:bg-[#9C7F4A] transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  href="/subsidiaries/adino-capital-service"
                   className="inline-flex items-center rounded-full bg-[#AD9056] px-4 py-1 text-white text-xs sm:text-sm font-lato font-medium hover:bg-[#9C7F4A] transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
