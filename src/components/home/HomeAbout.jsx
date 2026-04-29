@@ -49,7 +49,7 @@ const HomeAbout = () => {
         <h2 className="text-[32px] md:text-[64px] leading-[1.2] md:leading-[51px] text-center my-4 md:my-6 font-sequel-normal tracking-tighter">
           {aboutHeading}
         </h2>
-        <p className="text-center text-[#666666] text-base md:text-lg leading-[26px] md:leading-[30px] max-w-[100%] md:max-w-[778px] font-lato px-4 md:px-0">
+        <p className="text-center text-[#666666] text-base md:text-lg leading-[26px] md:leading-[30px] max-w-full md:max-w-[778px] font-lato px-4 md:px-0">
           {aboutDesc}
         </p>
         <div className="mt-8 md:mt-12 flex items-center justify-center gap-4">

@@ -16,7 +16,7 @@ const HeroStatCard = ({num, desc, img}) => {
 
       {/* Content */}
       <div className="relative z-10 px-4 md:px-6 py-10 md:py-15 flex flex-col gap-1 md:gap-1.5">
-        <div className="text-white text-[40px] md:text-[69px] leading-tight md:leading-18 font-normal font-sequel-normal">
+        <div className="text-white text-[40px] md:text-5xl leading-tight md:leading-[60px] font-normal font-sequel-normal">
           {num}
         </div>
         <div className="text-white text-[16px] md:text-[21px] leading-5 md:leading-6 font-normal font-lato">
