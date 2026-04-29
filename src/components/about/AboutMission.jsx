@@ -61,7 +61,7 @@ const AboutMission = () => {
               </p>
             </div>
 
-            <p className="mt-5 font-lato text-base md:text-lg leading-7 md:leading-8 text-white text-justify md:max-w-[80%]">
+            <p className="mt-5 font-lato text-base md:text-lg leading-7 md:leading-8 text-white text-justify">
               {visionItem?.description}
             </p>
           </div>
@@ -81,7 +81,7 @@ const AboutMission = () => {
                 </p>
               </div>
 
-              <p className="mt-5 font-lato text-base md:text-lg leading-7 md:leading-8 text-white text-justify md:max-w-[80%]">
+              <p className="mt-5 font-lato text-base md:text-lg leading-7 md:leading-8 text-white text-justify">
                 {missionItem?.description}
               </p>
             </div>
