@@ -173,32 +173,22 @@ const WelcomeContent = () => {
 
         {testimonial ? (
           <div className="mt-16 md:mt-32">
-            <div className="grid grid-cols-1 md:grid-cols-[420px_minmax(0,1fr)] lg:grid-cols-[460px_minmax(0,1fr)] gap-14 lg:gap-20 items-start mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-[420px_minmax(0,1fr)] lg:grid-cols-[460px_minmax(0,1fr)] gap-14 lg:gap-20 items-start md:items-stretch mx-auto">
               {/* LEFT IMAGE */}
-              <div className="relative w-full max-w-[460px]">
-                <div className="overflow-hidden rounded-[2px]">
+              <div className="relative w-full max-w-[460px] md:h-full">
+                <div className="overflow-hidden rounded-[2px] md:h-full">
                   {testimonialImageUrl ? (
                     <Image
                       src={testimonialImageUrl}
                       alt={testimonial?.name || "Testimonial"}
                       width={480}
                       height={560}
-                      className="w-full h-[400px] sm:h-[420px] md:h-[500px] object-cover"
+                      className="w-full h-[400px] sm:h-[420px] md:h-full object-cover"
                       priority
                     />
                   ) : (
-                    <div className="w-full h-[400px] sm:h-[420px] md:h-[500px] bg-white/10" />
+                    <div className="w-full h-[400px] sm:h-[420px] md:h-full bg-white/10" />
                   )}
-                </div>
-
-                {/* NAME CARD */}
-                <div className="absolute -bottom-10 -right-3 md:right-[-30px] bg-[#B49355] px-6 py-5 md:px-10 md:py-8 w-[260px] md:w-[320px] z-10">
-                  <p className="font-lato text-xl md:text-[22px] leading-tight font-normal text-white mb-2">
-                    {testimonial?.name}
-                  </p>
-                  <p className="font-lato text-base md:text-lg leading-snug text-white">
-                    {testimonial?.location_designation}
-                  </p>
                 </div>
               </div>
 
@@ -236,6 +226,14 @@ const WelcomeContent = () => {
 
                 {/* LINE */}
                 <div className="mt-8 md:mt-10 h-[2px] w-24 bg-[#B49355]" />
+                <div className="w-[260px] md:w-[320px] mt-8">
+                  <p className="font-lato text-xl md:text-[22px] leading-tight font-normal text-white mb-2">
+                    {testimonial?.name}
+                  </p>
+                  <p className="font-lato text-base md:text-lg leading-snug text-white">
+                    {testimonial?.location_designation}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
