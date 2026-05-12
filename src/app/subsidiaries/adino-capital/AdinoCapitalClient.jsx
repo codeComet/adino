@@ -35,13 +35,13 @@ const AdinoCapitalClient = () => {
       );
     }
 
-    const { sections } = adinoCapital?.data ? adinoCapital?.data : {};
+    const sections = adinoCapital?.data?.sections || [];
 
   return (
     <>
-      <Header data={sections[0]}/>
-      <About data={sections[1]}/>
-      <Services data={sections[2]}/>
+      <Header data={sections[0] || {}}/>
+      <About data={sections[1] || {}}/>
+      <Services data={sections[2] || {}}/>
       <SubsidiaryNewsletter/>
     </>
   );

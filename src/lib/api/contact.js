@@ -15,9 +15,11 @@ const query = qs.stringify(
 );
 
 export const getContactHeroData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?${query}`
-  );
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?${query}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch contact data: ${res.status} ${res.statusText}`);
+  }
   const data = await res.json();
   return data;
 };

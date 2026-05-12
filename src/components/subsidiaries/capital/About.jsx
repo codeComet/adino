@@ -6,7 +6,7 @@ import AutoScroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
 
 const About = ({ data }) => {
-  const { title, heading, description_1, carousel, cta_btn } = data;
+  const { title, heading, description_1, carousel, cta_btn } = data || {};
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     AutoScroll({

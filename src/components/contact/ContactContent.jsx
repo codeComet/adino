@@ -35,6 +35,7 @@ const ContactContent = () => {
     );
   }
 
+  const contact = contactData?.data || {};
   const {
     title,
     heading,
@@ -43,7 +44,7 @@ const ContactContent = () => {
     faq_title,
     faq_heading,
     faq_item,
-  } = contactData?.data;
+  } = contact;
 
   return (
     <>

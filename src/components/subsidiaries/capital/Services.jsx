@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const Services = ({ data }) => {
-  const { title, heading, services, image, cta } = data;
+  const { title, heading, services = [], image, cta } = data || {};
   return (
     <div className="w-wrapper mx-auto flex flex-col md:flex-row gap-8 md:gap-0 bg-[#EDF3F1] p-4 sm:p-6 md:p-8 lg:p-10 rounded-[5px] mb-10 md:mb-20" id="capital-service">
       <div className="px-3 sm:px-4 md:px-6 lg:px-8 w-full md:w-1/2">
