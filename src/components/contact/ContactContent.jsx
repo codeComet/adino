@@ -49,15 +49,15 @@ const ContactContent = () => {
     <>
       <div className="w-wrapper mx-auto py-30">
         <ContactHeader
-          title={title}
-          heading={heading}
-          mapHeading={map_heading}
+          title={title || "Contact Us"}
+          heading={heading || "Contact Us"}
+          mapHeading={map_heading || "Map"}
         />
         <ContactInfo contactInfo={contact_info} />
         <ContactFaq
-          faqTitle={faq_title}
-          faqHeading={faq_heading}
-          faqItem={faq_item}
+          faqTitle={faq_title || "FAQ"}
+          faqHeading={faq_heading || "FAQ"}
+          faqItem={faq_item || []}
         />
       </div>
       <Newsletter />
