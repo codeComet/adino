@@ -27,7 +27,7 @@ export function getStrapiMedia(input) {
   // Protocol-relative (rare)
   if (url.startsWith("//")) return `https:${url}`;
 
-  // Prefix any relative Strapi url if base exists
+  // Prefix any relative Strapi url using the PUBLIC base URL (so the browser can resolve it)
   const base = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
   if (!base) return url; // fallback (still relative)
@@ -39,12 +39,44 @@ export function getStrapiMedia(input) {
   return `${normalizedBase}${normalizedUrl}`;
 }
 
-export const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
+export function getStrapiApiBaseUrl() {
+  const publicBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
-export async function fetchStrapi(pathWithQuery) {
-  const res = await fetch(`${STRAPI_BASE_URL}${pathWithQuery}`);
-  const data = await res.json();
-  return data;
+  if (typeof window === "undefined") {
+    return (
+      process.env.STRAPI_INTERNAL_URL || process.env.STRAPI_URL || publicBaseUrl
+    );
+  }
+
+  return publicBaseUrl;
+}
+
+export function getStrapiApiUrl(path = "") {
+  const base = getStrapiApiBaseUrl();
+  if (!base) return path;
+
+  const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${normalizedBase}${normalizedPath}`;
+}
+
+export async function fetchStrapi(pathWithQuery, init) {
+  const url = getStrapiApiUrl(pathWithQuery);
+  const res = await fetch(url, init);
+
+  if (!res.ok) {
+    let details = "";
+    try {
+      details = await res.text();
+    } catch {
+      details = "";
+    }
+    throw new Error(
+      `Strapi request failed (${res.status}) ${url}${details ? `: ${details}` : ""}`,
+    );
+  }
+
+  return res.json();
 }
 
 export const renderDescription = (text, options = {}) => {

@@ -1,4 +1,5 @@
 import qs from "qs";
+import { fetchStrapi } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -24,9 +25,5 @@ const query = qs.stringify(
 );
 
 export const getHomePageData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${query}`,
-  );
-  const data = await res.json();
-  return data;
+  return fetchStrapi(`/api/home-page?${query}`);
 };

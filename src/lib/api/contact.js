@@ -1,4 +1,5 @@
 import qs from "qs";
+import { fetchStrapi } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -11,15 +12,9 @@ const query = qs.stringify(
   },
   {
     encodeValuesOnly: true,
-  }
+  },
 );
 
 export const getContactHeroData = async () => {
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?${query}`;
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`Failed to fetch contact data: ${res.status} ${res.statusText}`);
-  }
-  const data = await res.json();
-  return data;
+  return fetchStrapi(`/api/contact?${query}`);
 };

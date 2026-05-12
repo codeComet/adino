@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
+import { fetchStrapi } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -39,10 +40,7 @@ const query = qs.stringify(
 );
 
 export const getAboutAssetManagementPageData = async () => {
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about-asset-management?${query}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  return data;
+  return fetchStrapi(`/api/about-asset-management?${query}`);
 };
 
 export const useAboutAssetManagementPageData = () => {

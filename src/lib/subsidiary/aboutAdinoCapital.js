@@ -1,6 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
+import { fetchStrapi } from "@/lib/utils";
 const query = qs.stringify(
   {
     populate: {
@@ -31,10 +32,7 @@ const query = qs.stringify(
 );
 
 export const getAboutAdinoCapitalPageData = async () => {
-  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about-adino-capital?${query}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  return data;
+  return fetchStrapi(`/api/about-adino-capital?${query}`);
 };
 
 export const useAboutAdinoCapitalPageData = () => {

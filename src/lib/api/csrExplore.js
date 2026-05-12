@@ -1,4 +1,5 @@
 import qs from "qs";
+import { fetchStrapi } from "@/lib/utils";
 
 const query = qs.stringify(
   {
@@ -15,9 +16,5 @@ const query = qs.stringify(
 );
 
 export const getCsrExploreData = async () => { 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/csr-explore?${query}`,
-  );
-  const data = await res.json();
-  return data;
+  return fetchStrapi(`/api/csr-explore?${query}`);
 };

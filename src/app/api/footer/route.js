@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
-  const baseUrl = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL;
+  const baseUrl =
+    process.env.STRAPI_INTERNAL_URL ||
+    process.env.STRAPI_URL ||
+    process.env.NEXT_PUBLIC_STRAPI_URL;
 
   if (!baseUrl) {
     return NextResponse.json(
-      { error: "Missing STRAPI_URL environment variable" },
+      { error: "Missing Strapi base URL environment variables" },
       { status: 500 },
     );
   }
