@@ -20,10 +20,22 @@ export async function GET(request) {
     queryString ? `?${queryString}` : ""
   }`;
 
-  const upstreamRes = await fetch(targetUrl, {
-    headers: { accept: "application/json" },
-    next: { revalidate: 300 },
-  });
+  let upstreamRes;
+  try {
+    upstreamRes = await fetch(targetUrl, {
+      headers: { accept: "application/json" },
+      next: { revalidate: 300 },
+    });
+  } catch (err) {
+    return NextResponse.json(
+      {
+        error: "Failed to reach Strapi upstream",
+        targetUrl,
+        message: err instanceof Error ? err.message : String(err),
+      },
+      { status: 502 },
+    );
+  }
 
   const bodyText = await upstreamRes.text();
   const contentType =

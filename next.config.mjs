@@ -15,6 +15,16 @@ const nextConfig = {
         pathname: "/**",
       },
       {
+        protocol: "https",
+        hostname: "api.adinoinvest.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "api.adinoinvest.com",
+        pathname: "/**",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "1337",
@@ -23,10 +33,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "supportive-creativity-cd56af8fec.media.strapiapp.com",
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "placehold.co",
+        pathname: "/**",
       },
     ],
   },

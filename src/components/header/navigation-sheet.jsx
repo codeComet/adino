@@ -17,7 +17,8 @@ export const NavigationSheet = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setOpen(false);
+    const timeoutId = setTimeout(() => setOpen(false), 0);
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   return (
