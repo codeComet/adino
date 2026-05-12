@@ -16,9 +16,13 @@ const query = qs.stringify(
 );
 
 const getInsightFooterData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/insight?${query}`,
-  );
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/insight?${query}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(
+      `Failed to fetch insight footer data: ${res.status} ${res.statusText}`,
+    );
+  }
   const data = await res.json();
   return data;
 };
@@ -51,7 +55,8 @@ const InsightFooter = () => {
     );
   }
 
-  const { footer_text, footer_bg, cta } = insightFooterData?.data;
+  const insightFooter = insightFooterData?.data || {};
+  const { footer_text, footer_bg, cta } = insightFooter;
   return (
     <div
       className="w-wrapper mx-auto flex flex-col justify-center items-center gap-9 py-30 mt-10 mb-30 rounded-[30px]"

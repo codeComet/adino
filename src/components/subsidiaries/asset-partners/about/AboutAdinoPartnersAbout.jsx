@@ -10,7 +10,7 @@ const AboutAdinoPartnersAbout = ({ aboutData }) => {
     );
   }
 
-  const { about_heading, about_description } = aboutData;
+  const { about_heading, about_description } = aboutData || {};
 
   return (
     <div className="w-wrapper mx-auto py-10 md:py-20">

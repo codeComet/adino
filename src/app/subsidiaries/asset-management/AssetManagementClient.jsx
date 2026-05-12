@@ -36,13 +36,13 @@ const AssetManagementClient = () => {
     );
   }
 
-  const { sections } = assetManagement?.data ? assetManagement?.data : {};
+  const sections = assetManagement?.data?.sections || [];
 
   return (
     <>
-      <Header data={sections[0]} />
-      <About data={sections[1]} />
-      <Services data={sections[2]} />
+      <Header data={sections[0] || {}} />
+      <About data={sections[1] || {}} />
+      <Services data={sections[2] || {}} />
       {/* <AssetTestimonial /> */}
       <SubsidiaryNewsletter />
     </>

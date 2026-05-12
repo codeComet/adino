@@ -36,13 +36,13 @@ const AdinoPartnersClient = () => {
     );
   }
 
-  const { sections } = adinoPartners?.data ? adinoPartners?.data : {};
+  const sections = adinoPartners?.data?.sections || [];
   return (
     <>
-      <Header data={sections?.[0]} />
-      <About data={sections?.[1]} />
-      <Services data={sections?.[2]} />
-      <About data={sections?.[3]} />
+      <Header data={sections[0] || {}} />
+      <About data={sections[1] || {}} />
+      <Services data={sections[2] || {}} />
+      <About data={sections[3] || {}} />
       {/* <TestimonialGrid /> */}
       <SubsidiaryNewsletter />
     </>

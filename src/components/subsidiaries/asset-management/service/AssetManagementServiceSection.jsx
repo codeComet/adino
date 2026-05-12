@@ -11,7 +11,7 @@ const AssetManagementServiceSection = ({ serviceData }) => {
     );
   }
 
-  const { serviceTitle, serviceDescription, serviceItems } = serviceData;
+  const { serviceTitle, serviceDescription, serviceItems = [] } = serviceData;
   return (
     <div className="w-wrapper mx-auto flex items-center justify-center py-10 md:py-20 px-0 bg relative">
       <div className="flex flex-col items-center justify-center">

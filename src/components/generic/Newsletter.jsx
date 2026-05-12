@@ -5,7 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import FormNotification from "@/components/ui/FormNotification";
 
 const getNewsletterData = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/newsletter`);
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/newsletter`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch newsletter data: ${res.status} ${res.statusText}`);
+  }
   const data = await res.json();
   return data;
 };
@@ -70,7 +74,8 @@ const Newsletter = () => {
     );
   }
 
-  const { heading, description } = newsletterData?.data;
+  const newsletter = newsletterData?.data || {};
+  const { heading, description = [] } = newsletter;
 
   return (
     <>

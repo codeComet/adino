@@ -23,9 +23,13 @@ const query = qs.stringify(
 );
 
 const getSubsidiaryNewsletter = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subsidiary-newsletter?${query}`
-  );
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subsidiary-newsletter?${query}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(
+      `Failed to fetch subsidiary newsletter data: ${res.status} ${res.statusText}`
+    );
+  }
   const data = await res.json();
   return data;
 };
@@ -130,8 +134,8 @@ const SubsidiaryNewsletter = () => {
     );
   }
 
-  const { title, description, heading, social_links } =
-    subsidiaryNewsletter?.data?.content;
+  const content = subsidiaryNewsletter?.data?.content || {};
+  const { title, description, heading, social_links = [] } = content;
 
   return (
     <>

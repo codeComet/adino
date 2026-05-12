@@ -10,8 +10,8 @@ const About = ({ data }) => {
     description_2,
     image_1,
     image_2,
-    cta_btn,
-  } = data;
+    cta_btn = [],
+  } = data || {};
 
   return (
     <div className="w-wrapper mx-auto flex flex-col md:flex-row gap-8 md:gap-20 justify-between pb-[52px] md:py-[104px] px-4 md:px-0">
@@ -48,12 +48,12 @@ const About = ({ data }) => {
         </p>
         <div className="w-full md:max-w-fit flex items-center justify-start mt-4 md:mt-7.5 mb-8 bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-6 rounded-[20px] transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
           <a
-            href={cta_btn[0]?.cta_btn_url}
+            href={cta_btn?.[0]?.cta_btn_url}
             rel="noopener noreferrer"
             size="lg"
             className="flex items-center justify-between gap-5"
           >
-            {cta_btn[0]?.cta_btn_text}
+            {cta_btn?.[0]?.cta_btn_text}
             <Image
               src={RightArrow}
               alt="down arrow"

@@ -33,9 +33,13 @@ const query = qs.stringify(
 );
 
 export const getAssetManagementData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/adino-asset-management?${query}`
-  );
+  const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/adino-asset-management?${query}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(
+      `Failed to fetch asset management data: ${res.status} ${res.statusText}`
+    );
+  }
   const data = await res.json();
   return data;
 };

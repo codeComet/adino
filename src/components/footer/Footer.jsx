@@ -55,8 +55,21 @@ export default function Footer() {
       );
     }
 
-    const {footer} = footerData.data;
-    const {social, social_links, explore_adino_text, explore_adino_pages, governance_text, governance_pages, more_info_pages, more_info_text, address_text, address_content, subsidiaryText, subsidiaryLinks } = footer
+    const footer = footerData?.data?.footer || {};
+    const {
+      social,
+      social_links = [],
+      explore_adino_text,
+      explore_adino_pages = [],
+      governance_text,
+      governance_pages = [],
+      more_info_pages = [],
+      more_info_text,
+      address_text,
+      address_content,
+      subsidiaryText,
+      subsidiaryLinks = [],
+    } = footer
 
   return (
     <footer className="bg-green-800 text-white py-12 px-6 relative overflow-hidden">

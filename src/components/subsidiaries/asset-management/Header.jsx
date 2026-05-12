@@ -2,15 +2,19 @@ import { Button } from "@/components/ui/button";
 import { getStrapiMedia } from "@/lib/utils";
 
 const Header = ({ data }) => {
-  const { heading_text, hero_bg, hero_bottom_text, hero_cta } = data;
+  const { heading_text, hero_bg, hero_bottom_text, hero_cta } = data || {};
   const ctaText = hero_cta?.cta_btn_text ?? "";
   const ctaUrl = hero_cta?.cta_btn_url ?? "";
+  const backgroundUrl = getStrapiMedia(hero_bg?.url || "");
+  const isVideoBackground =
+    typeof hero_bg?.url === "string" &&
+    (hero_bg.url.endsWith(".mp4") ||
+      hero_bg.url.endsWith(".webm") ||
+      hero_bg.url.endsWith(".mov"));
 
   return (
     <div className="min-h-screen flex items-end justify-start bg relative pb-20">
-      {hero_bg?.url.endsWith(".mp4") ||
-      hero_bg?.url.endsWith(".webm") ||
-      hero_bg?.url.endsWith(".mov") ? (
+      {isVideoBackground ? (
         <video
           autoPlay
           loop
@@ -19,8 +23,8 @@ const Header = ({ data }) => {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source
-            src={getStrapiMedia(hero_bg?.url)}
-            type={`video/${getStrapiMedia(hero_bg?.url).split(".").pop()}`}
+            src={backgroundUrl}
+            type={`video/${backgroundUrl.split(".").pop()}`}
           />
           Your browser does not support the video tag.
         </video>
@@ -28,7 +32,7 @@ const Header = ({ data }) => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${getStrapiMedia(hero_bg?.url)})`,
+            backgroundImage: `url(${backgroundUrl})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

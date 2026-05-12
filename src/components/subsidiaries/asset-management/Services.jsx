@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
 const Services = ({ data }) => {
-  const { title, heading, services, cta } = data;
+  const { title, heading, services = [], cta } = data || {};
 
   return (
     <div className="w-full py-20 md:py-16 lg:py-[104px]">

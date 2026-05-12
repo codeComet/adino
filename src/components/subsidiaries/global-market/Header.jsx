@@ -2,7 +2,7 @@ import { getStrapiMedia } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
 const Header = ({ data }) => {
-  const { title, heading, description, hero_bg, cta, stats } = data;
+  const { title, heading, description, hero_bg, cta, stats } = data || {};
 
   const headingText = heading ?? title ?? "";
   const descriptionText =

@@ -34,7 +34,8 @@ const InsightHero = () => {
       </div>
     );
   }
-  const { title, heading, cta } = insightData?.data;
+  const insight = insightData?.data || {};
+  const { title, heading, cta } = insight;
 
   return (
     <div className="w-wrapper mx-auto pt-30 md:pt-40 pb-10 md:pb-20 px-4 md:px-0">

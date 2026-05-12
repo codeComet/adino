@@ -3,7 +3,7 @@ import { getStrapiMedia } from "@/lib/utils";
 
 const About = ({ data }) => {
   const { title, heading, description_1, image_1, image_2, stats, cta_btn } =
-    data;
+    data || {};
 
   return (
     <div className="w-wrapper mx-auto pt-[52px] md:py-[104px] px-4 md:px-0">
@@ -23,11 +23,11 @@ const About = ({ data }) => {
           </p>
           <div className="mt-15">
             <a
-              href={cta_btn[0]?.cta_btn_url}
+              href={cta_btn?.[0]?.cta_btn_url}
               rel="noopener noreferrer"
               className="w-full bg-primary hover:bg-green-700 cursor-pointer text-white font-medium py-5 px-15 transition-colors duration-200 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-full"
             >
-              {cta_btn[0]?.cta_btn_text}
+              {cta_btn?.[0]?.cta_btn_text}
             </a>
           </div>
         </div>

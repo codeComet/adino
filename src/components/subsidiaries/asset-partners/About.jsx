@@ -2,7 +2,14 @@ import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
 const About = ({ data }) => {
-  const { title, heading, description_1, image_1, stats, cta_btn } = data;
+  const {
+    title,
+    heading,
+    description_1,
+    image_1,
+    stats = [],
+    cta_btn = [],
+  } = data || {};
 
 
   return (

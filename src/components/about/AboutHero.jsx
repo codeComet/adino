@@ -21,8 +21,9 @@ const AboutHero = () => {
     aboutHeroData?.data?.attributes?.aboutHero;
   if (!heroData) return null;
 
-  const { heading, aboutHeroImg, companyInfo } = heroData;
-  const { title, description } = aboutHeroData?.data?.aboutCompany || {};
+  const { heading, aboutHeroImg, companyInfo = [] } = heroData;
+  const aboutCompany = aboutHeroData?.data?.aboutCompany || {};
+  const { title, description } = aboutCompany;
 
 
   return (

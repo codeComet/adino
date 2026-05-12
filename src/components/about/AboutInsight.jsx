@@ -38,7 +38,7 @@ const AboutInsight = () => {
 
   if (!insightSection) return null;
 
-  const { title, heading, insight_desc, stats } = insightSection;
+  const { title, heading, insight_desc = [], stats = [] } = insightSection;
 
   return (
     <div
