@@ -1,9 +1,9 @@
-'use client';
- 
+"use client";
+
 import Link from "next/link";
-import qs from 'qs';
+import qs from "qs";
 import Image from "next/image";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import { getStrapiMedia } from "@/lib/utils";
 
 const query = qs.stringify(
@@ -20,56 +20,84 @@ const query = qs.stringify(
       },
     },
   },
-  { encodeValuesOnly: true }
+  { encodeValuesOnly: true },
 );
 
 const getFooterData = async () => {
+  const tryParseError = async (response) => {
+    try {
+      const text = await response.text();
+      return text || `HTTP ${response.status}`;
+    } catch {
+      return `HTTP ${response.status}`;
+    }
+  };
+
   const res = await fetch(`/api/footer?${query}`);
-  if (!res.ok) {
-    throw new Error(`Failed to load footer (${res.status})`);
+  if (res.ok) return res.json();
+
+  const directBase = process.env.NEXT_PUBLIC_STRAPI_URL;
+  if (directBase) {
+    const normalizedBase = directBase.endsWith("/")
+      ? directBase.slice(0, -1)
+      : directBase;
+    const directRes = await fetch(`${normalizedBase}/api/footer?${query}`);
+    if (directRes.ok) return directRes.json();
+    throw new Error(
+      `Failed to load footer (${await tryParseError(directRes)})`,
+    );
   }
-  return res.json();
+
+  throw new Error(`Failed to load footer (${await tryParseError(res)})`);
 };
 
 export default function Footer() {
-    const { data: footerData, isLoading, isError } = useQuery({
-      queryKey: ['footer'],
-      queryFn: getFooterData,
-      staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
-      gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
-    });
-    
-    if (isLoading) {
-      return (
-        <div className="min-h-screen flex items-center justify-center px-6 bg relative">
-          <p>Loading...</p>
-        </div>
-      );
-    }
+  const {
+    data: footerData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["footer"],
+    queryFn: getFooterData,
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    gcTime: 24 * 60 * 60 * 1000, // Cache persists for 1 day
+  });
 
-    if (isError || !footerData?.data?.footer) {
-      return (
-        <div className="min-h-screen flex items-center justify-center px-6 bg relative">
-          <p>Something went wrong. Please try again later.</p>
-        </div>
-      );
-    }
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
-    const footer = footerData?.data?.footer || {};
-    const {
-      social,
-      social_links = [],
-      explore_adino_text,
-      explore_adino_pages = [],
-      governance_text,
-      governance_pages = [],
-      more_info_pages = [],
-      more_info_text,
-      address_text,
-      address_content,
-      subsidiaryText,
-      subsidiaryLinks = [],
-    } = footer
+  if (isError || !footerData?.data?.footer) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 bg relative">
+        <p>Something went wrong. Please try again later.</p>
+      </div>
+    );
+  }
+
+  const footer = footerData?.data?.footer || {};
+
+  console.log(footer)
+
+
+  const {
+    social,
+    social_links = [],
+    explore_adino_text,
+    explore_adino_pages = [],
+    governance_text,
+    governance_pages = [],
+    more_info_pages = [],
+    more_info_text,
+    address_text,
+    address_content,
+    subsidiaryText,
+    subsidiaryLinks = [],
+  } = footer;
 
   return (
     <footer className="bg-green-800 text-white py-12 px-6 relative overflow-hidden">

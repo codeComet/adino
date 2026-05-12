@@ -40,14 +40,14 @@ export default function HomeContent() {
 
   return (
     <>
-      {sections.map((section) => {
+      {sections.map((section, index) => {
         const Component = SECTION_COMPONENTS[section.__component];
 
         if (!Component) {
           return null;
         }
 
-        return <Component key={section.id} />;
+        return <Component key={index} />;
       })}
     </>
   );

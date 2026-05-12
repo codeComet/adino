@@ -11,7 +11,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "api.adinoinvest.com",
-        port: "1337",
         pathname: "/**",
       },
       {
